@@ -1,0 +1,144 @@
+# Timing Model Spec
+# Behavioral contracts for perceived TUI quality.
+# These define WHAT "feels alive" actually means in measurable terms.
+
+id: smooth_streaming
+description: "Content streams in without jitter or blank frames"
+constraints:
+  render_frequency_max_fps: 30
+  cmd_latency_warn_ms: 50
+  cmd_latency_error_ms: 150
+  viewport_mutation_budget_per_frame: 2
+  max_string_allocations_per_frame: 3
+perception_traits:
+  - progressive_disclosure
+  - incremental_append
+  - low_jitter
+  - immediate_feedback
+interaction_patterns:
+  - "New content appears within 50ms of data arrival"
+  - "Scroll position is preserved during append"
+  - "No blank frames between content batches"
+
+---
+
+id: snappy_focus
+description: "Focus changes are instant and predictable"
+constraints:
+  render_frequency_min_fps: 30
+
+  focus_change_latency_ms: 16
+  key_repeat_delay_ms: 100
+perception_traits:
+  - instant_response
+  - predictable_navigation
+  - no_visual_delays
+interaction_patterns:
+  - "Cursor moves within one frame of keypress"
+  - "Focus indicators update immediately"
+  - "No ghost/flicker during pane switches"
+
+---
+
+id: responsive_input
+description: "Input feels realtime with no perceptible lag"
+constraints:
+  echo_latency_ms: 16
+  validation_latency_ms: 50
+  autocomplete_latency_ms: 100
+perception_traits:
+  - character_echo
+  - live_validation
+  - immediate_feedback
+interaction_patterns:
+  - "Each typed character appears in <16ms"
+  - "Validation errors show within 50ms"
+  - "Placeholder/label updates are instant"
+
+---
+
+id: periodic_refresh
+description: "Dashboard metrics refresh smoothly without disruption"
+constraints:
+  refresh_interval_ms: 500
+  max_frame_drop: 1
+  transition_duration_ms: 200
+perception_traits:
+  - stable_layout
+  - smooth_transitions
+  - no_layout_jitter
+interaction_patterns:
+  - "Values tick in place without repositioning"
+  - "Layout structure remains stable across refreshes"
+  - "Old → new value transitions are smooth"
+
+---
+
+id: periodic_refresh_1s
+description: "Slower ambient refresh for status surfaces"
+constraints:
+  refresh_interval_ms: 1000
+  max_frame_drop: 0
+perception_traits:
+  - non_intrusive
+  - ambient_awareness
+interaction_patterns:
+  - "Status indicators update once per second"
+  - "No visual disruption between updates"
+
+---
+
+id: ambient_refresh_1s
+description: "Very low-priority background activity display"
+constraints:
+  refresh_interval_ms: 1000
+  max_frame_drop: 0
+  visual_weight: low
+perception_traits:
+  - non_blocking
+  - passive_awareness
+interaction_patterns:
+  - "Background activity visible but not distracting"
+  - "Updates do not trigger layout changes"
+
+---
+
+id: instant_search
+description: "Search/filter results appear as user types"
+constraints:
+  debounce_ms: 50
+  result_latency_ms: 100
+perception_traits:
+  - live_results
+  - fluid_filtering
+interaction_patterns:
+  - "Results filter within 50ms of keystroke"
+  - "No loading spinner — results appear incrementally"
+
+---
+
+id: instant_validation
+description: "Form validation feedback is immediate"
+constraints:
+  validation_latency_ms: 50
+  error_display_latency_ms: 0
+perception_traits:
+  - inline_errors
+  - field_level_feedback
+interaction_patterns:
+  - "Validation errors appear on blur or after 50ms debounce"
+  - "No modal dialogs for validation"
+
+---
+
+id: 60fps_cap
+description: "Rendering never exceeds terminal refresh capability"
+constraints:
+  max_render_frequency_fps: 60
+  min_frame_budget_ms: 16
+perception_traits:
+  - efficient_rendering
+  - no_wasted_frames
+interaction_patterns:
+  - "Render skipped when nothing changed"
+  - "Terminal output rate capped at 60fps"

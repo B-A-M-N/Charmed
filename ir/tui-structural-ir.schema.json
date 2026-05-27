@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tui-structural-ir",
+  "title": "TUI Structural IR",
+  "description": "Canonical intermediate representation for Charm ecosystem TUI analysis. Produced by the charm-project-scanner from Go AST. Consumed by all skills.",
+
+  "definitions": {
+    "ModelDef": {
+      "type": "object",
+      "required": ["name", "file", "line"],
+      "properties": {
+        "name": { "type": "string" },
+        "file": { "type": "string" },
+        "line": { "type": "integer" },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "type"],
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "mutation_authority": { "type": "string" }
+            }
+          }
+        },
+        "implements": { "type": "array", "items": { "type": "string" } },
+        "update_handler": { "type": "boolean" },
+        "view_handler": { "type": "boolean" },
+        "init_handler": { "type": "boolean" },
+        "update_complexity": { "type": "integer" },
+        "view_complexity": { "type": "integer" }
+      }
+    },
+    "MessageDef": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "file": { "type": "string" },
+        "line": { "type": "integer" },
+        "handlers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["model", "pattern"],
+            "properties": {
+              "model": { "type": "string" },
+              "pattern": { "type": "string" }
+            }
+          }
+        },
+        "emitted_by": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["model", "function"],
+            "properties": {
+              "model": { "type": "string" },
+              "function": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "CmdDef": {
+      "type": "object",
+      "required": ["model", "line"],
+      "properties": {
+        "model": { "type": "string" },
+        "line": { "type": "integer" },
+        "function": { "type": "string" },
+        "is_async": { "type": "boolean", "default": true },
+        "is_batch": { "type": "boolean", "default": false },
+        "has_callback": { "type": "boolean", "default": false }
+      }
+    },
+    "RenderNode": {
+      "type": "object",
+      "required": ["model", "output_type"],
+      "properties": {
+        "model": { "type": "string" },
+        "output_type": { "enum": ["string", "styled", "component", "composite"] },
+        "width_ref": { "type": "string" },
+        "height_ref": { "type": "string" },
+        "uses_lipgloss": { "type": "boolean", "default": false },
+        "uses_viewport": { "type": "boolean", "default": false }
+      }
+    },
+    "LayoutNode": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["horizontal", "vertical", "stack", "table", "custom"] },
+        "children": { "type": "array", "items": { "$ref": "#/definitions/LayoutNode" } },
+        "width": { "type": "integer" },
+        "height": { "type": "integer" },
+        "margin": { "type": "array", "items": { "type": "integer" } },
+        "padding": { "type": "array", "items": { "type": "integer" } },
+        "style_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "StateOwnership": {
+      "type": "object",
+      "required": ["field", "owner"],
+      "properties": {
+        "field": { "type": "string" },
+        "owner": { "type": "string" },
+        "mutation_rules": { "type": "array", "items": { "type": "string" } },
+        "shared_with": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "MutationPath": {
+      "type": "object",
+      "required": ["field", "source"],
+      "properties": {
+        "field": { "type": "string" },
+        "source": { "type": "string" },
+        "trigger": { "type": "string" },
+        "is_diff_based": { "type": "boolean" },
+        "frequency": { "type": "string" }
+      }
+    },
+    "AsyncBoundary": {
+      "type": "object",
+      "required": ["model", "line"],
+      "properties": {
+        "model": { "type": "string" },
+        "line": { "type": "integer" },
+        "kind": { "enum": ["command", "goroutine", "channel", "ticker", "sequence"] },
+        "creates_goroutine": { "type": "boolean" },
+        "blocks_render": { "type": "boolean" }
+      }
+    },
+    "ComponentBinding": {
+      "type": "object",
+      "required": ["model", "component"],
+      "properties": {
+        "model": { "type": "string" },
+        "component": { "type": "string" },
+        "package": { "type": "string" },
+        "config_fields": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+
+  "type": "object",
+  "required": ["source_repo", "models"],
+  "properties": {
+    "source_repo": { "type": "string" },
+    "indexed_at": { "type": "string", "format": "date-time" },
+    "atree_db_path": { "type": "string" },
+
+    "models": { "type": "array", "items": { "$ref": "#/definitions/ModelDef" } },
+    "messages": { "type": "array", "items": { "$ref": "#/definitions/MessageDef" } },
+    "cmds": { "type": "array", "items": { "$ref": "#/definitions/CmdDef" } },
+
+    "message_flow_graph": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "via"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "via": { "type": "string" }
+        }
+      }
+    },
+
+    "render_tree": { "type": "array", "items": { "$ref": "#/definitions/RenderNode" } },
+    "layout_tree": { "type": "array", "items": { "$ref": "#/definitions/LayoutNode" } },
+
+    "state_ownership": { "type": "array", "items": { "$ref": "#/definitions/StateOwnership" } },
+    "mutation_paths": { "type": "array", "items": { "$ref": "#/definitions/MutationPath" } },
+    "async_boundaries": { "type": "array", "items": { "$ref": "#/definitions/AsyncBoundary" } },
+    "component_bindings": { "type": "array", "items": { "$ref": "#/definitions/ComponentBinding" } }
+  }
+}

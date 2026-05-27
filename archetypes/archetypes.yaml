@@ -1,0 +1,189 @@
+# Archetype Spec
+# High-level TUI intent categories that bridge user goals to concrete architecture.
+# Used by tui-scaffold, tui-ux-review, and tui-refactor to classify and guide generation.
+
+id: agent_console
+description: "AI or agent-driven console with streaming output and command interaction"
+traits:
+  - streaming_updates
+  - transient_status_surfaces
+  - async_command_orchestration
+  - progressive_disclosure
+  - cursor_stability
+required_components:
+  - viewport
+  - textarea
+  - status_bar
+layout_type: multi_pane
+density_profile: balanced
+motion_philosophy: smooth
+timing_constraints:
+  - smooth_streaming
+  - responsive_input
+failure_modes:
+  - viewport_churn
+  - blocking_update
+  - giga_switch_update
+
+---
+
+id: streaming_chat
+description: "Chat interface with role-based message rendering and input"
+traits:
+  - role_based_rendering
+  - incremental_append
+  - scrolling_history
+required_components:
+  - bubbles/viewport
+  - bubbles/textarea
+  - bubbles/list
+layout_type: single_pane
+density_profile: balanced
+motion_philosophy: smooth
+timing_constraints:
+  - smooth_streaming
+failure_modes:
+  - viewport_churn
+  - string_allocation_pressure
+
+---
+
+id: ide_workspace
+description: "Multi-pane IDE-like workspace with file tree, editor, terminal, and status"
+traits:
+  - persistent_layout
+  - resize_propagation
+  - focus_management
+  - modal_interaction
+required_components:
+  - viewport
+  - filepicker
+  - textarea
+  - status_bar
+  - key_bindings
+layout_type: multi_pane
+density_profile: dense
+motion_philosophy: static
+timing_constraints:
+  - snappy_focus
+failure_modes:
+  - viewport_without_resize_handling
+  - missing_key_bindings_help
+  - god_model
+
+---
+
+id: monitoring_dashboard
+description: "Real-time metrics dashboard with gauges, charts, and status widgets"
+traits:
+  - periodic_refresh
+  - data_driven_layout
+  - alert_surfaces
+required_components:
+  - viewport
+  - spinner
+  - progress
+  - table
+layout_type: multi_pane
+density_profile: dense
+motion_philosophy: static
+timing_constraints:
+  - periodic_refresh_500ms
+failure_modes:
+  - unbounded_cmd_spawning
+  - sync_io_in_init
+  - style_recomputation_hot_path
+
+---
+
+id: cli_wizard
+description: "Step-by-step form wizard with validation and navigation"
+traits:
+  - state_machine
+  - step_navigation
+  - inline_validation
+  - confirmation_flow
+required_components:
+  - bubbles/huh (or forms)
+  - textinput
+  - textarea
+  - confirm
+layout_type: single_pane
+density_profile: balanced
+motion_philosophy: static
+timing_constraints:
+  - instant_validation
+failure_modes:
+  - sync_io_in_init
+  - god_model
+
+---
+
+id: git_client
+description: "Git operations viewer with diff, log, blame, and branch management"
+traits:
+  - diff_rendering
+  - branch_navigation
+  - commit_graph
+  - blame_overlay
+required_components:
+  - viewport
+  - list
+  - textinput
+  - status_bar
+layout_type: multi_pane
+density_profile: dense
+motion_philosophy: smooth
+timing_constraints:
+  - smooth_streaming
+  - instant_search
+failure_modes:
+  - viewport_churn
+  - string_allocation_pressure
+  - viewport_recreation
+
+---
+
+id: log_explorer
+description: "Log viewer with search, filtering, and streaming tail"
+traits:
+  - line_based_rendering
+  - live_tail
+  - regex_filtering
+  - severity_highlighting
+required_components:
+  - viewport
+  - textinput
+  - status_bar
+layout_type: single_pane
+density_profile: dense
+motion_philosophy: smooth
+timing_constraints:
+  - smooth_streaming
+  - 60fps_cap
+failure_modes:
+  - viewport_churn
+  - viewport_recreation
+  - string_allocation_pressure
+
+---
+
+id: status_console
+description: "Ambient status surface that shows non-blocking activity"
+traits:
+  - ambient_updates
+  - low_visual_weight
+  - background_polling
+  - transient_toast
+required_components:
+  - viewport
+  - spinner
+  - progress
+layout_type: single_pane
+density_profile: ambient
+motion_philosophy: smooth
+timing_constraints:
+  - ambient_refresh_1s
+failure_modes:
+  - blocking_update
+  - style_recomputation_hot_path

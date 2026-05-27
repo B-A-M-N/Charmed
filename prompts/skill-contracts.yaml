@@ -1,0 +1,193 @@
+# Skill I/O Contracts
+# Defines the inputs, outputs, and side-effects for each charm-tui skill.
+# Every skill consumes the TUI Structural IR and produces findings/transformations.
+
+## Common Inputs (all skills)
+  - ir: TUI Structural IR (from scanner agent)
+  - atree_db: path to ATree SQLite index for the project
+  - constraints: loaded constraints.yaml rules
+  - archetypes: loaded archetypes.yaml definitions
+  - settings: user settings (strictness, ux_philosophy, etc.)
+
+## Common Outputs
+  - findings: list of issues/facts (severity, location, message)
+  - suggestions: list of recommended actions
+  - evidence: supporting data from ATree graph queries
+
+---
+
+## tui-audit
+
+purpose: "Deterministic architecture linting — find anti-patterns and constraint violations"
+
+deterministic: true
+
+inputs:
+  - ir (required)
+  - constraints (required)
+  - atree_db (optional — enriches with graph context)
+
+outputs:
+  findings:
+    type: array
+    items:
+      rule_id: string        # matches constraints.yaml id
+      severity: enum [info, warning, error, fatal]
+      file: string
+      line: integer
+      message: string
+      evidence: string       # ATree graph evidence or code snippet
+  summary:
+    total_checks: integer
+    passed: integer
+    failed_by_severity: map
+
+side_effects: none
+
+---
+
+## tui-scaffold
+
+purpose: "Intent-aware TUI generation — map user description to working architecture"
+
+deterministic: false (LLM-assisted)
+
+inputs:
+  - intent: string           # user's description of desired TUI
+  - ir (optional — for extending existing project)
+  - constraints (required)
+  - archetypes (required)
+  - timing_models (required)
+
+outputs:
+  archetype_match:
+    id: string
+    confidence: float
+    traits: array[string]
+  architecture_plan:
+    models: array[ModelDef]
+    message_types: array[string]
+    component_bindings: array[ComponentBinding]
+    layout_tree: LayoutNode
+  code_outline:
+    files: array
+    contents: Go code with tea.Cmd, Update, View patterns
+
+side_effects: writes files (only with user confirmation)
+
+---
+
+## tui-refactor
+
+purpose: "Architectural refactoring — split models, stabilize rendering, modularize"
+
+deterministic: hybrid (rule-based detection, LLM repair)
+
+inputs:
+  - ir (required)
+  - constraints (required)
+  - atree_db (required — for impact analysis)
+
+outputs:
+  violations:
+    same format as tui-audit findings
+  refactor_plan:
+    type: array
+    items:
+      action: enum [split_model, extract_component, stabilize_viewport, throttle_cmd, add_resize_handler]
+      target_file: string
+      current_state: string
+      target_state: string
+      affected_by: ATree impact analysis
+  patches:
+    type: array
+    items:
+      file: string
+      line: integer
+      old: string
+      new: string
+
+side_effects: writes files (only with dry-run default, --apply required)
+
+---
+
+## tui-explain
+
+purpose: "Graph-driven semantic explanation of Charm ecosystem concepts"
+
+deterministic: false (graph-based, LLM narration)
+
+inputs:
+  - query: string            # concept, component, or pattern to explain
+  - atree_db (required)
+  - ontology (required)
+
+outputs:
+  explanation:
+    type: string            # structured markdown
+  related_symbols:
+    type: array             # from ATree context query
+  component_graph:
+    type: ATree evidence paths
+  code_examples:
+    type: array             # from ATree code search
+
+side_effects: none
+
+---
+
+## tui-instrument
+
+purpose: "Generate runtime telemetry hooks for the TUI"
+
+deterministic: true
+
+inputs:
+  - ir (required)
+  - timing_models (required)
+
+outputs:
+  instrumentation_plan:
+    models: array
+    items:
+      model: string
+      add_fields: array     # trace fields to add
+      trace_points: array   # where to insert trace code
+  generated_code:
+    type: array
+    items:
+      file: string
+      contents: Go code for TraceMsg, tracing hooks
+
+side_effects: writes files (only with user confirmation)
+
+---
+
+## tui-ux-review
+
+purpose: "Perceptual critique of TUI feel — pacing, density, motion, responsiveness"
+
+deterministic: false (LLM-assisted)
+
+inputs:
+  - ir (required)
+  - timing_models (required)
+  - archetypes (required)
+
+outputs:
+  ux_assessment:
+    archetype_match: string
+    density_score: float
+    motion_score: float
+    responsiveness_score: float
+  findings:
+    type: array
+    items:
+      category: enum [pacing, density, motion, responsiveness, focus, readability]
+      severity: enum [info, warning, error]
+      message: string
+      suggestion: string
+  timing_violations:
+    checking which timing_models are violated
+
+side_effects: none

@@ -1,0 +1,25 @@
+{
+  "name": "charmed",
+  "version": "0.1.0",
+  "description": "Charm ecosystem TUI intelligence \u2014 architectural reasoning, anti-pattern detection, intent-aware scaffolding, and UX critique for Bubble Tea / Lip Gloss / Bubbles projects.",
+  "author": {
+    "name": "B-A-M-N",
+    "email": "contact@unityailab.com"
+  },
+  "homepage": "https://github.com/B-A-M-N/charmed",
+  "license": "MIT",
+  "keywords": [
+    "charm",
+    "bubbletea",
+    "tui",
+    "lipgloss",
+    "bubbles",
+    "go",
+    "architecture",
+    "scaffolding",
+    "audit"
+  ],
+  "commands": "./commands",
+  "skills": "./skills",
+  "mcpServers": true
+}

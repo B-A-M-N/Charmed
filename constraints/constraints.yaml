@@ -1,0 +1,211 @@
+id: no_blocking_update
+severity: error
+category: correctness
+description: "Blocking I/O or synchronous calls inside Update() block the event loop and freeze the UI."
+
+match:
+  function: "Update"
+  contains_any:
+    - pattern: 'http\.(Get|Post|Do)\('
+      label: "HTTP call"
+    - pattern: 'ioutil\.ReadFile|os\.ReadFile'
+      label: "File I/O"
+    - pattern: 'time\.Sleep'
+      label: "Sleep in Update"
+    - pattern: 'sql\..*\.Query'
+      label: "Synchronous DB query"
+
+message: "{{label}} detected inside {{function}}(). The event loop blocks until this completes — the TUI will freeze."
+fix:
+  suggestion: "Wrap in tea.Cmd: return func() tea.Msg { ... }"
+  pattern: "tea.Command(func() tea.Cmd { ... })"
+
+---
+
+id: god_model
+severity: error
+category: architecture
+description: "Update() function is too large, indicating a monolithic model that should be decomposed."
+
+match:
+  function: "Update"
+  loc_greater_than: 300
+
+message: "Update() is {{loc}} lines. This model owns too much state and handles too many message types."
+fix:
+  suggestion: "Decompose into child models. Use composition: each child model has its own Update/View. Parent orchestrates message passing."
+
+---
+
+id: viewport_recreation
+severity: fatal
+category: performance
+description: "viewport.Model is recreated every render or every Update(), causing scroll position reset and layout flicker."
+
+match:
+  type: "viewport.Model"
+  pattern: "viewport\\.New\\("
+  context: "inside Update|View"
+
+message: "viewport.Model is being recreated inside {{context}}. This resets scroll position every frame, causing visible flicker."
+fix:
+  suggestion: "Create viewport once in Init() or as a field on the struct. Only call SetContent() when content changes, not on every update."
+
+---
+
+id: style_recomputation_hot_path
+severity: warning
+category: performance
+description: "Lip Gloss styles are recomputed on every render instead of being cached."
+
+match:
+  pattern: "lipgloss\\.NewStyle\\(|\\.Width\\(|\\.Height\\("
+  context: "inside View|Update"
+
+message: "Style/layout computation inside hot path. Recomputing every frame wastes CPU and causes GC pressure."
+fix:
+  suggestion: "Cache styles computed from model state. Only recompute when input data changes."
+
+---
+
+id: viewport_churn
+severity: error
+category: performance
+description: "viewport.SetContent() is called too frequently, indicating content is being reset rather than diffed."
+
+match:
+  function: "SetContent"
+  call_frequency: "> 1/frame"
+
+message: "SetContent called more than once per frame. Content is being reset instead of appended."
+fix:
+  suggestion: "In streaming/append mode, build content incrementally. Only call SetContent when content actually changes (diff check)."
+
+---
+
+id: unbounded_cmd_spawning
+severity: error
+category: concurrency
+description: "Commands are spawned inside loops or on every tick without throttling, creating goroutine storms."
+
+match:
+  pattern: "tea\\.(Cmd|Batch|Sequence)"
+  context: "inside loop|handler"
+  rate: "every iteration"
+
+message: "Commands spawned on every iteration of {{context}}. This creates unbounded goroutines."
+fix:
+  suggestion: "Throttle with time.Tick or debounce. Use tea.Sequence for ordered execution. Batch related work into a single Cmd."
+
+---
+
+id: sync_io_in_init
+severity: error
+category: correctness
+description: "Init() performs blocking operations before the first render, delaying TUI startup."
+
+match:
+  function: "Init"
+  contains_any:
+    - 'http\.'
+    - 'ioutil\.'
+    - 'os\.(Read|Write|Open)'
+    - 'sql\.'
+
+message: "Blocking I/O in {{function}}(). The TUI will not render until this completes."
+fix:
+  suggestion: "Move I/O into the Cmd returned by Init(). Return a Cmd that performs async work and sends a message when done."
+
+---
+
+id: missing_key_bindings_help
+severity: warning
+category: ux
+description: "No help.Model or key bindings component is attached to the UI."
+
+match:
+  type_import: "key\\.Binding"
+  present: false
+
+message: "No key.Binding import detected. Users have no visible help or discoverable controls."
+fix:
+  suggestion: "Add bubbles/help. Include key bindings. Show available keys with help.FullHelpView or help.New()."
+
+---
+
+id: giga_switch_update
+severity: fatal
+category: architecture
+description: "A single massive switch/case on tea.Msg types in Update() indicates missing decomposition."
+
+match:
+  function: "Update"
+  pattern: "switch msg"
+  branches_greater_than: 20
+
+message: "Update() has {{branches}} switch branches. This is a god-model smell — decompose into child models with focused handlers."
+
+fix:
+  suggestion: "Each child model handles a subset of messages. Parent routes messages to children. Consider a message bus pattern."
+
+---
+
+id: string_allocation_pressure
+severity: info
+category: performance
+description: "Excessive string concatenation or formatting in View() causes GC pressure."
+
+match:
+  function: "View"
+  pattern: "fmt\\.Sprintf|Sprintf"
+  call_frequency: "> 5/call"
+
+message: "Heavy string formatting inside View(). Each frame allocates multiple temporary strings."
+fix:
+  suggestion: "Use lipgloss JoinHorizontal/JoinVertical for layouts. Pre-compute static strings. Use strings.Builder."
+
+---
+
+id: viewport_without_resize_handling
+severity: error
+category: robustness
+description: "viewport.Model is used but tea.WindowSizeMsg is not handled, so the viewport never resizes."
+
+match:
+  type: "bubbles/viewport"
+  handler: "WindowSizeMsg"
+  present: false
+
+message: "viewport used without WindowSizeMsg handling. The viewport will have 0 width/height and never display content."
+fix:
+  suggestion: "Handle tea.WindowSizeMsg in Update(). Propagate dimensions to viewport and all child components."
+
+---
+
+id: tea_batch_misuse
+severity: info
+category: correctness
+description: "tea.Batch is used where tea.Sequence would preserve order, or vice versa."
+
+match:
+  pattern: "tea\\.Batch"
+  context: "inside state-dependent operations"
+
+message: "tea.Batch runs commands concurrently. If order matters (e.g., UI state transitions), use tea.Sequence instead."
+fix:
+  suggestion: "Use tea.Sequence for ordered execution. Use tea.Batch only for truly independent operations."
+
+---
+
+id: missing_alt_screen_cleanup
+severity: warning
+category: robustness
+description: "Program uses alt screen (EnterAltScreen) but doesn't handle cleanup on shutdown."
+
+match:
+  pattern: "tea\\.EnterAltScreen"
+  cleanup_present: false
+
+message: "Alt screen entered but no cleanup (ExitAltScreen) guaranteed. Terminal may be left in broken state on crash."
+fix:
+  suggestion: "Always call ExitAltScreen in a defer or cleanup handler. Consider using a program-level shutdown pattern."

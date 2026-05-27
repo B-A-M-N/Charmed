@@ -1,0 +1,142 @@
+#
+# charm-tui Ontology — Distilled Knowledge Base
+# Extracted from DeepWiki pages for the Charm ecosystem.
+# This is NOT raw docs — it's structured semantic knowledge.
+#
+
+## Component Semantics
+
+- name: bubbletea.Program
+  package: github.com/charmbracelet/bubbletea
+  kind: infrastructure
+  owns_state: [model, cmdQueue, renderer, input]
+  inputs: [Start, Send, Quit, WithAltScreen, WithMouseCellMotion]
+  outputs: [tea.Msg stream]
+  lifecycle:
+    - Init() called once, returns tea.Cmd
+    - Update(tea.Msg) runs on every event
+    - View() called after each Update
+    - Kill() terminates the event loop
+  update_triggers: [WindowSizeMsg, KeyMsg, MouseMsg, custom, Cmd callbacks]
+  constraints: [no_blocking_update, sync_io_in_init, missing_alt_screen_cleanup]
+
+- name: Model
+  kind: primitive
+  description: "Interface with Init(), Update(), View()"
+  outputs: [Init() tea.Cmd, Update(tea.Msg) (Model, tea.Cmd), View() string]
+  constraints: [no_blocking_update, god_model, giga_switch_update]
+
+- name: bubbles/viewport.Model
+  package: github.com/charmbracelet/bubbles/viewport
+  kind: widget
+  owns_state: [content, width, height, xOffset, yOffset]
+  inputs: [SetContent, GotoTop, GotoBottom, LineUp, LineDown, PageUp, PageDown, ScrollPercent]
+  outputs: [View() string, AtTop, AtBottom, PastBottom, ScrollPercent]
+  constraints: [viewport_recreation, viewport_churn, viewport_without_resize_handling]
+  anti_patterns:
+    - recreating viewport each render
+    - setting content every frame
+    - SetContent called without diff check
+  common_pairings: [key.Model, help.Model, bubbles/list, bubbles/textarea]
+  timing_model: smooth_streaming
+
+- name: bubbles/list.Model
+  package: github.com/charmbracelet/bubbles/list
+  kind: widget
+  owns_state: [items, filterState, height, width, selected]
+  inputs: [SetItems, SetFilterState, SetSize, Select, NextPage, PrevPage]
+  outputs: [View() string, FilterValue, SelectedItem]
+  common_pairings: [viewport, help.Model]
+
+- name: bubbles/textarea.Model
+  package: github.com/charmbracelet/bubbles/textarea
+  kind: widget
+  owns_state: [value, cursor, width, height, prompt, placeholder]
+  inputs: [SetValue, Focus, Blur, Reset, InsertString, SetWidth, SetHeight]
+  outputs: [View() string, Value, CursorPos, Focused, LineInfo]
+  timing_model: responsive_input
+
+- name: bubbles/textinput.Model
+  package: github.com/charmbracelet/bubbles/textinput
+  kind: widget
+  owns_state: [value, cursor, prompt, placeholder, echoMode]
+  inputs: [SetValue, Focus, Blur, Reset, SetPrompt, SetWidth]
+  outputs: [View() string, Value, Cursor, Focused]
+  timing_model: responsive_input
+
+- name: bubbles/spinner.Model
+  package: github.com/charmbracelet/bubbles/spinner
+  kind: widget
+  owns_state: [frames, fps]
+  inputs: [SetSpinner, Next]
+  outputs: [View() string]
+
+- name: bubbles/help.Model
+  package: github.com/charmbracelet/bubbles/help
+  kind: widget
+  owns_state: [keys, availableWidth]
+  inputs: [ShortHelpView, FullHelpView]
+  outputs: [View(key.Binding) string]
+  constraints: [missing_key_bindings_help]
+  common_pairings: [key.Model, viewport, bubbles/list, bubbles/textarea]
+
+- name: key.Binding
+  package: github.com/charmbracelet/bubbles/key
+  kind: primitive
+  description: "Key binding with help text"
+  common_pairings: [help.Model]
+
+- name: lipgloss.Style
+  package: github.com/charmbracelet/lipgloss
+  kind: primitive
+  owns_state: [rules]
+  inputs: [Width, Height, Inline, Bold, Italic, Underline, Foreground, Background, Border, Margins, Padding, Align]
+  outputs: [String(), Render, Width, Height]
+  constraints: [style_recomputation_hot_path]
+
+## Pattern Relations
+
+- pattern: streaming_console
+  uses: [bubbles/viewport, bubbles/textarea, bubbles/help, key.Binding]
+  composes_with: [lipgloss.Style, bubbles/spinner]
+  emits: [tea.Batch]
+  failure_modes: [viewport_churn, blocking_update]
+
+- pattern: multi_pane_layout
+  uses: [lipgloss.Style, bubbles/viewport]
+  composes_with: [bubbles/list, bubbles/textarea, status_bar_pattern]
+  emits: [WindowSizeMsg]
+  failure_modes: [viewport_without_resize_handling, style_recomputation_hot_path]
+
+- pattern: form_wizard
+  uses: [bubbles/huh, bubbles/textinput, bubbles/textarea]
+  failure_modes: [god_model, sync_io_in_init]
+
+- pattern: status_bar_pattern
+  uses: [lipgloss.Style, bubbles/spinner]
+  composes_with: [bubbles/viewport]
+
+## Charm Library Dependency Graph
+
+bubbletea: []
+bubbles: [bubbletea, lipgloss]
+lipgloss: []
+glamour: [lipgloss]
+glow: [lipgloss, glamour]
+gum: [bubbletea, bubbles, lipgloss, glamour, huh]
+huh: [bubbletea, bubbles, lipgloss]
+mods: [bubbletea, lipgloss]
+soft-serve: [bubbletea, lipgloss, wish, x/term, x/input]
+wish: [bubbletea, x/term, x/input, soft-serve]
+
+## Common Pairings (recommended defaults)
+
+viewport <> help.Model
+viewport <> key.Binding
+list.Model <> help.Model
+textarea <> help.Model
+textarea <> key.Binding
+textinput <> key.Binding
+viewport <> lipgloss.Style
+list.Model <> lipgloss.Style
+status_bar <> lipgloss.Style

@@ -1,0 +1,110 @@
+# ATree Ontology Contract
+# Defines the node types and edge semantics used by the charm-tui plugin
+# to construct and query the TUI knowledge graph in ATree.
+
+## Node Types
+
+### component
+Represents a runtime unit in the TUI system.
+Fields:
+  - name: qualified name (e.g., "bubbles/viewport.Model")
+  - package: Go import path (e.g., "github.com/charmbracelet/bubbles/viewport")
+  - kind: "primitive" | "composite" | "layout" | "widget" | "infrastructure"
+  - owns_state: list of state field names
+  - inputs: list of method names that modify state
+  - outputs: list of methods that produce rendering output or messages
+  - update_triggers: list of events that trigger state changes
+  - constraints: list of constraint IDs this component enforces or requires
+
+### pattern
+Represents a known architectural shape.
+Fields:
+  - name: pattern identifier (e.g., "streaming_console")
+  - description: human-readable description
+  - traits: list of characteristic behaviors
+  - required_components: list of component node names
+  - forbidden_components: list of component node names (anti-patterns)
+  - failure_modes: list of anti-pattern node IDs
+
+### archetype
+Represents a high-level TUI intent category.
+Fields:
+  - name: archetype identifier (e.g., "agent_console")
+  - traits: list of UX characteristics
+  - required_components: list of component node names
+  - layout_type: "single_pane" | "multi_pane" | "wizard" | "dashboard" | "ambient"
+  - density_profile: "dense" | "balanced" | "ambient"
+  - motion_philosophy: "static" | "smooth" | "animated"
+
+### constraint
+Represents an enforceable rule.
+Fields:
+  - id: constraint identifier (matches constraints.yaml IDs)
+  - severity: "info" | "warning" | "error" | "fatal"
+  - category: "correctness" | "performance" | "architecture" | "concurrency" | "ux" | "robustness"
+  - description: human-readable rule description
+
+### timing_model
+Represents a behavioral timing contract for perceived quality.
+Fields:
+  - name: timing model identifier (e.g., "smooth_streaming")
+  - render_frequency_max: fps integer
+  - cmd_latency_warn_ms: integer
+  - cmd_latency_error_ms: integer
+  - viewport_mutation_budget: max mutations per frame
+  - perception_traits: list of UX terms (e.g., "progressive_disclosure")
+
+### anti_pattern
+Represents a known failure mode.
+Fields:
+  - id: anti-pattern identifier
+  - description: human-readable description
+  - symptoms: list of detectable symptoms
+  - fix: recommended refactoring
+  - severity: "info" | "warning" | "error" | "fatal"
+
+## Edge Types
+
+### USES
+component -> component
+The source component depends on the target component (field type, method call, import).
+
+### BREAKS
+anti_pattern -> pattern
+If the anti-pattern is present, the pattern is broken/corrupted.
+
+### REQUIRES
+archetype -> component | pattern
+The archetype requires this component or constraint to be present.
+
+### EMITS
+component -> component
+The source component emits messages consumed by the target component.
+
+### COMPOSES_WITH
+component -> component | pattern
+The source is commonly composed together with the target in working TUIs.
+
+### CONFLICTS_WITH
+component -> component
+The source and target should not be used together (architectural conflict).
+
+### ENFORCES
+component -> constraint
+The source component enforces or requires this constraint.
+
+### VIOLATES
+anti_pattern -> constraint
+If the anti-pattern is present, this constraint is violated.
+
+### CLASSIFIES
+archetype -> pattern | anti_pattern
+The archetype includes or permits this pattern/anti-pattern.
+
+### MATCHES
+component -> pattern | archetype
+The component instance matches or participates in the pattern/archetype.
+
+### OBEYS
+pattern | component -> timing_model
+The pattern or component must obey this timing contract.

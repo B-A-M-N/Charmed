@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "charmed": {
+      "type": "stdio",
+      "command": "charmed-mcp",
+      "args": [],
+      "env": {}
+    }
+  }
+}
