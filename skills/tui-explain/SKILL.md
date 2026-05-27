@@ -1,6 +1,6 @@
 ---
 name: tui-explain
-description: "Graph-driven semantic explanation of Charm ecosystem concepts — components, patterns, message flows, rendering pipelines, and architectural tradeoffs. Uses ATree graph queries for precise, context-aware answers instead of document retrieval. Trigger when: user asks 'what is X', 'how does Y work', 'explain Z', 'why should I use A', 'what's the difference between', 'how does bubbletea handle', 'what are the implications of', or any question about Charm ecosystem internals."
+description: "Knowledge corpus queries — lookup components, patterns, constraints, and timing contracts from the embedded Charm ontology. Structured semantic answers sourced from the IR schema, constraint definitions, timing contracts, and component knowledge base. Trigger when: user asks 'what is X', 'how does Y work', 'explain Z', 'what are the constraints on', 'what timing contracts apply to', or any question about Charm ecosystem architecture."
 argument-hint: "<concept or question> [--depth quick|deep] [--with-code] [--with-graph]"
 allowed-tools: [Read, Grep, Glob, Bash]
 ---

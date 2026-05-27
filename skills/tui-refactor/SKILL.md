@@ -1,6 +1,6 @@
 ---
 name: tui-refactor
-description: "Architectural refactoring for Bubble Tea projects — detects god models, viewport churn, blocking patterns, and unstable rendering, then produces safe, minimal patches with ATree impact analysis. Trigger when: user says 'refactor', 'split this model', 'fix architecture', 'too complex', 'clean up', 'decompose', 'extract component', 'optimize TUI', or when tui-audit findings warrant structural changes."
+description: "Architecture intelligence — structural refactoring guided by the TUI Structural IR and ATree code graph. Decomposes god models, eliminates viewport churn, inserts async command boundaries, and restructures state ownership with cross-file impact analysis. Trigger when: user says 'refactor', 'split this model', 'fix architecture', 'too complex', 'decompose', 'extract component', or when tui-audit findings warrant structural changes."
 argument-hint: "[path-to-project] [--target <symbol>] [--dry-run] [--apply]"
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, Agent]
 ---

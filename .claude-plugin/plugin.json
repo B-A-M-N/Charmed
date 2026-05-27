@@ -1,23 +1,28 @@
 {
   "name": "charmed",
-  "version": "0.1.0",
-  "description": "Charm ecosystem TUI intelligence \u2014 architectural reasoning, anti-pattern detection, intent-aware scaffolding, and UX critique for Bubble Tea / Lip Gloss / Bubbles projects.",
+  "version": "0.2.0",
+  "description": "Semantic architecture tooling for terminal interfaces — deterministic architecture linting, perceptual timing validation, constraint enforcement, and code-graph reasoning for the Charm ecosystem.",
   "author": {
     "name": "B-A-M-N",
     "email": "contact@unityailab.com"
   },
-  "homepage": "https://github.com/B-A-M-N/charmed",
+  "homepage": "https://github.com/B-A-M-N/Charmed",
   "license": "MIT",
   "keywords": [
-    "charm",
-    "bubbletea",
+    "architecture-intelligence",
+    "runtime-semantics",
+    "constraint-systems",
+    "timing-contracts",
+    "perceptual-ux",
+    "code-graph-reasoning",
     "tui",
+    "bubbletea",
     "lipgloss",
     "bubbles",
+    "charm",
     "go",
-    "architecture",
-    "scaffolding",
-    "audit"
+    "static-analysis",
+    "structural-ir"
   ],
   "commands": "./commands",
   "skills": "./skills",

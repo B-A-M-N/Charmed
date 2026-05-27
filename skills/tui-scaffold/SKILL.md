@@ -1,6 +1,6 @@
 ---
 name: tui-scaffold
-description: "Intent-aware TUI scaffolding — maps natural language descriptions of terminal UIs to working Bubble Tea architecture. Matches user intent to an archetype, selects components, defines message types and model hierarchy, then generates complete Go source. Trigger when: user says 'create a TUI', 'scaffold', 'build a terminal app', 'generate bubble tea', 'I want a <description> TUI', 'make me a <thing> CLI', or describes a terminal interface goal."
+description: "Architecture intelligence — intent-to-architecture generator. Matches natural language to a TUI archetype, selects components from the Charm ontology, defines message types and model hierarchy, then generates structurally-sound Go source. Uses archetype reference architectures for state topology, command orchestration, and timing expectations. Trigger when: user says 'create a TUI', 'scaffold', 'build a terminal app', 'I want a <description> TUI', or describes a terminal interface goal."
 argument-hint: "<intent-description> [--archetype <id>] [--path <output-dir>] [--dry-run]"
 allowed-tools: [Read, Write, Bash, Glob, Grep]
 ---

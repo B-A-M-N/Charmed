@@ -1,6 +1,6 @@
 ---
 name: tui-ux-review
-description: "Perceptual critique of TUI feel — evaluates pacing, density, motion, focus behavior, and responsiveness against timing model contracts. UX/feel analysis, not code structure (that's tui-audit). Trigger when: user says 'how does this TUI feel', 'review UX', 'critique', 'is this responsive', 'perceived quality', 'user experience', 'perceptual', 'pacing', 'does this feel right', 'UX review', or asks about TUI feel and responsiveness."
+description: "Perceptual UX validation — evaluates the TUI against timing contracts (smooth streaming, snappy focus, responsive input, periodic refresh). Measures pacing, scroll stability, focus transition latency, and render cadence against perceptual benchmarks. Validates density profile and motion philosophy against archetype expectations. Trigger when: user says 'how does this TUI feel', 'review UX', 'critique', 'is this responsive', 'perceptual', 'pacing', 'does this feel right', 'UX review', or asks about TUI feel and responsiveness."
 argument-hint: "[path-to-project] [--archetype <id>] [--timing-model <id>] [--strictness normal|strict]"
 allowed-tools: [Read, Grep, Glob, Bash, Agent]
 ---

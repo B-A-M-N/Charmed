@@ -1,6 +1,6 @@
 ---
 name: tui-audit
-description: "Deterministic architecture linting for Bubble Tea / Lip Gloss / Bubbles projects. Scans Go source for anti-patterns, constraint violations, and performance hazards. Runs AST-based rule matching with optional ATree graph enrichment. Trigger when: user says 'audit', 'check my TUI', 'find anti-patterns', 'lint', 'review architecture', or asks about Bubble Tea model structure quality."
+description: "Architecture intelligence — deterministic constraint enforcement against the TUI Structural IR. Detects architectural violations (god model, blocking update, viewport churn, unbounded concurrency) with severity levels and fix patterns. Code-graph enriched via ATree. Trigger when: user says 'audit', 'check my TUI', 'find anti-patterns', 'lint', 'review architecture', 'detect violations', or asks about Bubble Tea model structure quality."
 argument-hint: "[path-to-project] [--strict] [--rules rule1,rule2] [--format text|json]"
 allowed-tools: [Read, Write, Bash, Grep, Glob, Agent]
 ---
