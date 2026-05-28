@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build the charmed-mcp binary from the sibling charmed-mcp Go project.
+# Build the charmed-mcp binary from the charmed-mcp/ subdirectory.
 #
 # Usage:
 #   bash scripts/build-charmed-mcp.sh          # Build to ~/.local/bin/charmed-mcp
@@ -11,10 +11,10 @@ set -euo pipefail
 
 PLUGIN_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
-# Find the Go source: prefer sibling directory, then GOROOT-style paths
+# Find the Go source: prefer in-repo location, then legacy sibling paths
 GO_SRC_CANDIDATES=(
+  "${PLUGIN_ROOT}/charmed-mcp"
   "${PLUGIN_ROOT}/../charmed-mcp"
-  "${PLUGIN_ROOT}/../charmed/charmed-mcp"
   "${HOME}/Charmed/charmed-mcp"
 )
 
@@ -29,8 +29,6 @@ done
 if [[ -z "$GO_SRC" ]]; then
   echo "ERROR: Cannot find charmed-mcp Go source. Expected at one of:"
   printf '  %s\n' "${GO_SRC_CANDIDATES[@]}"
-  echo ""
-  echo "Clone it: git clone https://github.com/B-A-M-N/charmed-mcp.git ../charmed-mcp"
   exit 1
 fi
 

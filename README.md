@@ -271,9 +271,10 @@ ATree provides the cross-file understanding that makes deep analysis possible:
 Required for full `scan_project` mode. Not required for constraint lookups, archetypes, timing contract evaluation, or knowledge corpus queries.
 
 ```bash
-# Install ATree
+# Install ATree (Rust project)
 git clone https://github.com/Unity-Lab-AI/ATree.git
-cd ATree && go build -o ~/.local/bin/atree .
+cd ATree && cargo build --release
+cp target/release/atree ~/.local/bin/atree
 
 # Index your project
 export ATREE_DB_PATH=/path/to/your/project/.atree/index.sqlite
@@ -367,7 +368,7 @@ Skills, commands, and the MCP server are **interfaces** into the shared engine. 
 
 | Interface | What it does |
 |-----------|-------------|
-| **6 skills** | Conversational triggers for the engine |
+| **8 skills** | Conversational triggers for the engine |
 | **6 commands** | Slash-command entry points (`/tui-audit`, `/tui-refactor`, etc.) |
 | **charmed-mcp** | Programmatic MCP server for IDE integration |
 
@@ -381,6 +382,8 @@ Skills, commands, and the MCP server are **interfaces** into the shared engine. 
 | **tui-scaffold** | "create a TUI", "scaffold a terminal app" | Archetypes · Ontology |
 | **tui-instrument** | "add tracing", "profile my TUI", "where is the lag" | Runtime Traces · Timing |
 | **tui-ux-review** | "review UX", "how does this feel", "validate timing" | Timing Contracts · Archetypes |
+| **evidence-extract** | "extract evidence", "show me proof", "what confirms this pattern" | Evidence Schema · Code Graph |
+| **pattern-mine** | "mine patterns", "find recurring structures", "detect empirical patterns" | Patterns · Primitives |
 
 Skills are delivery mechanisms. The ontology, IR, constraints, and timing models are the persistent platform.
 
@@ -390,7 +393,7 @@ Skills are delivery mechanisms. The ontology, IR, constraints, and timing models
 
 ```
 Interface Layer                  (how you talk to the engine)
-  ├── 6 skills                   (conversational triggers)
+  ├── 8 skills                   (conversational triggers)
   ├── 6 slash commands           (/tui-audit, /tui-refactor, …)
   └── MCP server                 (charmed-mcp stdio server)
 
@@ -434,15 +437,19 @@ cd ATree && go build -o ~/.local/bin/atree .
 ```
 charmed/
 ├── .claude-plugin/plugin.json          # Plugin manifest
-├── .mcp.json                           # MCP server config (charmed-mcp stdio)
-├── skills/                             # 6 skills (conversational entry points)
+├── .mcp.json                           # MCP server config (charmed-mcp + atree)
+├── charmed-mcp/                        # Go MCP server (AST scanner, knowledge engine)
+├── skills/                             # 8 skills (conversational entry points)
 ├── commands/                           # 6 slash commands
 ├── agents/                             # charm-project-scanner agent
 ├── scripts/                            # Binary build script
-├── constraints/                        # 13 architectural lint rules
+├── constraints/                        # 13 architectural lint rules + constraints-v2
 ├── timing/                             # 10 perceptual timing contracts
 ├── archetypes/                         # 8 behavioral topology definitions
 ├── ontology/                           # Component/pattern knowledge base
+├── patterns/                           # Empirical pattern schema
+├── primitives/                         # 32 behavioral primitives vocabulary
+├── evidence/                           # Evidence schema
 ├── ir/                                 # TUI Structural IR schema
 ├── DeepWiki References/                # Semantic reference corpus (23 libraries)
 └── README.md
@@ -450,7 +457,7 @@ charmed/
 
 ## MCP Server Source
 
-The `charmed-mcp` server is maintained at [`B-A-M-N/charmed-mcp`](https://github.com/B-A-M-N/charmed-mcp).
+The `charmed-mcp` server lives at [`charmed-mcp/`](charmed-mcp/) inside this repository.
 
 ## License
 
