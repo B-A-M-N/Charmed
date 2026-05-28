@@ -2,7 +2,7 @@
 name: tui-instrument
 description: "Runtime semantics instrumentation — generates telemetry hooks for the message loop, command execution, render path, and async boundaries. Produces frame timing traces, command latency measurements, and focus transition logs that can be replayed for perceptual analysis. Trigger when: user says 'instrument', 'add tracing', 'add telemetry', 'profile TUI', 'measure performance', 'debug timing', 'where is the lag', or wants observability in a Bubble Tea app."
 argument-hint: "[path-to-project] [--target messages|cmds|render|all] [--dry-run] [--apply]"
-allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]
+allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, ATree]
 ---
 
 # tui-instrument — TUI Telemetry Generator

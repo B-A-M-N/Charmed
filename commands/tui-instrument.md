@@ -1,5 +1,5 @@
 ---
-name: charm-tui:instrument
+name: charmed:instrument
 description: "Generate runtime telemetry hooks for Bubble Tea — message timing, command latency, render duration."
 argument-hint: "[path-to-project] [--target messages|cmds|render|all] [--dry-run] [--apply]"
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob]

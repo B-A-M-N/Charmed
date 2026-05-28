@@ -1,0 +1,3701 @@
+{
+  "entries": [
+    {
+      "uri": "charmed://deepwiki/bubbles/1-overview",
+      "library": "bubbles",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/1.1-architecture-and-concepts",
+      "library": "bubbles",
+      "topic": "1.1-architecture-and-concepts",
+      "title": "architecture and concepts",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/1.1-architecture-and-concepts.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/1.2-getting-started",
+      "library": "bubbles",
+      "topic": "1.2-getting-started",
+      "title": "getting started",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/1.2-getting-started.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/2-input-components",
+      "library": "bubbles",
+      "topic": "2-input-components",
+      "title": "input components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/2-input-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/2.1-text-input",
+      "library": "bubbles",
+      "topic": "2.1-text-input",
+      "title": "text input",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/2.1-text-input.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/2.2-text-area",
+      "library": "bubbles",
+      "topic": "2.2-text-area",
+      "title": "text area",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/2.2-text-area.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/3-display-components",
+      "library": "bubbles",
+      "topic": "3-display-components",
+      "title": "display components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/3-display-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/3.1-viewport",
+      "library": "bubbles",
+      "topic": "3.1-viewport",
+      "title": "viewport",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/3.1-viewport.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/3.2-list",
+      "library": "bubbles",
+      "topic": "3.2-list",
+      "title": "list",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/3.2-list.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/3.3-table",
+      "library": "bubbles",
+      "topic": "3.3-table",
+      "title": "table",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/3.3-table.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/4-progress-indicators",
+      "library": "bubbles",
+      "topic": "4-progress-indicators",
+      "title": "progress indicators",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/4-progress-indicators.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/4.1-progress-bar",
+      "library": "bubbles",
+      "topic": "4.1-progress-bar",
+      "title": "progress bar",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/4.1-progress-bar.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/4.2-spinner",
+      "library": "bubbles",
+      "topic": "4.2-spinner",
+      "title": "spinner",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/4.2-spinner.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/5-navigation-components",
+      "library": "bubbles",
+      "topic": "5-navigation-components",
+      "title": "navigation components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/5-navigation-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/5.1-paginator",
+      "library": "bubbles",
+      "topic": "5.1-paginator",
+      "title": "paginator",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/5.1-paginator.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/5.2-file-picker",
+      "library": "bubbles",
+      "topic": "5.2-file-picker",
+      "title": "file picker",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/5.2-file-picker.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/6-time-components",
+      "library": "bubbles",
+      "topic": "6-time-components",
+      "title": "time components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/6-time-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/6.1-stopwatch-and-timer",
+      "library": "bubbles",
+      "topic": "6.1-stopwatch-and-timer",
+      "title": "stopwatch and timer",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/6.1-stopwatch-and-timer.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/7-utility-components",
+      "library": "bubbles",
+      "topic": "7-utility-components",
+      "title": "utility components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/7-utility-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/7.1-help",
+      "library": "bubbles",
+      "topic": "7.1-help",
+      "title": "help",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/7.1-help.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/7.2-cursor",
+      "library": "bubbles",
+      "topic": "7.2-cursor",
+      "title": "cursor",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/7.2-cursor.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/8-development-and-contributing",
+      "library": "bubbles",
+      "topic": "8-development-and-contributing",
+      "title": "development and contributing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/8-development-and-contributing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/8.1-testing-and-linting",
+      "library": "bubbles",
+      "topic": "8.1-testing-and-linting",
+      "title": "testing and linting",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/8.1-testing-and-linting.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/8.2-cicd-and-releases",
+      "library": "bubbles",
+      "topic": "8.2-cicd-and-releases",
+      "title": "cicd and releases",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/8.2-cicd-and-releases.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/8.3-migrating-from-v1-to-v2",
+      "library": "bubbles",
+      "topic": "8.3-migrating-from-v1-to-v2",
+      "title": "migrating from v1 to v2",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/8.3-migrating-from-v1-to-v2.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/9-glossary",
+      "library": "bubbles",
+      "topic": "9-glossary",
+      "title": "glossary",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/9-glossary.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbles/README",
+      "library": "bubbles",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbles/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/1-overview",
+      "library": "bubbletea",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/1.1-the-elm-architecture-_mvu-pattern",
+      "library": "bubbletea",
+      "topic": "1.1-the-elm-architecture-_mvu-pattern",
+      "title": "the elm architecture  mvu pattern",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/1.1-the-elm-architecture-_mvu-pattern.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/1.2-installation-and-dependencies",
+      "library": "bubbletea",
+      "topic": "1.2-installation-and-dependencies",
+      "title": "installation and dependencies",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/1.2-installation-and-dependencies.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/2-core-components",
+      "library": "bubbletea",
+      "topic": "2-core-components",
+      "title": "core components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/2-core-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/2.1-program-lifecycle",
+      "library": "bubbletea",
+      "topic": "2.1-program-lifecycle",
+      "title": "program lifecycle",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/2.1-program-lifecycle.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/2.2-model-interface",
+      "library": "bubbletea",
+      "topic": "2.2-model-interface",
+      "title": "model interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/2.2-model-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/2.3-message-system",
+      "library": "bubbletea",
+      "topic": "2.3-message-system",
+      "title": "message system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/2.3-message-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/2.4-command-system",
+      "library": "bubbletea",
+      "topic": "2.4-command-system",
+      "title": "command system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/2.4-command-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/2.5-program-options",
+      "library": "bubbletea",
+      "topic": "2.5-program-options",
+      "title": "program options",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/2.5-program-options.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/3-input-handling",
+      "library": "bubbletea",
+      "topic": "3-input-handling",
+      "title": "input handling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/3-input-handling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/3.1-keyboard-input",
+      "library": "bubbletea",
+      "topic": "3.1-keyboard-input",
+      "title": "keyboard input",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/3.1-keyboard-input.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/3.2-mouse-input",
+      "library": "bubbletea",
+      "topic": "3.2-mouse-input",
+      "title": "mouse input",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/3.2-mouse-input.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/3.3-terminal-events",
+      "library": "bubbletea",
+      "topic": "3.3-terminal-events",
+      "title": "terminal events",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/3.3-terminal-events.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/3.4-cross-platform-input",
+      "library": "bubbletea",
+      "topic": "3.4-cross-platform-input",
+      "title": "cross platform input",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/3.4-cross-platform-input.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/4-rendering-system",
+      "library": "bubbletea",
+      "topic": "4-rendering-system",
+      "title": "rendering system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/4-rendering-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/4.1-renderer-interface-and-view-structure",
+      "library": "bubbletea",
+      "topic": "4.1-renderer-interface-and-view-structure",
+      "title": "renderer interface and view structure",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/4.1-renderer-interface-and-view-structure.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/4.2-cursed-renderer-implementation",
+      "library": "bubbletea",
+      "topic": "4.2-cursed-renderer-implementation",
+      "title": "cursed renderer implementation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/4.2-cursed-renderer-implementation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/4.3-terminal-management",
+      "library": "bubbletea",
+      "topic": "4.3-terminal-management",
+      "title": "terminal management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/4.3-terminal-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/4.4-terminal-features-and-capabilities",
+      "library": "bubbletea",
+      "topic": "4.4-terminal-features-and-capabilities",
+      "title": "terminal features and capabilities",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/4.4-terminal-features-and-capabilities.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/5-advanced-topics",
+      "library": "bubbletea",
+      "topic": "5-advanced-topics",
+      "title": "advanced topics",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/5-advanced-topics.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/5.1-concurrency-and-goroutines",
+      "library": "bubbletea",
+      "topic": "5.1-concurrency-and-goroutines",
+      "title": "concurrency and goroutines",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/5.1-concurrency-and-goroutines.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/5.2-error-handling-and-recovery",
+      "library": "bubbletea",
+      "topic": "5.2-error-handling-and-recovery",
+      "title": "error handling and recovery",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/5.2-error-handling-and-recovery.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/5.3-message-filtering",
+      "library": "bubbletea",
+      "topic": "5.3-message-filtering",
+      "title": "message filtering",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/5.3-message-filtering.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/5.4-testing-bubble-tea-applications",
+      "library": "bubbletea",
+      "topic": "5.4-testing-bubble-tea-applications",
+      "title": "testing bubble tea applications",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/5.4-testing-bubble-tea-applications.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/5.5-external-io-and-side-effects",
+      "library": "bubbletea",
+      "topic": "5.5-external-io-and-side-effects",
+      "title": "external io and side effects",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/5.5-external-io-and-side-effects.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/5.6-platform-specific-features",
+      "library": "bubbletea",
+      "topic": "5.6-platform-specific-features",
+      "title": "platform specific features",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/5.6-platform-specific-features.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/6-examples-and-tutorials",
+      "library": "bubbletea",
+      "topic": "6-examples-and-tutorials",
+      "title": "examples and tutorials",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/6-examples-and-tutorials.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/6.1-simple-examples",
+      "library": "bubbletea",
+      "topic": "6.1-simple-examples",
+      "title": "simple examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/6.1-simple-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/6.2-multi-view-application-example",
+      "library": "bubbletea",
+      "topic": "6.2-multi-view-application-example",
+      "title": "multi view application example",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/6.2-multi-view-application-example.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/6.3-http-and-async-operations-tutorial",
+      "library": "bubbletea",
+      "topic": "6.3-http-and-async-operations-tutorial",
+      "title": "http and async operations tutorial",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/6.3-http-and-async-operations-tutorial.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/6.4-command-orchestration-examples",
+      "library": "bubbletea",
+      "topic": "6.4-command-orchestration-examples",
+      "title": "command orchestration examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/6.4-command-orchestration-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/6.5-basics-tutorial-_shopping-list",
+      "library": "bubbletea",
+      "topic": "6.5-basics-tutorial-_shopping-list",
+      "title": "basics tutorial  shopping list",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/6.5-basics-tutorial-_shopping-list.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/6.6-component-library-examples",
+      "library": "bubbletea",
+      "topic": "6.6-component-library-examples",
+      "title": "component library examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/6.6-component-library-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/7-contributing",
+      "library": "bubbletea",
+      "topic": "7-contributing",
+      "title": "contributing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/7-contributing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/7.1-development-setup",
+      "library": "bubbletea",
+      "topic": "7.1-development-setup",
+      "title": "development setup",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/7.1-development-setup.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/7.2-testing-guidelines",
+      "library": "bubbletea",
+      "topic": "7.2-testing-guidelines",
+      "title": "testing guidelines",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/7.2-testing-guidelines.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/7.3-code-quality-standards",
+      "library": "bubbletea",
+      "topic": "7.3-code-quality-standards",
+      "title": "code quality standards",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/7.3-code-quality-standards.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/7.4-cicd-pipeline",
+      "library": "bubbletea",
+      "topic": "7.4-cicd-pipeline",
+      "title": "cicd pipeline",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/7.4-cicd-pipeline.md"
+    },
+    {
+      "uri": "charmed://deepwiki/bubbletea/README",
+      "library": "bubbletea",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/bubbletea/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/1-overview",
+      "library": "charm",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/1.1-core-concepts",
+      "library": "charm",
+      "topic": "1.1-core-concepts",
+      "title": "core concepts",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/1.1-core-concepts.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/1.2-architecture-overview",
+      "library": "charm",
+      "topic": "1.2-architecture-overview",
+      "title": "architecture overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/1.2-architecture-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/2-charm-server",
+      "library": "charm",
+      "topic": "2-charm-server",
+      "title": "charm server",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/2-charm-server.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/2.1-http-server",
+      "library": "charm",
+      "topic": "2.1-http-server",
+      "title": "http server",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/2.1-http-server.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/2.2-ssh-server",
+      "library": "charm",
+      "topic": "2.2-ssh-server",
+      "title": "ssh server",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/2.2-ssh-server.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/2.3-server-configuration",
+      "library": "charm",
+      "topic": "2.3-server-configuration",
+      "title": "server configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/2.3-server-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/2.4-database-and-storage",
+      "library": "charm",
+      "topic": "2.4-database-and-storage",
+      "title": "database and storage",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/2.4-database-and-storage.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/2.5-metrics-and-monitoring",
+      "library": "charm",
+      "topic": "2.5-metrics-and-monitoring",
+      "title": "metrics and monitoring",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/2.5-metrics-and-monitoring.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/3-charm-client",
+      "library": "charm",
+      "topic": "3-charm-client",
+      "title": "charm client",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/3-charm-client.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/3.1-client-configuration",
+      "library": "charm",
+      "topic": "3.1-client-configuration",
+      "title": "client configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/3.1-client-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/3.2-authentication",
+      "library": "charm",
+      "topic": "3.2-authentication",
+      "title": "authentication",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/3.2-authentication.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/3.3-key-management",
+      "library": "charm",
+      "topic": "3.3-key-management",
+      "title": "key management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/3.3-key-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/4-terminal-ui",
+      "library": "charm",
+      "topic": "4-terminal-ui",
+      "title": "terminal ui",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/4-terminal-ui.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/4.1-ui-components",
+      "library": "charm",
+      "topic": "4.1-ui-components",
+      "title": "ui components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/4.1-ui-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/4.2-key-management-ui",
+      "library": "charm",
+      "topic": "4.2-key-management-ui",
+      "title": "key management ui",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/4.2-key-management-ui.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/4.3-user-profile-ui",
+      "library": "charm",
+      "topic": "4.3-user-profile-ui",
+      "title": "user profile ui",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/4.3-user-profile-ui.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/5-data-storage",
+      "library": "charm",
+      "topic": "5-data-storage",
+      "title": "data storage",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/5-data-storage.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/5.1-file-system-_fs",
+      "library": "charm",
+      "topic": "5.1-file-system-_fs",
+      "title": "file system  fs",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/5.1-file-system-_fs.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/5.2-key-value-store-_kv",
+      "library": "charm",
+      "topic": "5.2-key-value-store-_kv",
+      "title": "key value store  kv",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/5.2-key-value-store-_kv.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/5.3-encryption",
+      "library": "charm",
+      "topic": "5.3-encryption",
+      "title": "encryption",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/5.3-encryption.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/6-deployment",
+      "library": "charm",
+      "topic": "6-deployment",
+      "title": "deployment",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/6-deployment.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/6.1-self-hosting-guide",
+      "library": "charm",
+      "topic": "6.1-self-hosting-guide",
+      "title": "self hosting guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/6.1-self-hosting-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/6.2-docker-deployment",
+      "library": "charm",
+      "topic": "6.2-docker-deployment",
+      "title": "docker deployment",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/6.2-docker-deployment.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/6.3-backup-and-restore",
+      "library": "charm",
+      "topic": "6.3-backup-and-restore",
+      "title": "backup and restore",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/6.3-backup-and-restore.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/7-development",
+      "library": "charm",
+      "topic": "7-development",
+      "title": "development",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/7-development.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/7.1-building-and-testing",
+      "library": "charm",
+      "topic": "7.1-building-and-testing",
+      "title": "building and testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/7.1-building-and-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/7.2-cicd-workflows",
+      "library": "charm",
+      "topic": "7.2-cicd-workflows",
+      "title": "cicd workflows",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/7.2-cicd-workflows.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/7.3-command-line-interface",
+      "library": "charm",
+      "topic": "7.3-command-line-interface",
+      "title": "command line interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/7.3-command-line-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/charm/README",
+      "library": "charm",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/charm/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/colorprofile/README",
+      "library": "colorprofile",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/colorprofile/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/1-overview",
+      "library": "crush",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/2-getting-started",
+      "library": "crush",
+      "topic": "2-getting-started",
+      "title": "getting started",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/2-getting-started.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/2.1-installation",
+      "library": "crush",
+      "topic": "2.1-installation",
+      "title": "installation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/2.1-installation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/2.2-cli-usage",
+      "library": "crush",
+      "topic": "2.2-cli-usage",
+      "title": "cli usage",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/2.2-cli-usage.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/2.3-configuration-basics",
+      "library": "crush",
+      "topic": "2.3-configuration-basics",
+      "title": "configuration basics",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/2.3-configuration-basics.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/2.4-provider-setup",
+      "library": "crush",
+      "topic": "2.4-provider-setup",
+      "title": "provider setup",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/2.4-provider-setup.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3-core-architecture",
+      "library": "crush",
+      "topic": "3-core-architecture",
+      "title": "core architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3-core-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.1-application-lifecycle",
+      "library": "crush",
+      "topic": "3.1-application-lifecycle",
+      "title": "application lifecycle",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.1-application-lifecycle.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.2-configuration-system",
+      "library": "crush",
+      "topic": "3.2-configuration-system",
+      "title": "configuration system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.2-configuration-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.3-database-and-services",
+      "library": "crush",
+      "topic": "3.3-database-and-services",
+      "title": "database and services",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.3-database-and-services.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.4-event-system",
+      "library": "crush",
+      "topic": "3.4-event-system",
+      "title": "event system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.4-event-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.5-session-management",
+      "library": "crush",
+      "topic": "3.5-session-management",
+      "title": "session management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.5-session-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.6-permission-system",
+      "library": "crush",
+      "topic": "3.6-permission-system",
+      "title": "permission system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.6-permission-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.7-concurrent-data-structures",
+      "library": "crush",
+      "topic": "3.7-concurrent-data-structures",
+      "title": "concurrent data structures",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.7-concurrent-data-structures.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.8-file-system-utilities",
+      "library": "crush",
+      "topic": "3.8-file-system-utilities",
+      "title": "file system utilities",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.8-file-system-utilities.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/3.9-server-mode-and-backend",
+      "library": "crush",
+      "topic": "3.9-server-mode-and-backend",
+      "title": "server mode and backend",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/3.9-server-mode-and-backend.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/4-agent-system",
+      "library": "crush",
+      "topic": "4-agent-system",
+      "title": "agent system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/4-agent-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/4.1-agent-coordinator",
+      "library": "crush",
+      "topic": "4.1-agent-coordinator",
+      "title": "agent coordinator",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/4.1-agent-coordinator.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/4.2-provider-integration",
+      "library": "crush",
+      "topic": "4.2-provider-integration",
+      "title": "provider integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/4.2-provider-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/4.3-model-configuration",
+      "library": "crush",
+      "topic": "4.3-model-configuration",
+      "title": "model configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/4.3-model-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/4.4-message-system",
+      "library": "crush",
+      "topic": "4.4-message-system",
+      "title": "message system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/4.4-message-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/4.5-streaming-and-summarization",
+      "library": "crush",
+      "topic": "4.5-streaming-and-summarization",
+      "title": "streaming and summarization",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/4.5-streaming-and-summarization.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/4.6-tool-architecture",
+      "library": "crush",
+      "topic": "4.6-tool-architecture",
+      "title": "tool architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/4.6-tool-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5-user-interface",
+      "library": "crush",
+      "topic": "5-user-interface",
+      "title": "user interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5-user-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.1-tui-architecture",
+      "library": "crush",
+      "topic": "5.1-tui-architecture",
+      "title": "tui architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.1-tui-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.2-chat-display",
+      "library": "crush",
+      "topic": "5.2-chat-display",
+      "title": "chat display",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.2-chat-display.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.3-message-rendering",
+      "library": "crush",
+      "topic": "5.3-message-rendering",
+      "title": "message rendering",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.3-message-rendering.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.4-mouse-interaction",
+      "library": "crush",
+      "topic": "5.4-mouse-interaction",
+      "title": "mouse interaction",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.4-mouse-interaction.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.5-dialog-system",
+      "library": "crush",
+      "topic": "5.5-dialog-system",
+      "title": "dialog system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.5-dialog-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.6-commands-and-models-dialogs",
+      "library": "crush",
+      "topic": "5.6-commands-and-models-dialogs",
+      "title": "commands and models dialogs",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.6-commands-and-models-dialogs.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.7-list-components",
+      "library": "crush",
+      "topic": "5.7-list-components",
+      "title": "list components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.7-list-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/5.8-styling-system",
+      "library": "crush",
+      "topic": "5.8-styling-system",
+      "title": "styling system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/5.8-styling-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6-tool-system",
+      "library": "crush",
+      "topic": "6-tool-system",
+      "title": "tool system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6-tool-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.1-shell-tool",
+      "library": "crush",
+      "topic": "6.1-shell-tool",
+      "title": "shell tool",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.1-shell-tool.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.2-file-system-tools",
+      "library": "crush",
+      "topic": "6.2-file-system-tools",
+      "title": "file system tools",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.2-file-system-tools.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.3-search-tools",
+      "library": "crush",
+      "topic": "6.3-search-tools",
+      "title": "search tools",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.3-search-tools.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.4-lsp-integration",
+      "library": "crush",
+      "topic": "6.4-lsp-integration",
+      "title": "lsp integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.4-lsp-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.5-mcp-integration",
+      "library": "crush",
+      "topic": "6.5-mcp-integration",
+      "title": "mcp integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.5-mcp-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.6-network-tools",
+      "library": "crush",
+      "topic": "6.6-network-tools",
+      "title": "network tools",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.6-network-tools.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.7-agent-tool",
+      "library": "crush",
+      "topic": "6.7-agent-tool",
+      "title": "agent tool",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.7-agent-tool.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/6.8-task-management-tool",
+      "library": "crush",
+      "topic": "6.8-task-management-tool",
+      "title": "task management tool",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/6.8-task-management-tool.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/7-advanced-topics",
+      "library": "crush",
+      "topic": "7-advanced-topics",
+      "title": "advanced topics",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/7-advanced-topics.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/7.1-variable-resolution",
+      "library": "crush",
+      "topic": "7.1-variable-resolution",
+      "title": "variable resolution",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/7.1-variable-resolution.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/7.2-cross-platform-support",
+      "library": "crush",
+      "topic": "7.2-cross-platform-support",
+      "title": "cross platform support",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/7.2-cross-platform-support.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/7.3-telemetry-and-analytics",
+      "library": "crush",
+      "topic": "7.3-telemetry-and-analytics",
+      "title": "telemetry and analytics",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/7.3-telemetry-and-analytics.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/7.4-project-initialization",
+      "library": "crush",
+      "topic": "7.4-project-initialization",
+      "title": "project initialization",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/7.4-project-initialization.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/7.5-hooks-system",
+      "library": "crush",
+      "topic": "7.5-hooks-system",
+      "title": "hooks system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/7.5-hooks-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/8-development",
+      "library": "crush",
+      "topic": "8-development",
+      "title": "development",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/8-development.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/8.1-build-system",
+      "library": "crush",
+      "topic": "8.1-build-system",
+      "title": "build system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/8.1-build-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/8.2-release-process",
+      "library": "crush",
+      "topic": "8.2-release-process",
+      "title": "release process",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/8.2-release-process.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/8.3-cicd-workflows",
+      "library": "crush",
+      "topic": "8.3-cicd-workflows",
+      "title": "cicd workflows",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/8.3-cicd-workflows.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/8.4-contributing",
+      "library": "crush",
+      "topic": "8.4-contributing",
+      "title": "contributing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/8.4-contributing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/8.5-dependencies",
+      "library": "crush",
+      "topic": "8.5-dependencies",
+      "title": "dependencies",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/8.5-dependencies.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/8.6-configuration-schema",
+      "library": "crush",
+      "topic": "8.6-configuration-schema",
+      "title": "configuration schema",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/8.6-configuration-schema.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/9-glossary",
+      "library": "crush",
+      "topic": "9-glossary",
+      "title": "glossary",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/9-glossary.md"
+    },
+    {
+      "uri": "charmed://deepwiki/crush/README",
+      "library": "crush",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/crush/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/1-overview",
+      "library": "fang",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/2-getting-started",
+      "library": "fang",
+      "topic": "2-getting-started",
+      "title": "getting started",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/2-getting-started.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/3-core-components",
+      "library": "fang",
+      "topic": "3-core-components",
+      "title": "core components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/3-core-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/3.1-fang.execute-function",
+      "library": "fang",
+      "topic": "3.1-fang.execute-function",
+      "title": "fang.execute function",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/3.1-fang.execute-function.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/3.2-help-rendering-system",
+      "library": "fang",
+      "topic": "3.2-help-rendering-system",
+      "title": "help rendering system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/3.2-help-rendering-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/3.3-styling-and-themes",
+      "library": "fang",
+      "topic": "3.3-styling-and-themes",
+      "title": "styling and themes",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/3.3-styling-and-themes.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/3.4-error-handling",
+      "library": "fang",
+      "topic": "3.4-error-handling",
+      "title": "error handling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/3.4-error-handling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/4-configuration-options",
+      "library": "fang",
+      "topic": "4-configuration-options",
+      "title": "configuration options",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/4-configuration-options.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/5-features",
+      "library": "fang",
+      "topic": "5-features",
+      "title": "features",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/5-features.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/5.1-version-management",
+      "library": "fang",
+      "topic": "5.1-version-management",
+      "title": "version management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/5.1-version-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/5.2-manpage-generation",
+      "library": "fang",
+      "topic": "5.2-manpage-generation",
+      "title": "manpage generation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/5.2-manpage-generation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/5.3-shell-completions",
+      "library": "fang",
+      "topic": "5.3-shell-completions",
+      "title": "shell completions",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/5.3-shell-completions.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/5.4-signal-handling",
+      "library": "fang",
+      "topic": "5.4-signal-handling",
+      "title": "signal handling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/5.4-signal-handling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/6-dependencies-and-architecture",
+      "library": "fang",
+      "topic": "6-dependencies-and-architecture",
+      "title": "dependencies and architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/6-dependencies-and-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/7-testing-and-examples",
+      "library": "fang",
+      "topic": "7-testing-and-examples",
+      "title": "testing and examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/7-testing-and-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/7.1-golden-file-testing",
+      "library": "fang",
+      "topic": "7.1-golden-file-testing",
+      "title": "golden file testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/7.1-golden-file-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/7.2-example-application",
+      "library": "fang",
+      "topic": "7.2-example-application",
+      "title": "example application",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/7.2-example-application.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/8-development",
+      "library": "fang",
+      "topic": "8-development",
+      "title": "development",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/8-development.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/8.1-code-quality",
+      "library": "fang",
+      "topic": "8.1-code-quality",
+      "title": "code quality",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/8.1-code-quality.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/8.2-platform-support",
+      "library": "fang",
+      "topic": "8.2-platform-support",
+      "title": "platform support",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/8.2-platform-support.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/8.3-license",
+      "library": "fang",
+      "topic": "8.3-license",
+      "title": "license",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/8.3-license.md"
+    },
+    {
+      "uri": "charmed://deepwiki/fang/README",
+      "library": "fang",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/fang/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/1-overview",
+      "library": "glamour",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/1.1-installation",
+      "library": "glamour",
+      "topic": "1.1-installation",
+      "title": "installation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/1.1-installation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/1.2-quick-start",
+      "library": "glamour",
+      "topic": "1.2-quick-start",
+      "title": "quick start",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/1.2-quick-start.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/1.3-architecture-overview",
+      "library": "glamour",
+      "topic": "1.3-architecture-overview",
+      "title": "architecture overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/1.3-architecture-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/1.4-dependencies",
+      "library": "glamour",
+      "topic": "1.4-dependencies",
+      "title": "dependencies",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/1.4-dependencies.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/2-core-api",
+      "library": "glamour",
+      "topic": "2-core-api",
+      "title": "core api",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/2-core-api.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/2.1-termrenderer",
+      "library": "glamour",
+      "topic": "2.1-termrenderer",
+      "title": "termrenderer",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/2.1-termrenderer.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/2.2-render-functions",
+      "library": "glamour",
+      "topic": "2.2-render-functions",
+      "title": "render functions",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/2.2-render-functions.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/2.3-configuration-options",
+      "library": "glamour",
+      "topic": "2.3-configuration-options",
+      "title": "configuration options",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/2.3-configuration-options.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/3-styling-system",
+      "library": "glamour",
+      "topic": "3-styling-system",
+      "title": "styling system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/3-styling-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/3.1-style-configuration",
+      "library": "glamour",
+      "topic": "3.1-style-configuration",
+      "title": "style configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/3.1-style-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/3.2-built-in-themes",
+      "library": "glamour",
+      "topic": "3.2-built-in-themes",
+      "title": "built in themes",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/3.2-built-in-themes.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/3.3-custom-styles",
+      "library": "glamour",
+      "topic": "3.3-custom-styles",
+      "title": "custom styles",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/3.3-custom-styles.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/3.4-chroma-syntax-highlighting",
+      "library": "glamour",
+      "topic": "3.4-chroma-syntax-highlighting",
+      "title": "chroma syntax highlighting",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/3.4-chroma-syntax-highlighting.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/4.1-rendering-lifecycle",
+      "library": "glamour",
+      "topic": "4.1-rendering-lifecycle",
+      "title": "rendering lifecycle",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/4.1-rendering-lifecycle.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/4.2-block-elements",
+      "library": "glamour",
+      "topic": "4.2-block-elements",
+      "title": "block elements",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/4.2-block-elements.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/4.3-tables",
+      "library": "glamour",
+      "topic": "4.3-tables",
+      "title": "tables",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/4.3-tables.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/4.4-code-blocks",
+      "library": "glamour",
+      "topic": "4.4-code-blocks",
+      "title": "code blocks",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/4.4-code-blocks.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/4.5-links-and-images",
+      "library": "glamour",
+      "topic": "4.5-links-and-images",
+      "title": "links and images",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/4.5-links-and-images.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/4.6-lists-and-tasks",
+      "library": "glamour",
+      "topic": "4.6-lists-and-tasks",
+      "title": "lists and tasks",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/4.6-lists-and-tasks.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glamour/README",
+      "library": "glamour",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glamour/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/1-overview",
+      "library": "glow",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/1.1-dependencies",
+      "library": "glow",
+      "topic": "1.1-dependencies",
+      "title": "dependencies",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/1.1-dependencies.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/1.2-installation-and-usage",
+      "library": "glow",
+      "topic": "1.2-installation-and-usage",
+      "title": "installation and usage",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/1.2-installation-and-usage.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/2-architecture",
+      "library": "glow",
+      "topic": "2-architecture",
+      "title": "architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/2-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/2.1-command-line-interface",
+      "library": "glow",
+      "topic": "2.1-command-line-interface",
+      "title": "command line interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/2.1-command-line-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/2.2-terminal-user-interface",
+      "library": "glow",
+      "topic": "2.2-terminal-user-interface",
+      "title": "terminal user interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/2.2-terminal-user-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/2.2.1-stash-view",
+      "library": "glow",
+      "topic": "2.2.1-stash-view",
+      "title": "stash view",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/2.2.1-stash-view.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/2.2.2-document-view",
+      "library": "glow",
+      "topic": "2.2.2-document-view",
+      "title": "document view",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/2.2.2-document-view.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/2.3-markdown-processing",
+      "library": "glow",
+      "topic": "2.3-markdown-processing",
+      "title": "markdown processing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/2.3-markdown-processing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/2.4-ui-components-and-styling",
+      "library": "glow",
+      "topic": "2.4-ui-components-and-styling",
+      "title": "ui components and styling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/2.4-ui-components-and-styling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/3-configuration-system",
+      "library": "glow",
+      "topic": "3-configuration-system",
+      "title": "configuration system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/3-configuration-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/4-developer-guide",
+      "library": "glow",
+      "topic": "4-developer-guide",
+      "title": "developer guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/4-developer-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/4.1-build-and-release-process",
+      "library": "glow",
+      "topic": "4.1-build-and-release-process",
+      "title": "build and release process",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/4.1-build-and-release-process.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/4.2-code-quality-and-testing",
+      "library": "glow",
+      "topic": "4.2-code-quality-and-testing",
+      "title": "code quality and testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/4.2-code-quality-and-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/glow/README",
+      "library": "glow",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/glow/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/1-overview",
+      "library": "gum",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/2-getting-started",
+      "library": "gum",
+      "topic": "2-getting-started",
+      "title": "getting started",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/2-getting-started.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/3-architecture",
+      "library": "gum",
+      "topic": "3-architecture",
+      "title": "architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/3-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/3.1-application-entry-point",
+      "library": "gum",
+      "topic": "3.1-application-entry-point",
+      "title": "application entry point",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/3.1-application-entry-point.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/3.2-framework-components",
+      "library": "gum",
+      "topic": "3.2-framework-components",
+      "title": "framework components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/3.2-framework-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/3.3-command-patterns",
+      "library": "gum",
+      "topic": "3.3-command-patterns",
+      "title": "command patterns",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/3.3-command-patterns.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4-interactive-commands",
+      "library": "gum",
+      "topic": "4-interactive-commands",
+      "title": "interactive commands",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4-interactive-commands.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.1-choose-command",
+      "library": "gum",
+      "topic": "4.1-choose-command",
+      "title": "choose command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.1-choose-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.2-confirm-command",
+      "library": "gum",
+      "topic": "4.2-confirm-command",
+      "title": "confirm command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.2-confirm-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.3-filter-command",
+      "library": "gum",
+      "topic": "4.3-filter-command",
+      "title": "filter command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.3-filter-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.4-input-command",
+      "library": "gum",
+      "topic": "4.4-input-command",
+      "title": "input command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.4-input-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.5-write-command",
+      "library": "gum",
+      "topic": "4.5-write-command",
+      "title": "write command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.5-write-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.6-file-command",
+      "library": "gum",
+      "topic": "4.6-file-command",
+      "title": "file command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.6-file-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.7-table-command",
+      "library": "gum",
+      "topic": "4.7-table-command",
+      "title": "table command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.7-table-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/4.8-pager-command",
+      "library": "gum",
+      "topic": "4.8-pager-command",
+      "title": "pager command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/4.8-pager-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/5-progress-and-background-commands",
+      "library": "gum",
+      "topic": "5-progress-and-background-commands",
+      "title": "progress and background commands",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/5-progress-and-background-commands.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/5.1-spin-command",
+      "library": "gum",
+      "topic": "5.1-spin-command",
+      "title": "spin command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/5.1-spin-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/6-formatting-commands",
+      "library": "gum",
+      "topic": "6-formatting-commands",
+      "title": "formatting commands",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/6-formatting-commands.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/6.1-style-command",
+      "library": "gum",
+      "topic": "6.1-style-command",
+      "title": "style command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/6.1-style-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/6.2-format-command",
+      "library": "gum",
+      "topic": "6.2-format-command",
+      "title": "format command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/6.2-format-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/6.3-join-command",
+      "library": "gum",
+      "topic": "6.3-join-command",
+      "title": "join command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/6.3-join-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/6.4-log-command",
+      "library": "gum",
+      "topic": "6.4-log-command",
+      "title": "log command",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/6.4-log-command.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/7-development-guide",
+      "library": "gum",
+      "topic": "7-development-guide",
+      "title": "development guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/7-development-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/7.1-building-and-testing",
+      "library": "gum",
+      "topic": "7.1-building-and-testing",
+      "title": "building and testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/7.1-building-and-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/7.2-dependency-management",
+      "library": "gum",
+      "topic": "7.2-dependency-management",
+      "title": "dependency management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/7.2-dependency-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/7.3-cicd-pipeline",
+      "library": "gum",
+      "topic": "7.3-cicd-pipeline",
+      "title": "cicd pipeline",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/7.3-cicd-pipeline.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/7.4-shell-completion",
+      "library": "gum",
+      "topic": "7.4-shell-completion",
+      "title": "shell completion",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/7.4-shell-completion.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/8-internal-utilities",
+      "library": "gum",
+      "topic": "8-internal-utilities",
+      "title": "internal utilities",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/8-internal-utilities.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/9-glossary",
+      "library": "gum",
+      "topic": "9-glossary",
+      "title": "glossary",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/9-glossary.md"
+    },
+    {
+      "uri": "charmed://deepwiki/gum/README",
+      "library": "gum",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/gum/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/1-overview",
+      "library": "harmonica",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/2-core-concepts",
+      "library": "harmonica",
+      "topic": "2-core-concepts",
+      "title": "core concepts",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/2-core-concepts.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/2.1-spring-animation",
+      "library": "harmonica",
+      "topic": "2.1-spring-animation",
+      "title": "spring animation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/2.1-spring-animation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/2.2-damping-types",
+      "library": "harmonica",
+      "topic": "2.2-damping-types",
+      "title": "damping types",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/2.2-damping-types.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/2.3-projectile-motion",
+      "library": "harmonica",
+      "topic": "2.3-projectile-motion",
+      "title": "projectile motion",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/2.3-projectile-motion.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/3-usage-guide",
+      "library": "harmonica",
+      "topic": "3-usage-guide",
+      "title": "usage guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/3-usage-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/3.1-spring-implementation",
+      "library": "harmonica",
+      "topic": "3.1-spring-implementation",
+      "title": "spring implementation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/3.1-spring-implementation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/3.2-projectile-implementation",
+      "library": "harmonica",
+      "topic": "3.2-projectile-implementation",
+      "title": "projectile implementation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/3.2-projectile-implementation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/4-example-applications",
+      "library": "harmonica",
+      "topic": "4-example-applications",
+      "title": "example applications",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/4-example-applications.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/4.1-terminal-ui-example",
+      "library": "harmonica",
+      "topic": "4.1-terminal-ui-example",
+      "title": "terminal ui example",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/4.1-terminal-ui-example.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/4.2-opengl-example",
+      "library": "harmonica",
+      "topic": "4.2-opengl-example",
+      "title": "opengl example",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/4.2-opengl-example.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/4.3-particle-example",
+      "library": "harmonica",
+      "topic": "4.3-particle-example",
+      "title": "particle example",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/4.3-particle-example.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/5-contributing",
+      "library": "harmonica",
+      "topic": "5-contributing",
+      "title": "contributing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/5-contributing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/harmonica/README",
+      "library": "harmonica",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/harmonica/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/1-overview",
+      "library": "huh",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/1.1-architecture",
+      "library": "huh",
+      "topic": "1.1-architecture",
+      "title": "architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/1.1-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/1.2-installation",
+      "library": "huh",
+      "topic": "1.2-installation",
+      "title": "installation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/1.2-installation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/10-example-applications",
+      "library": "huh",
+      "topic": "10-example-applications",
+      "title": "example applications",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/10-example-applications.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/2-core-components",
+      "library": "huh",
+      "topic": "2-core-components",
+      "title": "core components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/2-core-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/2.1-form",
+      "library": "huh",
+      "topic": "2.1-form",
+      "title": "form",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/2.1-form.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/2.2-group",
+      "library": "huh",
+      "topic": "2.2-group",
+      "title": "group",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/2.2-group.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/2.3-field-interface",
+      "library": "huh",
+      "topic": "2.3-field-interface",
+      "title": "field interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/2.3-field-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/3-field-types",
+      "library": "huh",
+      "topic": "3-field-types",
+      "title": "field types",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/3-field-types.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/3.1-text-input-fields",
+      "library": "huh",
+      "topic": "3.1-text-input-fields",
+      "title": "text input fields",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/3.1-text-input-fields.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/3.2-selection-fields",
+      "library": "huh",
+      "topic": "3.2-selection-fields",
+      "title": "selection fields",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/3.2-selection-fields.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/3.3-confirmation-field",
+      "library": "huh",
+      "topic": "3.3-confirmation-field",
+      "title": "confirmation field",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/3.3-confirmation-field.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/3.4-note-field",
+      "library": "huh",
+      "topic": "3.4-note-field",
+      "title": "note field",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/3.4-note-field.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/3.5-filepicker",
+      "library": "huh",
+      "topic": "3.5-filepicker",
+      "title": "filepicker",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/3.5-filepicker.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/4-layout-system",
+      "library": "huh",
+      "topic": "4-layout-system",
+      "title": "layout system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/4-layout-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/5-theme-system",
+      "library": "huh",
+      "topic": "5-theme-system",
+      "title": "theme system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/5-theme-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/6-spinner-component",
+      "library": "huh",
+      "topic": "6-spinner-component",
+      "title": "spinner component",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/6-spinner-component.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/7-accessibility",
+      "library": "huh",
+      "topic": "7-accessibility",
+      "title": "accessibility",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/7-accessibility.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/8-bubble-tea-integration",
+      "library": "huh",
+      "topic": "8-bubble-tea-integration",
+      "title": "bubble tea integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/8-bubble-tea-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/9-advanced-usage",
+      "library": "huh",
+      "topic": "9-advanced-usage",
+      "title": "advanced usage",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/9-advanced-usage.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/9.1-dynamic-forms",
+      "library": "huh",
+      "topic": "9.1-dynamic-forms",
+      "title": "dynamic forms",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/9.1-dynamic-forms.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/9.2-validation",
+      "library": "huh",
+      "topic": "9.2-validation",
+      "title": "validation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/9.2-validation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/9.3-ssh-integration",
+      "library": "huh",
+      "topic": "9.3-ssh-integration",
+      "title": "ssh integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/9.3-ssh-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/huh/README",
+      "library": "huh",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/huh/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/1-introduction-to-lipgloss",
+      "library": "lipgloss",
+      "topic": "1-introduction-to-lipgloss",
+      "title": "introduction to lipgloss",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/1-introduction-to-lipgloss.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/2-core-style-system",
+      "library": "lipgloss",
+      "topic": "2-core-style-system",
+      "title": "core style system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/2-core-style-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/2.1-style-configuration",
+      "library": "lipgloss",
+      "topic": "2.1-style-configuration",
+      "title": "style configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/2.1-style-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/2.2-text-attributes-and-styling",
+      "library": "lipgloss",
+      "topic": "2.2-text-attributes-and-styling",
+      "title": "text attributes and styling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/2.2-text-attributes-and-styling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/2.3-rendering-pipeline",
+      "library": "lipgloss",
+      "topic": "2.3-rendering-pipeline",
+      "title": "rendering pipeline",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/2.3-rendering-pipeline.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/3-colors-and-terminal-detection",
+      "library": "lipgloss",
+      "topic": "3-colors-and-terminal-detection",
+      "title": "colors and terminal detection",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/3-colors-and-terminal-detection.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/3.1-color-system",
+      "library": "lipgloss",
+      "topic": "3.1-color-system",
+      "title": "color system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/3.1-color-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/3.2-adaptive-colors-and-background-detection",
+      "library": "lipgloss",
+      "topic": "3.2-adaptive-colors-and-background-detection",
+      "title": "adaptive colors and background detection",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/3.2-adaptive-colors-and-background-detection.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/3.3-terminal-adaptation-and-output",
+      "library": "lipgloss",
+      "topic": "3.3-terminal-adaptation-and-output",
+      "title": "terminal adaptation and output",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/3.3-terminal-adaptation-and-output.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/4-borders",
+      "library": "lipgloss",
+      "topic": "4-borders",
+      "title": "borders",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/4-borders.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/5-layout-and-composition",
+      "library": "lipgloss",
+      "topic": "5-layout-and-composition",
+      "title": "layout and composition",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/5-layout-and-composition.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/5.1-measurement-utilities",
+      "library": "lipgloss",
+      "topic": "5.1-measurement-utilities",
+      "title": "measurement utilities",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/5.1-measurement-utilities.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/5.2-joining-and-alignment",
+      "library": "lipgloss",
+      "topic": "5.2-joining-and-alignment",
+      "title": "joining and alignment",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/5.2-joining-and-alignment.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/5.3-placement",
+      "library": "lipgloss",
+      "topic": "5.3-placement",
+      "title": "placement",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/5.3-placement.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/5.4-canvas-and-layer-system",
+      "library": "lipgloss",
+      "topic": "5.4-canvas-and-layer-system",
+      "title": "canvas and layer system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/5.4-canvas-and-layer-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/6-structured-components",
+      "library": "lipgloss",
+      "topic": "6-structured-components",
+      "title": "structured components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/6-structured-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/6.1-tables",
+      "library": "lipgloss",
+      "topic": "6.1-tables",
+      "title": "tables",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/6.1-tables.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/6.2-lists",
+      "library": "lipgloss",
+      "topic": "6.2-lists",
+      "title": "lists",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/6.2-lists.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/6.3-trees",
+      "library": "lipgloss",
+      "topic": "6.3-trees",
+      "title": "trees",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/6.3-trees.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/7-examples-and-usage-patterns",
+      "library": "lipgloss",
+      "topic": "7-examples-and-usage-patterns",
+      "title": "examples and usage patterns",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/7-examples-and-usage-patterns.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/7.1-basic-styling-examples",
+      "library": "lipgloss",
+      "topic": "7.1-basic-styling-examples",
+      "title": "basic styling examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/7.1-basic-styling-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/7.2-layout-and-document-examples",
+      "library": "lipgloss",
+      "topic": "7.2-layout-and-document-examples",
+      "title": "layout and document examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/7.2-layout-and-document-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/7.3-component-examples",
+      "library": "lipgloss",
+      "topic": "7.3-component-examples",
+      "title": "component examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/7.3-component-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/7.4-advanced-integration-patterns",
+      "library": "lipgloss",
+      "topic": "7.4-advanced-integration-patterns",
+      "title": "advanced integration patterns",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/7.4-advanced-integration-patterns.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/8-development-and-testing",
+      "library": "lipgloss",
+      "topic": "8-development-and-testing",
+      "title": "development and testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/8-development-and-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/8.1-testing-infrastructure",
+      "library": "lipgloss",
+      "topic": "8.1-testing-infrastructure",
+      "title": "testing infrastructure",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/8.1-testing-infrastructure.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/8.2-code-quality-and-cicd",
+      "library": "lipgloss",
+      "topic": "8.2-code-quality-and-cicd",
+      "title": "code quality and cicd",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/8.2-code-quality-and-cicd.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/9-module-architecture-and-dependencies",
+      "library": "lipgloss",
+      "topic": "9-module-architecture-and-dependencies",
+      "title": "module architecture and dependencies",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/9-module-architecture-and-dependencies.md"
+    },
+    {
+      "uri": "charmed://deepwiki/lipgloss/README",
+      "library": "lipgloss",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/lipgloss/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/1-overview",
+      "library": "log",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/2-core-architecture",
+      "library": "log",
+      "topic": "2-core-architecture",
+      "title": "core architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/2-core-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/2.1-logger-structure",
+      "library": "log",
+      "topic": "2.1-logger-structure",
+      "title": "logger structure",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/2.1-logger-structure.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/2.2-log-levels",
+      "library": "log",
+      "topic": "2.2-log-levels",
+      "title": "log levels",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/2.2-log-levels.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/2.3-global-logger",
+      "library": "log",
+      "topic": "2.3-global-logger",
+      "title": "global logger",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/2.3-global-logger.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/3-usage-guide",
+      "library": "log",
+      "topic": "3-usage-guide",
+      "title": "usage guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/3-usage-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/3.1-basic-logging",
+      "library": "log",
+      "topic": "3.1-basic-logging",
+      "title": "basic logging",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/3.1-basic-logging.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/3.2-contextual-logging",
+      "library": "log",
+      "topic": "3.2-contextual-logging",
+      "title": "contextual logging",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/3.2-contextual-logging.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/3.3-helper-functions",
+      "library": "log",
+      "topic": "3.3-helper-functions",
+      "title": "helper functions",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/3.3-helper-functions.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/4-formatters",
+      "library": "log",
+      "topic": "4-formatters",
+      "title": "formatters",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/4-formatters.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/4.1-text-formatter",
+      "library": "log",
+      "topic": "4.1-text-formatter",
+      "title": "text formatter",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/4.1-text-formatter.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/4.2-json-formatter",
+      "library": "log",
+      "topic": "4.2-json-formatter",
+      "title": "json formatter",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/4.2-json-formatter.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/4.3-logfmt-formatter",
+      "library": "log",
+      "topic": "4.3-logfmt-formatter",
+      "title": "logfmt formatter",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/4.3-logfmt-formatter.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/5-styling-and-customization",
+      "library": "log",
+      "topic": "5-styling-and-customization",
+      "title": "styling and customization",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/5-styling-and-customization.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/6-configuration-options",
+      "library": "log",
+      "topic": "6-configuration-options",
+      "title": "configuration options",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/6-configuration-options.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/7-integration",
+      "library": "log",
+      "topic": "7-integration",
+      "title": "integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/7-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/7.1-standard-library-integration",
+      "library": "log",
+      "topic": "7.1-standard-library-integration",
+      "title": "standard library integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/7.1-standard-library-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/7.2-slog-integration",
+      "library": "log",
+      "topic": "7.2-slog-integration",
+      "title": "slog integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/7.2-slog-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/8-advanced-topics",
+      "library": "log",
+      "topic": "8-advanced-topics",
+      "title": "advanced topics",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/8-advanced-topics.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/9-contributing",
+      "library": "log",
+      "topic": "9-contributing",
+      "title": "contributing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/9-contributing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/log/README",
+      "library": "log",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/log/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/1-introduction-to-mods",
+      "library": "mods",
+      "topic": "1-introduction-to-mods",
+      "title": "introduction to mods",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/1-introduction-to-mods.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/1.1-installation-and-setup",
+      "library": "mods",
+      "topic": "1.1-installation-and-setup",
+      "title": "installation and setup",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/1.1-installation-and-setup.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/1.2-quick-start-guide",
+      "library": "mods",
+      "topic": "1.2-quick-start-guide",
+      "title": "quick start guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/1.2-quick-start-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/2-core-architecture",
+      "library": "mods",
+      "topic": "2-core-architecture",
+      "title": "core architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/2-core-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/2.1-application-entry-point",
+      "library": "mods",
+      "topic": "2.1-application-entry-point",
+      "title": "application entry point",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/2.1-application-entry-point.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/2.2-configuration-system",
+      "library": "mods",
+      "topic": "2.2-configuration-system",
+      "title": "configuration system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/2.2-configuration-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/2.3-bubble-tea-ui-model",
+      "library": "mods",
+      "topic": "2.3-bubble-tea-ui-model",
+      "title": "bubble tea ui model",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/2.3-bubble-tea-ui-model.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/2.4-message-stream-context",
+      "library": "mods",
+      "topic": "2.4-message-stream-context",
+      "title": "message stream context",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/2.4-message-stream-context.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/2.5-conversation-management",
+      "library": "mods",
+      "topic": "2.5-conversation-management",
+      "title": "conversation management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/2.5-conversation-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/3-llm-provider-integration",
+      "library": "mods",
+      "topic": "3-llm-provider-integration",
+      "title": "llm provider integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/3-llm-provider-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/3.1-provider-configuration",
+      "library": "mods",
+      "topic": "3.1-provider-configuration",
+      "title": "provider configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/3.1-provider-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/3.2-client-initialization-and-streaming",
+      "library": "mods",
+      "topic": "3.2-client-initialization-and-streaming",
+      "title": "client initialization and streaming",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/3.2-client-initialization-and-streaming.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/3.3-model-resolution-and-fallbacks",
+      "library": "mods",
+      "topic": "3.3-model-resolution-and-fallbacks",
+      "title": "model resolution and fallbacks",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/3.3-model-resolution-and-fallbacks.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/4-user-interface-and-experience",
+      "library": "mods",
+      "topic": "4-user-interface-and-experience",
+      "title": "user interface and experience",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/4-user-interface-and-experience.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/4.1-terminal-capabilities-and-styling",
+      "library": "mods",
+      "topic": "4.1-terminal-capabilities-and-styling",
+      "title": "terminal capabilities and styling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/4.1-terminal-capabilities-and-styling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/4.2-animation-system",
+      "library": "mods",
+      "topic": "4.2-animation-system",
+      "title": "animation system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/4.2-animation-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/4.3-output-rendering-and-formatting",
+      "library": "mods",
+      "topic": "4.3-output-rendering-and-formatting",
+      "title": "output rendering and formatting",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/4.3-output-rendering-and-formatting.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/5-data-persistence",
+      "library": "mods",
+      "topic": "5-data-persistence",
+      "title": "data persistence",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/5-data-persistence.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/5.1-conversation-database",
+      "library": "mods",
+      "topic": "5.1-conversation-database",
+      "title": "conversation database",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/5.1-conversation-database.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/5.2-cache-system",
+      "library": "mods",
+      "topic": "5.2-cache-system",
+      "title": "cache system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/5.2-cache-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/6-supporting-systems",
+      "library": "mods",
+      "topic": "6-supporting-systems",
+      "title": "supporting systems",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/6-supporting-systems.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/6.1-flag-parsing-and-error-handling",
+      "library": "mods",
+      "topic": "6.1-flag-parsing-and-error-handling",
+      "title": "flag parsing and error handling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/6.1-flag-parsing-and-error-handling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/6.2-content-loading",
+      "library": "mods",
+      "topic": "6.2-content-loading",
+      "title": "content loading",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/6.2-content-loading.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/6.3-message-utilities",
+      "library": "mods",
+      "topic": "6.3-message-utilities",
+      "title": "message utilities",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/6.3-message-utilities.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/7-development-guide",
+      "library": "mods",
+      "topic": "7-development-guide",
+      "title": "development guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/7-development-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/7.1-dependencies-and-build-system",
+      "library": "mods",
+      "topic": "7.1-dependencies-and-build-system",
+      "title": "dependencies and build system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/7.1-dependencies-and-build-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/7.2-testing-strategy",
+      "library": "mods",
+      "topic": "7.2-testing-strategy",
+      "title": "testing strategy",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/7.2-testing-strategy.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/7.3-code-quality-and-cicd",
+      "library": "mods",
+      "topic": "7.3-code-quality-and-cicd",
+      "title": "code quality and cicd",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/7.3-code-quality-and-cicd.md"
+    },
+    {
+      "uri": "charmed://deepwiki/mods/README",
+      "library": "mods",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/mods/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/1-overview",
+      "library": "pop",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/2-installation-and-configuration",
+      "library": "pop",
+      "topic": "2-installation-and-configuration",
+      "title": "installation and configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/2-installation-and-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/3-architecture",
+      "library": "pop",
+      "topic": "3-architecture",
+      "title": "architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/3-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/3.1-email-delivery-system",
+      "library": "pop",
+      "topic": "3.1-email-delivery-system",
+      "title": "email delivery system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/3.1-email-delivery-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/3.2-user-interface-components",
+      "library": "pop",
+      "topic": "3.2-user-interface-components",
+      "title": "user interface components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/3.2-user-interface-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/4-command-line-interface",
+      "library": "pop",
+      "topic": "4-command-line-interface",
+      "title": "command line interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/4-command-line-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/5-terminal-user-interface",
+      "library": "pop",
+      "topic": "5-terminal-user-interface",
+      "title": "terminal user interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/5-terminal-user-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/6-email-delivery-methods",
+      "library": "pop",
+      "topic": "6-email-delivery-methods",
+      "title": "email delivery methods",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/6-email-delivery-methods.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/6.1-resend-api-configuration",
+      "library": "pop",
+      "topic": "6.1-resend-api-configuration",
+      "title": "resend api configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/6.1-resend-api-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/6.2-smtp-configuration",
+      "library": "pop",
+      "topic": "6.2-smtp-configuration",
+      "title": "smtp configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/6.2-smtp-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/7-examples-and-integrations",
+      "library": "pop",
+      "topic": "7-examples-and-integrations",
+      "title": "examples and integrations",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/7-examples-and-integrations.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/8-development",
+      "library": "pop",
+      "topic": "8-development",
+      "title": "development",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/8-development.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/8.1-building-and-testing",
+      "library": "pop",
+      "topic": "8.1-building-and-testing",
+      "title": "building and testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/8.1-building-and-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/8.2-contributing-guidelines",
+      "library": "pop",
+      "topic": "8.2-contributing-guidelines",
+      "title": "contributing guidelines",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/8.2-contributing-guidelines.md"
+    },
+    {
+      "uri": "charmed://deepwiki/pop/README",
+      "library": "pop",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/pop/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/1-introduction-to-sequin",
+      "library": "sequin",
+      "topic": "1-introduction-to-sequin",
+      "title": "introduction to sequin",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/1-introduction-to-sequin.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/1.1-installation",
+      "library": "sequin",
+      "topic": "1.1-installation",
+      "title": "installation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/1.1-installation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/1.2-basic-usage",
+      "library": "sequin",
+      "topic": "1.2-basic-usage",
+      "title": "basic usage",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/1.2-basic-usage.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/2-architecture",
+      "library": "sequin",
+      "topic": "2-architecture",
+      "title": "architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/2-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/2.1-ansi-sequence-processing",
+      "library": "sequin",
+      "topic": "2.1-ansi-sequence-processing",
+      "title": "ansi sequence processing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/2.1-ansi-sequence-processing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/2.2-command-execution",
+      "library": "sequin",
+      "topic": "2.2-command-execution",
+      "title": "command execution",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/2.2-command-execution.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3-ansi-sequence-handlers",
+      "library": "sequin",
+      "topic": "3-ansi-sequence-handlers",
+      "title": "ansi sequence handlers",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3-ansi-sequence-handlers.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3.1-sgr-_select-graphic-rendition",
+      "library": "sequin",
+      "topic": "3.1-sgr-_select-graphic-rendition",
+      "title": "sgr  select graphic rendition",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3.1-sgr-_select-graphic-rendition.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3.2-cursor-commands",
+      "library": "sequin",
+      "topic": "3.2-cursor-commands",
+      "title": "cursor commands",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3.2-cursor-commands.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3.3-screen-and-line-commands",
+      "library": "sequin",
+      "topic": "3.3-screen-and-line-commands",
+      "title": "screen and line commands",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3.3-screen-and-line-commands.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3.4-window-title-and-colors",
+      "library": "sequin",
+      "topic": "3.4-window-title-and-colors",
+      "title": "window title and colors",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3.4-window-title-and-colors.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3.5-terminal-modes",
+      "library": "sequin",
+      "topic": "3.5-terminal-modes",
+      "title": "terminal modes",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3.5-terminal-modes.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3.6-pointer-clipboard-and-links",
+      "library": "sequin",
+      "topic": "3.6-pointer-clipboard-and-links",
+      "title": "pointer clipboard and links",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3.6-pointer-clipboard-and-links.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/3.7-finalterm-commands",
+      "library": "sequin",
+      "topic": "3.7-finalterm-commands",
+      "title": "finalterm commands",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/3.7-finalterm-commands.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/4-theme-system",
+      "library": "sequin",
+      "topic": "4-theme-system",
+      "title": "theme system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/4-theme-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/5-testing",
+      "library": "sequin",
+      "topic": "5-testing",
+      "title": "testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/5-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/6-build-and-development",
+      "library": "sequin",
+      "topic": "6-build-and-development",
+      "title": "build and development",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/6-build-and-development.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/6.1-dependency-management",
+      "library": "sequin",
+      "topic": "6.1-dependency-management",
+      "title": "dependency management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/6.1-dependency-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/6.2-release-process",
+      "library": "sequin",
+      "topic": "6.2-release-process",
+      "title": "release process",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/6.2-release-process.md"
+    },
+    {
+      "uri": "charmed://deepwiki/sequin/README",
+      "library": "sequin",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/sequin/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/1-overview",
+      "library": "skate",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/2-installation",
+      "library": "skate",
+      "topic": "2-installation",
+      "title": "installation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/2-installation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/3-user-guide",
+      "library": "skate",
+      "topic": "3-user-guide",
+      "title": "user guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/3-user-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/3.1-basic-commands",
+      "library": "skate",
+      "topic": "3.1-basic-commands",
+      "title": "basic commands",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/3.1-basic-commands.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/3.2-working-with-multiple-databases",
+      "library": "skate",
+      "topic": "3.2-working-with-multiple-databases",
+      "title": "working with multiple databases",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/3.2-working-with-multiple-databases.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/3.3-advanced-features",
+      "library": "skate",
+      "topic": "3.3-advanced-features",
+      "title": "advanced features",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/3.3-advanced-features.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/4-architecture",
+      "library": "skate",
+      "topic": "4-architecture",
+      "title": "architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/4-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/4.1-command-processing",
+      "library": "skate",
+      "topic": "4.1-command-processing",
+      "title": "command processing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/4.1-command-processing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/4.2-data-storage",
+      "library": "skate",
+      "topic": "4.2-data-storage",
+      "title": "data storage",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/4.2-data-storage.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/4.3-terminal-interface",
+      "library": "skate",
+      "topic": "4.3-terminal-interface",
+      "title": "terminal interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/4.3-terminal-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/5-development",
+      "library": "skate",
+      "topic": "5-development",
+      "title": "development",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/5-development.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/5.1-build-process",
+      "library": "skate",
+      "topic": "5.1-build-process",
+      "title": "build process",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/5.1-build-process.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/5.2-release-process",
+      "library": "skate",
+      "topic": "5.2-release-process",
+      "title": "release process",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/5.2-release-process.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/5.3-code-quality",
+      "library": "skate",
+      "topic": "5.3-code-quality",
+      "title": "code quality",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/5.3-code-quality.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/5.4-dependency-management",
+      "library": "skate",
+      "topic": "5.4-dependency-management",
+      "title": "dependency management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/5.4-dependency-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/6-reference",
+      "library": "skate",
+      "topic": "6-reference",
+      "title": "reference",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/6-reference.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/6.1-command-line-interface",
+      "library": "skate",
+      "topic": "6.1-command-line-interface",
+      "title": "command line interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/6.1-command-line-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/6.2-api-functions",
+      "library": "skate",
+      "topic": "6.2-api-functions",
+      "title": "api functions",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/6.2-api-functions.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/7-license",
+      "library": "skate",
+      "topic": "7-license",
+      "title": "license",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/7-license.md"
+    },
+    {
+      "uri": "charmed://deepwiki/skate/README",
+      "library": "skate",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/skate/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/1-overview",
+      "library": "soft-serve",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/1.1-what-is-soft-serve",
+      "library": "soft-serve",
+      "topic": "1.1-what-is-soft-serve",
+      "title": "what is soft serve",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/1.1-what-is-soft-serve.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/1.2-key-features",
+      "library": "soft-serve",
+      "topic": "1.2-key-features",
+      "title": "key features",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/1.2-key-features.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/1.3-system-architecture",
+      "library": "soft-serve",
+      "topic": "1.3-system-architecture",
+      "title": "system architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/1.3-system-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/2-installation-and-configuration",
+      "library": "soft-serve",
+      "topic": "2-installation-and-configuration",
+      "title": "installation and configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/2-installation-and-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/2.1-installation-methods",
+      "library": "soft-serve",
+      "topic": "2.1-installation-methods",
+      "title": "installation methods",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/2.1-installation-methods.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/2.2-configuration-options",
+      "library": "soft-serve",
+      "topic": "2.2-configuration-options",
+      "title": "configuration options",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/2.2-configuration-options.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/2.3-system-service-setup",
+      "library": "soft-serve",
+      "topic": "2.3-system-service-setup",
+      "title": "system service setup",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/2.3-system-service-setup.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3-core-components",
+      "library": "soft-serve",
+      "topic": "3-core-components",
+      "title": "core components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3-core-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3.1-cli-tool-structure",
+      "library": "soft-serve",
+      "topic": "3.1-cli-tool-structure",
+      "title": "cli tool structure",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3.1-cli-tool-structure.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3.2-server-components",
+      "library": "soft-serve",
+      "topic": "3.2-server-components",
+      "title": "server components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3.2-server-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3.2.1-ssh-server",
+      "library": "soft-serve",
+      "topic": "3.2.1-ssh-server",
+      "title": "ssh server",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3.2.1-ssh-server.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3.2.2-git-daemon",
+      "library": "soft-serve",
+      "topic": "3.2.2-git-daemon",
+      "title": "git daemon",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3.2.2-git-daemon.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3.2.3-http-server",
+      "library": "soft-serve",
+      "topic": "3.2.3-http-server",
+      "title": "http server",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3.2.3-http-server.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3.3-repository-management",
+      "library": "soft-serve",
+      "topic": "3.3-repository-management",
+      "title": "repository management",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3.3-repository-management.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/3.4-git-hooks-and-webhooks",
+      "library": "soft-serve",
+      "topic": "3.4-git-hooks-and-webhooks",
+      "title": "git hooks and webhooks",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/3.4-git-hooks-and-webhooks.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/4-user-interfaces",
+      "library": "soft-serve",
+      "topic": "4-user-interfaces",
+      "title": "user interfaces",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/4-user-interfaces.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/4.1-terminal-ui-architecture",
+      "library": "soft-serve",
+      "topic": "4.1-terminal-ui-architecture",
+      "title": "terminal ui architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/4.1-terminal-ui-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/4.2-ui-components",
+      "library": "soft-serve",
+      "topic": "4.2-ui-components",
+      "title": "ui components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/4.2-ui-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/4.3-command-line-interface",
+      "library": "soft-serve",
+      "topic": "4.3-command-line-interface",
+      "title": "command line interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/4.3-command-line-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/5-developer-guide",
+      "library": "soft-serve",
+      "topic": "5-developer-guide",
+      "title": "developer guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/5-developer-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/5.1-project-dependencies",
+      "library": "soft-serve",
+      "topic": "5.1-project-dependencies",
+      "title": "project dependencies",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/5.1-project-dependencies.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/5.2-build-system",
+      "library": "soft-serve",
+      "topic": "5.2-build-system",
+      "title": "build system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/5.2-build-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/5.3-testing-framework",
+      "library": "soft-serve",
+      "topic": "5.3-testing-framework",
+      "title": "testing framework",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/5.3-testing-framework.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/5.4-code-quality-tools",
+      "library": "soft-serve",
+      "topic": "5.4-code-quality-tools",
+      "title": "code quality tools",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/5.4-code-quality-tools.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/5.5-release-process",
+      "library": "soft-serve",
+      "topic": "5.5-release-process",
+      "title": "release process",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/5.5-release-process.md"
+    },
+    {
+      "uri": "charmed://deepwiki/soft-serve/README",
+      "library": "soft-serve",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/soft-serve/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/ultraviolet/README",
+      "library": "ultraviolet",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/ultraviolet/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/1-overview",
+      "library": "vhs",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/1.1-installation-and-setup",
+      "library": "vhs",
+      "topic": "1.1-installation-and-setup",
+      "title": "installation and setup",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/1.1-installation-and-setup.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/1.2-quick-start",
+      "library": "vhs",
+      "topic": "1.2-quick-start",
+      "title": "quick start",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/1.2-quick-start.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/2-tape-format",
+      "library": "vhs",
+      "topic": "2-tape-format",
+      "title": "tape format",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/2-tape-format.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/2.1-commands-reference",
+      "library": "vhs",
+      "topic": "2.1-commands-reference",
+      "title": "commands reference",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/2.1-commands-reference.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/2.2-output-options",
+      "library": "vhs",
+      "topic": "2.2-output-options",
+      "title": "output options",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/2.2-output-options.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/2.3-themes-and-styling",
+      "library": "vhs",
+      "topic": "2.3-themes-and-styling",
+      "title": "themes and styling",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/2.3-themes-and-styling.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/3-system-architecture",
+      "library": "vhs",
+      "topic": "3-system-architecture",
+      "title": "system architecture",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/3-system-architecture.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/3.1-command-execution",
+      "library": "vhs",
+      "topic": "3.1-command-execution",
+      "title": "command execution",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/3.1-command-execution.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/3.2-terminal-emulation",
+      "library": "vhs",
+      "topic": "3.2-terminal-emulation",
+      "title": "terminal emulation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/3.2-terminal-emulation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/3.3-recording-and-rendering",
+      "library": "vhs",
+      "topic": "3.3-recording-and-rendering",
+      "title": "recording and rendering",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/3.3-recording-and-rendering.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/4-cli-features",
+      "library": "vhs",
+      "topic": "4-cli-features",
+      "title": "cli features",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/4-cli-features.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/4.1-recording-mode",
+      "library": "vhs",
+      "topic": "4.1-recording-mode",
+      "title": "recording mode",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/4.1-recording-mode.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/4.2-ssh-server",
+      "library": "vhs",
+      "topic": "4.2-ssh-server",
+      "title": "ssh server",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/4.2-ssh-server.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/4.3-publishing",
+      "library": "vhs",
+      "topic": "4.3-publishing",
+      "title": "publishing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/4.3-publishing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/5-examples-and-use-cases",
+      "library": "vhs",
+      "topic": "5-examples-and-use-cases",
+      "title": "examples and use cases",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/5-examples-and-use-cases.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/5.1-demos-for-cli-tools",
+      "library": "vhs",
+      "topic": "5.1-demos-for-cli-tools",
+      "title": "demos for cli tools",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/5.1-demos-for-cli-tools.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/5.2-shell-examples",
+      "library": "vhs",
+      "topic": "5.2-shell-examples",
+      "title": "shell examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/5.2-shell-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/5.3-advanced-tape-techniques",
+      "library": "vhs",
+      "topic": "5.3-advanced-tape-techniques",
+      "title": "advanced tape techniques",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/5.3-advanced-tape-techniques.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/6-development-and-contribution",
+      "library": "vhs",
+      "topic": "6-development-and-contribution",
+      "title": "development and contribution",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/6-development-and-contribution.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/6.1-building-from-source",
+      "library": "vhs",
+      "topic": "6.1-building-from-source",
+      "title": "building from source",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/6.1-building-from-source.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/6.2-project-structure",
+      "library": "vhs",
+      "topic": "6.2-project-structure",
+      "title": "project structure",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/6.2-project-structure.md"
+    },
+    {
+      "uri": "charmed://deepwiki/vhs/README",
+      "library": "vhs",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/vhs/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/1-introduction-to-wish",
+      "library": "wish",
+      "topic": "1-introduction-to-wish",
+      "title": "introduction to wish",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/1-introduction-to-wish.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/2-core-ssh-server-framework",
+      "library": "wish",
+      "topic": "2-core-ssh-server-framework",
+      "title": "core ssh server framework",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/2-core-ssh-server-framework.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/2.1-server-configuration-and-options",
+      "library": "wish",
+      "topic": "2.1-server-configuration-and-options",
+      "title": "server configuration and options",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/2.1-server-configuration-and-options.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/2.2-command-execution",
+      "library": "wish",
+      "topic": "2.2-command-execution",
+      "title": "command execution",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/2.2-command-execution.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/3-middleware-system",
+      "library": "wish",
+      "topic": "3-middleware-system",
+      "title": "middleware system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/3-middleware-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/3.1-access-control-middleware",
+      "library": "wish",
+      "topic": "3.1-access-control-middleware",
+      "title": "access control middleware",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/3.1-access-control-middleware.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/3.2-logging-and-metrics-middleware",
+      "library": "wish",
+      "topic": "3.2-logging-and-metrics-middleware",
+      "title": "logging and metrics middleware",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/3.2-logging-and-metrics-middleware.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/3.3-rate-limiting-middleware",
+      "library": "wish",
+      "topic": "3.3-rate-limiting-middleware",
+      "title": "rate limiting middleware",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/3.3-rate-limiting-middleware.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/4-extension-modules",
+      "library": "wish",
+      "topic": "4-extension-modules",
+      "title": "extension modules",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/4-extension-modules.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/4.1-git-server-integration",
+      "library": "wish",
+      "topic": "4.1-git-server-integration",
+      "title": "git server integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/4.1-git-server-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/4.2-bubbletea-integration",
+      "library": "wish",
+      "topic": "4.2-bubbletea-integration",
+      "title": "bubbletea integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/4.2-bubbletea-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/4.3-file-transfer-_scpsftp",
+      "library": "wish",
+      "topic": "4.3-file-transfer-_scpsftp",
+      "title": "file transfer  scpsftp",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/4.3-file-transfer-_scpsftp.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/5-authentication",
+      "library": "wish",
+      "topic": "5-authentication",
+      "title": "authentication",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/5-authentication.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/5.1-public-key-authentication",
+      "library": "wish",
+      "topic": "5.1-public-key-authentication",
+      "title": "public key authentication",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/5.1-public-key-authentication.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/5.2-other-authentication-methods",
+      "library": "wish",
+      "topic": "5.2-other-authentication-methods",
+      "title": "other authentication methods",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/5.2-other-authentication-methods.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/6-usage-examples",
+      "library": "wish",
+      "topic": "6-usage-examples",
+      "title": "usage examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/6-usage-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/6.1-simple-ssh-server",
+      "library": "wish",
+      "topic": "6.1-simple-ssh-server",
+      "title": "simple ssh server",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/6.1-simple-ssh-server.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/6.2-bubbletea-examples",
+      "library": "wish",
+      "topic": "6.2-bubbletea-examples",
+      "title": "bubbletea examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/6.2-bubbletea-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/6.3-git-server-examples",
+      "library": "wish",
+      "topic": "6.3-git-server-examples",
+      "title": "git server examples",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/6.3-git-server-examples.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/7-development-and-contribution",
+      "library": "wish",
+      "topic": "7-development-and-contribution",
+      "title": "development and contribution",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/7-development-and-contribution.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/7.1-project-structure",
+      "library": "wish",
+      "topic": "7.1-project-structure",
+      "title": "project structure",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/7.1-project-structure.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/7.2-cicd-and-releases",
+      "library": "wish",
+      "topic": "7.2-cicd-and-releases",
+      "title": "cicd and releases",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/7.2-cicd-and-releases.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wish/README",
+      "library": "wish",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wish/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/1-introduction-to-wishlist",
+      "library": "wishlist",
+      "topic": "1-introduction-to-wishlist",
+      "title": "introduction to wishlist",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/1-introduction-to-wishlist.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/1.1-getting-started",
+      "library": "wishlist",
+      "topic": "1.1-getting-started",
+      "title": "getting started",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/1.1-getting-started.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/10-development-guide",
+      "library": "wishlist",
+      "topic": "10-development-guide",
+      "title": "development guide",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/10-development-guide.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/2-architecture-overview",
+      "library": "wishlist",
+      "topic": "2-architecture-overview",
+      "title": "architecture overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/2-architecture-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/2.1-operation-modes",
+      "library": "wishlist",
+      "topic": "2.1-operation-modes",
+      "title": "operation modes",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/2.1-operation-modes.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/3-configuration-system",
+      "library": "wishlist",
+      "topic": "3-configuration-system",
+      "title": "configuration system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/3-configuration-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/3.1-ssh-config-integration",
+      "library": "wishlist",
+      "topic": "3.1-ssh-config-integration",
+      "title": "ssh config integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/3.1-ssh-config-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/3.2-endpoint-configuration",
+      "library": "wishlist",
+      "topic": "3.2-endpoint-configuration",
+      "title": "endpoint configuration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/3.2-endpoint-configuration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/4-ssh-client-implementation",
+      "library": "wishlist",
+      "topic": "4-ssh-client-implementation",
+      "title": "ssh client implementation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/4-ssh-client-implementation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/4.1-authentication-methods",
+      "library": "wishlist",
+      "topic": "4.1-authentication-methods",
+      "title": "authentication methods",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/4.1-authentication-methods.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/4.2-proxy-jump-support",
+      "library": "wishlist",
+      "topic": "4.2-proxy-jump-support",
+      "title": "proxy jump support",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/4.2-proxy-jump-support.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/5-ssh-server-implementation",
+      "library": "wishlist",
+      "topic": "5-ssh-server-implementation",
+      "title": "ssh server implementation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/5-ssh-server-implementation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/5.1-middleware-system",
+      "library": "wishlist",
+      "topic": "5.1-middleware-system",
+      "title": "middleware system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/5.1-middleware-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/6-terminal-user-interface",
+      "library": "wishlist",
+      "topic": "6-terminal-user-interface",
+      "title": "terminal user interface",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/6-terminal-user-interface.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/7-endpoint-discovery",
+      "library": "wishlist",
+      "topic": "7-endpoint-discovery",
+      "title": "endpoint discovery",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/7-endpoint-discovery.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/8-utility-components",
+      "library": "wishlist",
+      "topic": "8-utility-components",
+      "title": "utility components",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/8-utility-components.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/9-deployment",
+      "library": "wishlist",
+      "topic": "9-deployment",
+      "title": "deployment",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/9-deployment.md"
+    },
+    {
+      "uri": "charmed://deepwiki/wishlist/README",
+      "library": "wishlist",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/wishlist/README.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/1-overview",
+      "library": "x",
+      "topic": "1-overview",
+      "title": "overview",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/1-overview.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/2-core-terminal-rendering",
+      "library": "x",
+      "topic": "2-core-terminal-rendering",
+      "title": "core terminal rendering",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/2-core-terminal-rendering.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/2.1-cellbuf-package",
+      "library": "x",
+      "topic": "2.1-cellbuf-package",
+      "title": "cellbuf package",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/2.1-cellbuf-package.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/2.2-virtual-terminal-emulator-_vt",
+      "library": "x",
+      "topic": "2.2-virtual-terminal-emulator-_vt",
+      "title": "virtual terminal emulator  vt",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/2.2-virtual-terminal-emulator-_vt.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/3-input-processing-system",
+      "library": "x",
+      "topic": "3-input-processing-system",
+      "title": "input processing system",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/3-input-processing-system.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/3.1-input-package",
+      "library": "x",
+      "topic": "3.1-input-package",
+      "title": "input package",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/3.1-input-package.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/3.2-windows-console-input",
+      "library": "x",
+      "topic": "3.2-windows-console-input",
+      "title": "windows console input",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/3.2-windows-console-input.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/4-ansi-processing-and-control",
+      "library": "x",
+      "topic": "4-ansi-processing-and-control",
+      "title": "ansi processing and control",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/4-ansi-processing-and-control.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/4.1-parser-and-text-manipulation",
+      "library": "x",
+      "topic": "4.1-parser-and-text-manipulation",
+      "title": "parser and text manipulation",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/4.1-parser-and-text-manipulation.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/4.2-terminal-control-sequences",
+      "library": "x",
+      "topic": "4.2-terminal-control-sequences",
+      "title": "terminal control sequences",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/4.2-terminal-control-sequences.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/4.3-styling-and-colors",
+      "library": "x",
+      "topic": "4.3-styling-and-colors",
+      "title": "styling and colors",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/4.3-styling-and-colors.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/5-platform-abstraction-layer",
+      "library": "x",
+      "topic": "5-platform-abstraction-layer",
+      "title": "platform abstraction layer",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/5-platform-abstraction-layer.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/5.1-pseudo-terminal-interface-_xpty",
+      "library": "x",
+      "topic": "5.1-pseudo-terminal-interface-_xpty",
+      "title": "pseudo terminal interface  xpty",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/5.1-pseudo-terminal-interface-_xpty.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/5.2-windows-conpty",
+      "library": "x",
+      "topic": "5.2-windows-conpty",
+      "title": "windows conpty",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/5.2-windows-conpty.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/5.3-terminal-io-_termios-and-wcwidth",
+      "library": "x",
+      "topic": "5.3-terminal-io-_termios-and-wcwidth",
+      "title": "terminal io  termios and wcwidth",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/5.3-terminal-io-_termios-and-wcwidth.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/6-utility-packages",
+      "library": "x",
+      "topic": "6-utility-packages",
+      "title": "utility packages",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/6-utility-packages.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/6.1-ssh-keys-and-colors",
+      "library": "x",
+      "topic": "6.1-ssh-keys-and-colors",
+      "title": "ssh keys and colors",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/6.1-ssh-keys-and-colors.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/6.2-experimental-packages",
+      "library": "x",
+      "topic": "6.2-experimental-packages",
+      "title": "experimental packages",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/6.2-experimental-packages.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/7-development-and-testing",
+      "library": "x",
+      "topic": "7-development-and-testing",
+      "title": "development and testing",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/7-development-and-testing.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/7.1-examples-and-integration",
+      "library": "x",
+      "topic": "7.1-examples-and-integration",
+      "title": "examples and integration",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/7.1-examples-and-integration.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/7.2-testing-framework-_teatest",
+      "library": "x",
+      "topic": "7.2-testing-framework-_teatest",
+      "title": "testing framework  teatest",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/7.2-testing-framework-_teatest.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/7.3-repository-structure-and-cicd",
+      "library": "x",
+      "topic": "7.3-repository-structure-and-cicd",
+      "title": "repository structure and cicd",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/7.3-repository-structure-and-cicd.md"
+    },
+    {
+      "uri": "charmed://deepwiki/x/README",
+      "library": "x",
+      "topic": "README",
+      "title": "README",
+      "file_path": "/home/bamn/Charmed/charmed/DeepWiki References/x/README.md"
+    }
+  ],
+  "count": 528
+}

@@ -4,6 +4,13 @@
       "type": "stdio",
       "command": "charmed-mcp",
       "args": [],
+      "env": {},
+      "cwd": "/home/bamn/Charmed/charmed/charmed-mcp"
+    },
+    "atree": {
+      "type": "stdio",
+      "command": "/home/bamn/ATree/target/release/atree",
+      "args": ["mcp-server", "--db", "/tmp/atree-charmed.sqlite"],
       "env": {}
     }
   }

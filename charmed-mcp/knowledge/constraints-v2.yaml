@@ -1,0 +1,353 @@
+# Constraints V2 - Evidence-Based Architecture Rules
+# Mix of canonical (hand-authored) and empirical (pattern-derived) constraints.
+#
+# Canonical: confidence=1.0, based on runtime semantics
+# Empirical: confidence<1.0, based on observed patterns and violations
+
+version: 2
+
+---
+
+id: no_blocking_update
+severity: error
+category: correctness
+type: canonical
+confidence: 1.0
+
+description: "Blocking I/O or synchronous calls inside Update() block the event loop and freeze the UI."
+rationale: "Bubble Tea's runtime is single-threaded. Update() must return immediately."
+
+match:
+  function: "Update"
+  contains_any:
+    - pattern: 'http\.(Get|Post|Do)\('
+      label: "HTTP call"
+    - pattern: 'ioutil\.ReadFile|os\.ReadFile'
+      label: "File I/O"
+    - pattern: 'time\.Sleep'
+      label: "Sleep in Update"
+    - pattern: 'sql\..*\.Query'
+      label: "Synchronous DB query"
+
+primitives_violated: [update_phase]
+message: "{{label}} detected inside {{function}}(). The event loop blocks until this completes — the TUI will freeze."
+
+fix:
+  suggestion: "Wrap in tea.Cmd: return func() tea.Msg { ... }"
+  pattern: "tea.Command(func() tea.Cmd { ... })"
+  related_pattern: storage_cmd_boundary
+
+evidence:
+  canonical: true
+  runtime_requirement: "bubbletea event loop contract"
+
+---
+
+id: god_model
+severity: error
+category: architecture
+type: empirical
+confidence: 0.89
+
+description: "Update() function is too large, indicating a monolithic model that should be decomposed."
+rationale: "Large Update() functions violate single-responsibility and become unmaintainable."
+
+match:
+  function: "Update"
+  loc_greater_than: 300
+
+primitives_violated: [message_router, component_tree]
+message: "Update() is {{loc}} lines. This model owns too much state and handles too many message types."
+
+fix:
+  suggestion: "Decompose into child models. Use composition: each child model has its own Update/View. Parent orchestrates message passing."
+  related_pattern: component_tree
+
+evidence:
+  derived_from_pattern: null  # This is a heuristic, not pattern-derived yet
+  observations:
+    - "Models >300 LOC correlate with maintenance issues"
+    - "Refactoring to child models improves testability"
+  confidence_basis: "architectural heuristic + observation"
+
+---
+
+id: viewport_recreation
+severity: fatal
+category: performance
+type: canonical
+confidence: 1.0
+
+description: "viewport.Model is recreated every render or every Update(), causing scroll position reset and layout flicker."
+rationale: "viewport.Model maintains scroll state. Recreation destroys that state."
+
+match:
+  type: "viewport.Model"
+  pattern: "viewport\\.New\\("
+  context: "inside Update|View"
+
+primitives_violated: [viewport, render_phase]
+message: "viewport.Model is being recreated inside {{context}}. This resets scroll position every frame, causing visible flicker."
+
+fix:
+  suggestion: "Create viewport once in Init() or as a field on the struct. Only call SetContent() when content changes, not on every update."
+  related_pattern: viewport_content_diffing
+
+evidence:
+  canonical: true
+  runtime_requirement: "viewport state persistence"
+
+---
+
+id: viewport_churn
+severity: error
+category: performance
+type: empirical
+confidence: 0.94
+
+description: "viewport.SetContent() is called too frequently, indicating content is being reset rather than diffed."
+rationale: "Frequent SetContent calls cause unnecessary rerenders and scroll instability."
+
+match:
+  function: "SetContent"
+  call_frequency: "> 1/frame"
+
+primitives_violated: [viewport, diffed_content]
+message: "SetContent called more than once per frame. Content is being reset instead of appended."
+
+fix:
+  suggestion: "In streaming/append mode, build content incrementally. Only call SetContent when content actually changes (diff check)."
+  related_pattern: viewport_content_diffing
+
+evidence:
+  derived_from_pattern: viewport_content_diffing
+  confidence_factors:
+    observation_count: 9
+    violation_count: 4
+    fix_count: 4
+  pattern_confidence: 0.85
+  boosted_by: "strong violation-fix correlation"
+
+---
+
+id: storage_must_be_async
+severity: error
+category: correctness
+type: empirical
+confidence: 0.94
+
+description: "Storage operations (charm, skate, file I/O) must be wrapped in async commands, never called directly from Update() or View()."
+rationale: "Storage I/O can block for unpredictable durations, freezing the UI."
+
+match:
+  patterns:
+    - 'charm\..*\(|skate\..*\('
+    - 'os\..*File|ioutil\.'
+  context: "inside Update|View"
+
+primitives_violated: [storage_boundary, update_phase, render_phase]
+message: "Storage operation in {{context}}. This blocks the event loop."
+
+fix:
+  suggestion: "Wrap storage operation in tea.Cmd. Return result via message."
+  related_pattern: storage_cmd_boundary
+
+evidence:
+  derived_from_pattern: storage_cmd_boundary
+  confidence_factors:
+    observation_count: 14
+    violation_count: 12
+    fix_count: 11
+  pattern_confidence: 0.94
+  first_observed: "2026-02-01"
+
+---
+
+id: must_cleanup_tickers
+severity: error
+category: correctness
+type: empirical
+confidence: 0.91
+
+description: "Animation tickers and periodic event sources must have cleanup handlers to prevent goroutine leaks."
+rationale: "Tickers spawn background goroutines that continue running after TUI exits if not stopped."
+
+match:
+  patterns:
+    - 'tea\.Tick\(|time\.NewTicker\('
+  without: 'Quit|Stop\('
+  scope: model
+
+primitives_violated: [tick_source, cancellation_boundary]
+message: "Ticker created without corresponding cleanup handler."
+
+fix:
+  suggestion: "Add quit message handler that stops ticker or returns tea.Quit."
+  related_pattern: animation_loop_with_cleanup
+
+evidence:
+  derived_from_pattern: animation_loop_with_cleanup
+  confidence_factors:
+    observation_count: 17
+    violation_count: 6
+    fix_count: 5
+  pattern_confidence: 0.87
+
+---
+
+id: style_recomputation_hot_path
+severity: warning
+category: performance
+type: canonical
+confidence: 1.0
+
+description: "Lip Gloss styles are recomputed on every render instead of being cached."
+rationale: "Style computation involves allocations and calculations that should happen once."
+
+match:
+  pattern: "lipgloss\\.NewStyle\\(|\\.Width\\(|\\.Height\\("
+  context: "inside View|Update"
+
+primitives_violated: [render_phase, layout_composition]
+message: "Style/layout computation inside hot path. Recomputing every frame wastes CPU and causes GC pressure."
+
+fix:
+  suggestion: "Cache styles computed from model state. Only recompute when input data changes."
+
+evidence:
+  canonical: true
+  runtime_requirement: "lipgloss style creation allocates"
+
+---
+
+id: adaptive_color_detect_once
+severity: warning
+category: performance
+type: empirical
+confidence: 0.82
+
+description: "Terminal color capability detection should happen once in Init(), not on every render."
+rationale: "colorprofile.Detect() reads environment variables and performs capability tests."
+
+match:
+  pattern: "colorprofile\\.Detect\\("
+  context: "inside View|Update"
+
+primitives_violated: [terminal_capability, render_phase]
+message: "Color capability detection in {{context}}. This should happen once in Init()."
+
+fix:
+  suggestion: "Call colorprofile.Detect() in Init(), store result in model, use cached value in View()."
+  related_pattern: adaptive_color_scheme_init
+
+evidence:
+  derived_from_pattern: null  # Not yet induced, but observed
+  observations:
+    - repo: colorprofile-examples
+      pattern: "Detect once, cache result"
+  confidence_basis: "limited observations, logical inference"
+
+---
+
+id: ssh_must_cleanup_alt_screen
+severity: error
+category: correctness
+type: canonical
+confidence: 1.0
+
+description: "wish-hosted TUIs must ensure alt screen cleanup on disconnect to avoid terminal corruption."
+rationale: "SSH disconnects can be abrupt. Alt screen must be explicitly exited."
+
+match:
+  imports: "github.com/charmbracelet/wish"
+  has: "tea.WithAltScreen"
+  without: "ExitAltScreen|defer.*ExitAltScreen"
+
+primitives_violated: [ssh_session, shutdown_phase]
+message: "wish TUI uses alt screen without guaranteed cleanup."
+
+fix:
+  suggestion: "Add defer cleanup or ensure ExitAltScreen on disconnect."
+  related_pattern: wish_lifecycle_cleanup
+
+evidence:
+  canonical: true
+  runtime_requirement: "wish SSH session cleanup contract"
+
+---
+
+id: background_logger_never_stdout
+severity: error
+category: correctness
+type: canonical
+confidence: 1.0
+
+description: "TUI applications must never log to stdout, only stderr or files. stdout is the rendering surface."
+rationale: "Writing to stdout corrupts the Bubble Tea rendering."
+
+match:
+  patterns:
+    - 'log\.Print\(|fmt\.Print\(|println\('
+    - 'log\.SetOutput\(os\.Stdout\)'
+  context: "anywhere"
+
+primitives_violated: [background_logger, render_phase]
+message: "Logging to stdout detected. This will corrupt TUI rendering."
+
+fix:
+  suggestion: "Use log.SetOutput(os.Stderr) or write to file. Never use stdout."
+
+evidence:
+  canonical: true
+  runtime_requirement: "bubbletea rendering contract"
+
+---
+
+id: no_spring_calculation_in_view
+severity: warning
+category: performance
+type: empirical
+confidence: 0.88
+
+description: "Spring physics calculations should happen in Update() phase, View() should only read interpolated values."
+rationale: "Physics calculations in View() cause frame drops and inconsistent animation."
+
+match:
+  pattern: "harmonica.*\\.Update\\(|Spring.*\\.Update\\("
+  context: "inside View"
+
+primitives_violated: [animated_transition, render_phase]
+message: "Spring physics update in View(). This causes unnecessary recalculation every render."
+
+fix:
+  suggestion: "Update spring physics in Update() on tick messages. View() only reads spring.Value()."
+  related_pattern: animation_loop_with_cleanup
+
+evidence:
+  derived_from_pattern: animation_loop_with_cleanup
+  confidence_factors:
+    observation_count: 17
+    pattern_matches: 14
+  confidence_basis: "observed best practice in animation repos"
+
+---
+
+# Meta-constraint for constraint synthesis
+id: empirical_constraint_threshold
+type: meta
+confidence: 1.0
+
+description: "Thresholds for promoting observed patterns to constraints"
+
+thresholds:
+  min_observations: 8        # Must see pattern in 8+ repos
+  min_violations: 3          # Must see 3+ violations of absence
+  min_fixes: 2               # Must see 2+ fixes applying pattern
+  min_confidence: 0.75       # Pattern confidence must be >=0.75
+  violation_fix_ratio: 0.5   # At least 50% of violations have fixes
+
+synthesis_rules:
+  - "If pattern meets thresholds → generate constraint"
+  - "Constraint confidence = pattern.confidence * fix_success_rate"
+  - "Constraint severity derived from violation impact"
+  - "Constraint type = empirical (never canonical)"

@@ -17,3 +17,7 @@ Thumbs.db
 # Temp
 *.tmp
 .bak
+
+# Go build artifacts
+charmed-mcp/*.bin
+charmed-mcp/charmed-mcp

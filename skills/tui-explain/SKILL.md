@@ -1,169 +1,277 @@
 ---
 name: tui-explain
-description: "Knowledge corpus queries — lookup components, patterns, constraints, and timing contracts from the embedded Charm ontology. Structured semantic answers sourced from the IR schema, constraint definitions, timing contracts, and component knowledge base. Trigger when: user asks 'what is X', 'how does Y work', 'explain Z', 'what are the constraints on', 'what timing contracts apply to', or any question about Charm ecosystem architecture."
-argument-hint: "<concept or question> [--depth quick|deep] [--with-code] [--with-graph]"
-allowed-tools: [Read, Grep, Glob, Bash]
+description: "Evidence-based knowledge queries — explains primitives, patterns, constraints, and their derivation. Shows why rules exist by referencing ecosystem observations, violations, and fixes. Answers architectural questions with empirical backing. Trigger when: user asks 'what is X', 'why does constraint Y exist', 'show me pattern Z', 'what's the evidence for', 'how do repos handle X', or questions about ecosystem practices."
+argument-hint: "<concept or question> [--with-evidence] [--show-repos] [--primitives-only]"
+allowed-tools: [Read, Grep, Glob, Bash, ATree, mcp__charmed__explain_primitive, mcp__charmed__explain_pattern, mcp__charmed__explain_constraint]
 ---
 
-# tui-explain — Charm Ecosystem Knowledge Engine
+# tui-explain — Evidence-Based Knowledge Engine
 
-Semantic explanation of Bubble Tea, Bubbles, Lip Gloss, and related Charm ecosystem concepts. Combines structured ontology knowledge from `knowledge.yaml` with live ATree graph queries for precise, context-aware answers. This is NOT a document search — it is architectural reasoning grounded in code graph evidence.
+Explains architectural concepts using **two-tier knowledge**:
+- **Canonical knowledge**: Runtime semantics (how Bubble Tea works)
+- **Empirical knowledge**: Observed patterns (how the ecosystem uses it)
 
-## Inputs
+## Query Types
 
-| Input | Required | Source |
-|-------|----------|--------|
-| Query/question | Yes | User's natural language |
-| Ontology | Yes | `ontology/knowledge.yaml` |
-| ATree DB path | Yes | Detected from project context or `ATREE_DB_PATH` |
-| DeepWiki corpus | Yes | `../../deepwiki-charmbracelet/` if available |
-| Depth | No | `--depth quick` (1-2 sentences) or `deep` (full explanation) |
-| With code | No | `--with-code` — include code examples |
-| With graph | No | `--with-graph` — include ATree evidence paths |
+### 1. Primitive Queries
+"What is the viewport primitive?"
+"Explain tick_source"
 
-## Execution Pipeline
+**Answers with:**
+- Primitive definition from `primitives/primitives.yaml`
+- Which libraries implement it
+- Signals that indicate presence
+- Constraints that apply
 
-### Phase 1: Query Classification
-
-Classify the user's query into one of these categories:
-
-| Category | Example Queries | Primary Source |
-|----------|----------------|----------------|
-| Component | "What is viewport.Model?" | `ontology/knowledge.yaml` component defs |
-| Pattern | "How does streaming_console work?" | Pattern relations in `knowledge.yaml` |
-| Comparison | "viewport vs list for log display?" | Component specs + archetype mapping |
-| Architecture | "How should I structure a multi-pane app?" | Ontology + archetypes |
-| Debugging | "Why is my TUI flickering?" | Constraints + anti-patterns in `knowledge.yaml` |
-| Performance | "Why is View() slow?" | Timing models + constraint rules |
-| Rendering | "How does lipgloss layout work?" | Component specs + pairing rules |
-| Message flow | "How do Cmd callbacks reach Update?" | Bubble Tea lifecycle + message routing |
-| Dependency | "What does gum depend on?" | Charm library dependency graph |
-
-### Phase 2: Knowledge Assembly
-
-1. **Ontology lookup**: Find the concept in `ontology/knowledge.yaml`. Extract component semantics, constraints, pairings.
-2. **ATree context query**: If a project context exists, query the ATree DB:
-   - `atree context <symbol>` — where is this used in the project?
-   - `atree explain_symbol <name>` — graph-level explanation
-   - `atree trace_call_path <from> <to>` — how does control flow reach this?
-3. **Cross-reference**: Link the concept to:
-   - Related components (from `common_pairings` in knowledge.yaml)
-   - Constraints that govern it (from `constraints.yaml`)
-   - Timing models that apply (from `timing/timing-models.yaml`)
-   - Anti-patterns that misuse it (from `knowledge.yaml` anti_patterns)
-
-### Phase 3: Answer Structuring
-
-Structure the answer based on category:
-
-**Component explanation:**
+**Example response:**
 ```
-## <Component.Name> (<Package>)
+Primitive: viewport
+Category: rendering
+Description: Scrollable content window with offset tracking
 
-<One-line description from knowledge.yaml>
+Implemented by:
+- bubbles/viewport.Model
+- Observed in 47 repos
 
-### Owned State
-- <field>: <type> — <purpose>
+Signals:
+- viewport.Model field declaration
+- SetContent() calls  
+- Scroll offset management
 
-### Lifecycle
-1. <phase>: <what happens>
-2. ...
+Constraints:
+- viewport_recreation (canonical, confidence: 1.0)
+- viewport_churn (empirical, confidence: 0.94)
 
-### Constraints
-- ⚠️ <constraint> — <what breaks if violated>
-
-### Common With
-- Pairs with: <component> (from common_pairings)
-- Pattern: <pattern> (from pattern_relations)
-
-### Anti-Patterns
-- 🚫 <anti-pattern description>
+Common patterns:
+- viewport_content_diffing (9 repos)
+- viewport_with_resize_handling (23 repos)
 ```
 
-**Pattern explanation:**
+### 2. Pattern Queries
+"What is viewport_content_diffing?"
+"Show me the storage_cmd_boundary pattern"
+
+**Answers with:**
+- Pattern definition from `patterns/`
+- Confidence score and derivation
+- Repos that use it
+- Violations when absent
+- Fixes that applied it
+
+**Example response:**
 ```
-## <Pattern.Name>
+Pattern: viewport_content_diffing
+Confidence: 0.85
+Category: rendering
 
-<Description>
+Primitives: viewport + diffed_content
+Topology: seq:diffed_content->viewport.SetContent
 
-### Components Used
-| Component | Role |
-|-----------|------|
-| <comp>   | <role> |
+Observed in 9 repos:
+- soft-serve (ui/dashboard.go:156)
+- glow (ui/pager.go:89)
+- mods (output.go:234)
+... (6 more)
 
-### Timing Model
-<Which timing model this pattern obeys>
+Violations (4 issues):
+- early-tui-app#12: "Scroll position resets"
+- buggy-viewer#8: "Flicker on every update"
+... (2 more)
 
-### Failure Modes
-- <mode>: <what goes wrong and how to detect it>
-```
+Fixes (4 PRs):
+- early-tui-app PR#15: Added hash check before SetContent
+- buggy-viewer PR#10: Content diffing eliminated flicker
+... (2 more)
 
-**Comparison explanation:**
-| Aspect | <Option A> | <Option B> |
-|--------|-----------|-----------|
-| Use case | ... | ... |
-| State model | ... | ... |
-| Pairings | ... | ... |
-| Timing | ... | ... |
-| When to choose | ... | ... |
-
-### Phase 4: Evidence and Examples
-
-If `--with-code` is set:
-1. Use ATree to find real-world code examples from the indexed Charm repos:
-   - `atree code_search "<component_name>" --lang go`
-   - Extract relevant snippets (10-20 lines max per example)
-2. Annotate code with inline comments explaining key lines
-
-If `--with-graph` is set:
-1. Use ATree to show graph relationships:
-   - `atree evidence_path <concept> <related_concept>`
-   - Render the path as a text graph:
-     ```
-     Model ──owns──► viewport.Model ──uses──► lipgloss.Style
-       │                                        │
-       └──handles──► WindowSizeMsg ◄─────────────┘
-     ```
-
-## Explanation Principles
-
-1. **Always explain the WHY, not just the WHAT.** Don't just say "viewport has SetContent" — explain that SetContent replaces scroll position, so it must be diff-checked.
-2. **Always mention the Constraints.** Every component/class comes with constraint rules from `constraints.yaml`. Surface them naturally.
-3. **Cross-link to patterns.** When explaining a component, mention which patterns use it and why.
-4. **Be opinionated about tradeoffs.** Say "use viewport for X, use list for Y" with reasoning.
-5. **Ground in code, not docs.** Use ATree symbol queries to back up explanations with real references.
-
-## Common Explanations (Pre-compiled)
-
-### Bubble Tea Lifecycle
-```
-Init() → Cmd → [async work] → tea.Msg → Update() → (Model, Cmd) → View() → render
-                                  ↑                              │
-                                  └────────── loop ◄─────────────┘
+Why this works:
+viewport.SetContent() resets scroll when content changes.
+Diffing prevents unnecessary calls, maintaining scroll stability.
 ```
 
-### Message Flow
+### 3. Constraint Queries
+"Why does the no_blocking_update constraint exist?"
+"Explain storage_must_be_async"
+
+**Answers with:**
+- Constraint definition
+- Type (canonical vs empirical)
+- Confidence and evidence
+- Pattern it derives from (if empirical)
+- Violation examples
+- Fix recommendations
+
+**Example response (empirical constraint):**
 ```
-tea.Cmd callback → tea.Msg → Program.Send() → root.Update() → child.Update() → child.View()
+Constraint: storage_must_be_async
+Type: empirical
+Confidence: 0.94
+Severity: error
+
+Description:
+Storage operations (charm, skate, file I/O) must be wrapped
+in async commands, never called directly from Update() or View().
+
+Derived from pattern:
+storage_cmd_boundary (14 observations, 11 fixes)
+
+Evidence:
+Observations: 14 repos wrap storage in tea.Cmd
+Violations: 12 repos had blocking issues
+Fixes: 11 repos fixed by async wrapping
+Fix success rate: 91.7%
+
+Violation examples:
+- blocking-app#8: "UI freezes when saving settings"
+  Root cause: skate.Set() in Update()
+  Fix: Moved to Cmd wrapper (PR#10)
+
+- slow-tui#15: "Multi-second hangs on config load"
+  Root cause: os.ReadFile() in Init()
+  Fix: Async Cmd for loading (PR#18)
+
+Why this matters:
+Bubble Tea's event loop is single-threaded. Any blocking
+call in Update() freezes the entire UI until it completes.
+Storage I/O can take 10ms-1000ms depending on disk/network.
 ```
 
-### Viewport + Key + Help Pairing
+**Example response (canonical constraint):**
 ```
-viewport.Model (scrollable content)
-    ↑ focused by
-key.Binding (what keys scroll)
-    ↑ described by
-help.Model (visible keyboard help)
+Constraint: no_blocking_update
+Type: canonical
+Confidence: 1.0
+Severity: error
+
+Description:
+Blocking I/O or synchronous calls inside Update() block
+the event loop and freeze the UI.
+
+Runtime requirement:
+Bubble Tea's architecture requires Update() to return
+immediately. The event loop cannot process input, render,
+or handle messages while Update() is executing.
+
+This is a runtime semantic, not an observed pattern.
 ```
 
-### Lip Gloss Style Caching Rule
+### 4. Library Usage Queries
+"How do repos use harmonica?"
+"What patterns exist for colorprofile?"
+
+**Answers with:**
+- Primitives from that library
+- Observed usage patterns
+- Integration strategies
+- Common pairings
+
+**Example response:**
 ```
-Styles are pure functions of data → compute ONCE when data changes, not every View() frame.
-Cache as struct fields: type Model struct { style lipgloss.Style }
-Recompute in Update() only when the underlying data changes.
+Library: harmonica
+Primitives: animated_transition
+
+Usage patterns:
+1. animation_loop_with_cleanup (17 repos)
+   - Spring physics in goroutine
+   - Tick messages drive updates
+   - Cleanup on quit
+   - Confidence: 0.87
+
+2. smooth_scroll_interpolation (8 repos)
+   - Spring for viewport offset
+   - Read interpolated value in View()
+   - Update spring in Update()
+   - Confidence: 0.82
+
+Common pairings:
+- harmonica + viewport (smooth scrolling)
+- harmonica + lipgloss (animated transitions)
+- harmonica + tick_source (frame timing)
+
+Constraints:
+- no_spring_calculation_in_view (empirical, 0.88)
+- must_cleanup_tickers (empirical, 0.91)
 ```
 
-## Environment
+### 5. Evidence Queries
+"Show me evidence for viewport diffing"
+"Which repos use storage Cmds?"
 
-- `ATREE_DB_PATH`: ATree database for code graph queries
-- `DEEPWIKI_PATH`: Path to DeepWiki corpus (default: `../../deepwiki-charmbracelet/`)
+**Answers with:**
+- Direct evidence references
+- Files and line numbers
+- Commit links
+- Issue/PR links
+
+**Example response:**
+```
+Evidence for: viewport_content_diffing pattern
+
+Observations (9):
+1. soft-serve
+   File: ui/dashboard.go:156
+   Pattern: if hashContent(new) != m.hash { m.viewport.SetContent(new) }
+   Evidence ID: softserve_001
+
+2. glow
+   File: ui/pager.go:89
+   Pattern: if m.lastContent != content { m.vp.SetContent(content) }
+   Evidence ID: glow_003
+
+... (7 more)
+
+Violations (4):
+1. early-tui-app (issue #12)
+   Symptom: "Viewport scroll position resets on every update"
+   Root cause: SetContent called without diff check
+   Fix: PR#15 added hash comparison
+   
+... (3 more)
+```
+
+## Execution Flow
+
+1. **Parse query** - identify what user is asking about
+2. **Classify** - primitive, pattern, constraint, library, or evidence
+3. **Load knowledge** - read appropriate YAML files
+4. **Check confidence** - distinguish canonical vs empirical
+5. **Gather evidence** - if requested, load supporting observations
+6. **Format response** - structured, with confidence and sources
+
+## MCP Tool Usage
+
+```
+mcp__charmed__explain_primitive(name: "viewport")
+mcp__charmed__explain_pattern(name: "storage_cmd_boundary")
+mcp__charmed__explain_constraint(id: "viewport_churn")
+mcp__charmed__list_evidence(pattern: "viewport_content_diffing")
+```
+
+## Output Formatting
+
+### Quick mode (default)
+2-3 paragraph explanation with confidence if empirical
+
+### With evidence (--with-evidence)
+Full response including repos, issues, commits
+
+### Primitives only (--primitives-only)
+Skip library-specific details, just show primitive semantics
+
+### With repos (--show-repos)
+List all repos exhibiting pattern/using primitive
+
+## Important Distinctions
+
+**Canonical answers:**
+- Based on runtime semantics
+- Confidence always 1.0
+- No "observed in X repos"
+- Authority: official docs + runtime behavior
+
+**Empirical answers:**
+- Based on ecosystem observations
+- Confidence 0.75-0.95
+- Show evidence count
+- Authority: derived from pattern mining
+
+Always make this distinction clear in responses.

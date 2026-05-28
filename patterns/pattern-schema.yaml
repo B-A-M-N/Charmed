@@ -1,0 +1,391 @@
+# Pattern Induction Schema
+# Patterns emerge from clustering evidence with equivalent topologies.
+# Patterns are EMPIRICAL - derived from observed implementations.
+#
+# Confidence is based on:
+# - Number of observations
+# - Consistency across repos
+# - Violation/fix correlation
+
+version: 1
+schema_type: pattern_induction
+
+# Pattern definition
+pattern:
+  id: string                  # Unique pattern identifier (e.g., "viewport_content_diffing")
+  name: string                # Human-readable name
+  category: enum              # [lifecycle, async, rendering, state, coordination, infrastructure]
+
+  # Core definition
+  primitives: list[string]    # Primitive IDs from primitives.yaml
+  topology_signature: string  # Normalized topology hash
+
+  # Confidence and derivation
+  confidence: float           # 0.0-1.0 based on evidence strength
+  confidence_factors:
+    observation_count: int    # Number of repos exhibiting this
+    consistency_score: float  # How consistent implementations are
+    violation_count: int      # Times absence caused issues
+    fix_count: int            # Times this pattern fixed issues
+
+  # Evidence
+  derived_from:
+    observations: list[observation_ref]
+    violations: list[violation_ref]
+    fixes: list[fix_ref]
+
+  # Pattern structure
+  structure:
+    type: enum                # [sequence, tree, graph, pipeline]
+    nodes: list[primitive_usage]
+    edges: list[relationship]
+    invariants: list[invariant]
+
+  # Usage guidance
+  applies_to: list[string]    # Which primitives this enhances
+  generalizes_to: list[string] # Higher-level patterns this enables
+  conflicts_with: list[string] # Incompatible patterns
+
+  # Constraints derived from this pattern
+  synthesized_constraints: list[constraint_ref]
+
+  # Metadata
+  first_observed: timestamp
+  last_updated: timestamp
+  observation_period: duration
+
+# Evidence references
+observation_ref:
+  repo: string
+  file: string
+  line: int
+  evidence_id: string         # Reference to evidence/repo-name/evidence-id.yaml
+  extracted_at: timestamp
+
+violation_ref:
+  repo: string
+  issue_url: string
+  symptom: string             # What went wrong
+  root_cause: string          # Why it happened
+  evidence_id: string
+
+fix_ref:
+  repo: string
+  commit_sha: string
+  pr_url: string
+  before_evidence_id: string
+  after_evidence_id: string
+  improvement: string         # Quantifiable if possible
+
+# Primitive usage within pattern
+primitive_usage:
+  primitive_id: string
+  role: string                # What role this primitive plays
+  required: bool              # Must be present vs optional
+  cardinality: string         # "1", "0..1", "1..n", etc.
+
+# Relationships between primitives in pattern
+relationship:
+  from: string                # Primitive ID
+  to: string                  # Primitive ID
+  type: enum                  # [calls, emits, depends_on, invalidates, precedes]
+  required: bool
+  timing: string              # e.g., "immediate", "deferred", "async"
+
+# Invariant - property that must hold
+invariant:
+  description: string
+  violated_by: list[string]   # Signal patterns that break this
+  enforced_by: list[string]   # Constraint IDs that check this
+
+# Constraint reference
+constraint_ref:
+  constraint_id: string       # From constraints/ directory
+  confidence: float           # How confident this constraint is
+  derived_from_pattern: bool  # vs hand-authored
+
+---
+
+# EXAMPLE PATTERNS
+
+# Pattern 1: Viewport Content Diffing
+id: viewport_content_diffing
+name: "Viewport Content Diffing"
+category: rendering
+
+primitives:
+  - viewport
+  - diffed_content
+
+topology_signature: "seq:diffed_content->viewport.SetContent"
+
+confidence: 0.85
+confidence_factors:
+  observation_count: 9
+  consistency_score: 0.92
+  violation_count: 4
+  fix_count: 4
+
+derived_from:
+  observations:
+    - repo: soft-serve
+      file: ui/dashboard.go
+      line: 156
+      evidence_id: softserve_001
+      extracted_at: 2026-05-20T14:30:00Z
+    - repo: glow
+      file: ui/pager.go
+      line: 89
+      evidence_id: glow_003
+      extracted_at: 2026-05-21T09:15:00Z
+    # ... 7 more
+
+  violations:
+    - repo: early-tui-app
+      issue_url: https://github.com/example/early-tui-app/issues/12
+      symptom: "Viewport scroll position resets on every update"
+      root_cause: "SetContent called without checking if content changed"
+      evidence_id: early_violation_001
+
+  fixes:
+    - repo: early-tui-app
+      commit_sha: def456
+      pr_url: https://github.com/example/early-tui-app/pull/15
+      before_evidence_id: early_violation_001
+      after_evidence_id: early_fix_001
+      improvement: "Scroll position stable, reduced flicker"
+
+structure:
+  type: sequence
+  nodes:
+    - primitive_id: diffed_content
+      role: "Content change detection"
+      required: true
+      cardinality: "1"
+    - primitive_id: viewport
+      role: "Scrollable content display"
+      required: true
+      cardinality: "1"
+  edges:
+    - from: diffed_content
+      to: viewport
+      type: depends_on
+      required: true
+      timing: immediate
+  invariants:
+    - description: "SetContent only called when content actually changed"
+      violated_by: ["direct_setcontent_without_check"]
+      enforced_by: ["viewport_churn"]
+
+applies_to: [viewport]
+generalizes_to: [streaming_console, log_viewer, chat_interface]
+conflicts_with: [full_rerender_every_frame]
+
+synthesized_constraints:
+  - constraint_id: viewport_churn
+    confidence: 0.94
+    derived_from_pattern: true
+
+first_observed: 2026-03-15T00:00:00Z
+last_updated: 2026-05-28T00:00:00Z
+observation_period: 74d
+
+---
+
+# Pattern 2: Storage Cmd Boundary
+id: storage_cmd_boundary
+name: "Storage Wrapped in Async Command"
+category: infrastructure
+
+primitives:
+  - storage_boundary
+  - async_cmd
+  - update_phase
+
+topology_signature: "pipeline:update->cmd->storage->result_msg"
+
+confidence: 0.94
+confidence_factors:
+  observation_count: 14
+  consistency_score: 0.96
+  violation_count: 12
+  fix_count: 11
+
+derived_from:
+  observations:
+    - repo: charm-app-1
+      file: app/config.go
+      line: 45
+      evidence_id: charm1_storage_001
+      extracted_at: 2026-04-10T11:20:00Z
+    # ... 13 more
+
+  violations:
+    - repo: blocking-storage-app
+      issue_url: https://github.com/example/blocking-app/issues/8
+      symptom: "UI freezes when saving settings"
+      root_cause: "skate.Set() called directly in Update()"
+      evidence_id: blocking_violation_001
+    # ... 11 more
+
+  fixes:
+    - repo: blocking-storage-app
+      commit_sha: 7f8g9h0
+      pr_url: https://github.com/example/blocking-app/pull/10
+      before_evidence_id: blocking_violation_001
+      after_evidence_id: blocking_fix_001
+      improvement: "UI remains responsive during save, 0ms Update() time"
+    # ... 10 more
+
+structure:
+  type: pipeline
+  nodes:
+    - primitive_id: update_phase
+      role: "Initiates storage operation"
+      required: true
+      cardinality: "1"
+    - primitive_id: async_cmd
+      role: "Wraps storage I/O"
+      required: true
+      cardinality: "1"
+    - primitive_id: storage_boundary
+      role: "Performs I/O operation"
+      required: true
+      cardinality: "1"
+  edges:
+    - from: update_phase
+      to: async_cmd
+      type: calls
+      required: true
+      timing: immediate
+    - from: async_cmd
+      to: storage_boundary
+      type: calls
+      required: true
+      timing: async
+    - from: storage_boundary
+      to: update_phase
+      type: emits
+      required: true
+      timing: deferred
+  invariants:
+    - description: "Storage I/O never called directly from Update() or View()"
+      violated_by: ["storage_in_update", "storage_in_view"]
+      enforced_by: ["no_blocking_update", "no_io_in_view"]
+
+applies_to: [storage_boundary, persisted_state]
+generalizes_to: [any_io_boundary, network_calls, database_queries]
+conflicts_with: [synchronous_storage]
+
+synthesized_constraints:
+  - constraint_id: no_blocking_update
+    confidence: 0.98
+    derived_from_pattern: true
+  - constraint_id: storage_must_be_async
+    confidence: 0.94
+    derived_from_pattern: true
+
+first_observed: 2026-02-01T00:00:00Z
+last_updated: 2026-05-28T00:00:00Z
+observation_period: 116d
+
+---
+
+# Pattern 3: Animation Loop with Cleanup
+id: animation_loop_with_cleanup
+name: "Animation Loop with Cleanup"
+category: async
+
+primitives:
+  - tick_source
+  - animated_transition
+  - cancellation_boundary
+  - shutdown_phase
+
+topology_signature: "tree:tick_source->animation+shutdown->cancel"
+
+confidence: 0.87
+confidence_factors:
+  observation_count: 17
+  consistency_score: 0.89
+  violation_count: 6
+  fix_count: 5
+
+derived_from:
+  observations:
+    - repo: harmonica-examples
+      file: smooth-scroll/main.go
+      line: 67
+      evidence_id: harmonica_anim_001
+      extracted_at: 2026-05-05T16:45:00Z
+    # ... 16 more
+
+  violations:
+    - repo: leaky-animation-app
+      issue_url: https://github.com/example/leaky-app/issues/23
+      symptom: "Goroutine leak, ticker not stopped"
+      root_cause: "No cleanup handler for animation ticker"
+      evidence_id: leak_violation_001
+    # ... 5 more
+
+  fixes:
+    - repo: leaky-animation-app
+      commit_sha: 1a2b3c4
+      pr_url: https://github.com/example/leaky-app/pull/25
+      before_evidence_id: leak_violation_001
+      after_evidence_id: leak_fix_001
+      improvement: "Goroutine count stable, no leaks"
+    # ... 4 more
+
+structure:
+  type: tree
+  nodes:
+    - primitive_id: tick_source
+      role: "Generates animation frames"
+      required: true
+      cardinality: "1"
+    - primitive_id: animated_transition
+      role: "Interpolates state over time"
+      required: true
+      cardinality: "1"
+    - primitive_id: shutdown_phase
+      role: "Detects quit signal"
+      required: true
+      cardinality: "1"
+    - primitive_id: cancellation_boundary
+      role: "Stops ticker"
+      required: true
+      cardinality: "1"
+  edges:
+    - from: tick_source
+      to: animated_transition
+      type: calls
+      required: true
+      timing: periodic
+    - from: shutdown_phase
+      to: cancellation_boundary
+      type: calls
+      required: true
+      timing: immediate
+    - from: cancellation_boundary
+      to: tick_source
+      type: invalidates
+      required: true
+      timing: immediate
+  invariants:
+    - description: "Every tick source must have corresponding cancellation"
+      violated_by: ["ticker_without_cleanup"]
+      enforced_by: ["must_cleanup_tickers"]
+
+applies_to: [tick_source, animated_transition]
+generalizes_to: [periodic_refresh, progress_animation, live_dashboard]
+conflicts_with: [unbounded_tick]
+
+synthesized_constraints:
+  - constraint_id: must_cleanup_tickers
+    confidence: 0.91
+    derived_from_pattern: true
+
+first_observed: 2026-03-10T00:00:00Z
+last_updated: 2026-05-28T00:00:00Z
+observation_period: 79d

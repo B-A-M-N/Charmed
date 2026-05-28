@@ -1,5 +1,5 @@
 ---
-name: charm-tui:ux-review
+name: charmed:ux-review
 description: "Perceptual UX critique of a TUI — pacing, density, focus behavior, responsiveness against timing contracts."
 argument-hint: "[path-to-project] [--archetype <id>] [--strictness normal|strict]"
 allowed-tools: [Read, Grep, Glob, Bash, Agent]

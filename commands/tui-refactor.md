@@ -1,5 +1,5 @@
 ---
-name: charm-tui:refactor
+name: charmed:refactor
 description: "Architectural refactoring for Bubble Tea projects — god model decomposition, viewport churn fixes, with ATree impact analysis."
 argument-hint: "[path-to-project] [--target <symbol>] [--dry-run] [--apply]"
 allowed-tools: [Read, Write, Edit, Bash, Grep, Glob, Agent]

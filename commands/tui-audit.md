@@ -1,5 +1,5 @@
 ---
-name: charm-tui:audit
+name: charmed:audit
 description: "Architecture linter for Bubble Tea projects — scans Go source for anti-patterns, constraint violations, and performance hazards."
 argument-hint: "[path-to-project] [--strict] [--format text|json]"
 allowed-tools: [Read, Write, Bash, Grep, Glob, Agent]

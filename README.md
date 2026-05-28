@@ -1,20 +1,24 @@
 # charmed
 
-**Semantic architecture tooling for terminal interfaces.**
+**A semantic operating model for terminal systems.**
 
-Compiler-grade architectural analysis, perceptual timing validation, deterministic constraint enforcement, and code-graph reasoning for the Charm ecosystem — Bubble Tea, Lip Gloss, Bubbles, Glamour, Glow, Gum, Huh, Mods, Soft-Serve, VHS, Wish, and 11+ more libraries.
+charmed embeds structural knowledge from **23 Charm-ecosystem repositories** and cross-library runtime semantics into a constraint-aware architecture analysis engine. It understands how Bubble Tea, Lip Gloss, Bubbles, Glamour, Huh, Wish, Soft-Serve, and 17 more libraries interact — not as isolated packages, but as an interconnected terminal runtime.
 
----
+```
+Go Source
+   ↓
+ATree Semantic Graph             cross-file call resolution, type bindings, impact analysis
+   ↓
+TUI Structural IR                models, messages, commands, boundaries, ownership
+   ↓
+Constraint Engine                13 rules, 4 severity levels, 6 categories
+   ↓
+Timing Evaluation                perceptual contracts (smooth streaming, snappy focus, etc.)
+   ↓
+Architectural Suggestions        decomposition, boundary insertion, caching, autofix
+```
 
-## Why This Exists
-
-Most TUI frameworks give you rendering primitives. Charm gives you the Model-View-Update pattern. But nothing tells you when your architecture is wrong — when a blocking call freezes the event loop, when a viewport resets on every frame, or when a 400-line `Update()` has silently become unmaintainable.
-
-Generic coding assistants can't catch these because they don't understand **TUI-specific failure modes**. They don't know that `SetContent()` called more than once per frame causes visible flicker, or that a goroutine spawned inside a loop creates unbounded concurrency, or that a sync I/O call in `Init()` delays the first render by 300ms.
-
-charmed does. It operates on a **structural intermediate representation** of your TUI — a semantic model extracted from your Go source — and evaluates it against constraint rules and perceptual timing contracts.
-
-This is not a chatbot helper. It is a semantic analysis system for terminal interface architecture.
+This is not an AI coding assistant. It is not a prompt wrapper. `charmed` is architecture intelligence infrastructure for terminal interfaces.
 
 ---
 
@@ -37,235 +41,89 @@ If you want a coding assistant, use Claude. If you want to know whether your TUI
 
 ---
 
-## What "Semantic" Means
+## Table of Contents
 
-Semantic analysis means charmed understands:
-
-- **ownership** — which model owns which state, where mutations happen
-- **message flow** — emitter → type → handler, traced across files
-- **component relationships** — which Bubbles components are bound, how they're used
-- **async boundaries** — where concurrency starts, where it ends, where it leaks
-- **render behavior** — what View() actually draws, how often it recomputes
-- **architectural intent** — the structure the code implies, not just the syntax
-
-— not just syntax.
+1. [Semantic Ecosystem Model](#semantic-ecosystem-model)
+2. [TUI Structural IR](#tui-structural-ir)
+3. [Constraint Engine](#constraint-engine)
+4. [Timing Contracts](#timing-contracts)
+5. [Archetypes](#archetypes)
+6. [Code Graph Reasoning](#code-graph-reasoning)
+7. [Skills, Commands, and MCP](#skills-commands-and-mcp)
+8. [Installation](#installation)
 
 ---
 
-## The Pipeline
+## Semantic Ecosystem Model
+
+charmed does **not** treat the Charm ecosystem as isolated packages. It models the ecosystem as an interconnected runtime architecture — a cross-library semantic graph where component ownership, message flow, rendering behavior, and composition relationships are first-class knowledge.
+
+This is the core asset. Everything else — the constraint engine, the timing evaluator, the refactoring tools — sits on top of this layer.
+
+### 23 Repositories, Normalized into One Ontology
 
 ```
-Go Source
-   ↓
-ATree Semantic Graph            ← cross-file call resolution, type bindings, impact analysis
-   ↓
-TUI Structural IR               ← models, messages, commands, boundaries, ownership
-   ↓
-Constraint Engine               ← 13 rules, 4 severity levels, 6 categories
-   ↓
-Timing Evaluation               ← perceptual contracts (smooth streaming, snappy focus, etc.)
-   ↓
-Architectural Suggestions       ← decomposition, boundary insertion, caching, autofix
+bubbletea ─┬─ bubbles ─── viewport
+           │              ├── list
+           │              ├── textarea
+           │              ├── textinput
+           │              ├── spinner
+           │              ├── help
+           │              ├── progress
+           │              ├── table
+           │              ├── filepicker
+           │              └── key
+           │
+           ├── lipgloss ─── Style (layout, inheritance, render constraints)
+           ├── glamour ──── Markdown rendering over Lip Gloss
+           ├── glow ─────── Styled markdown viewer
+           ├── huh ──────── Form / wizard primitive built on Bubble Tea
+           ├── gum ──────── Interactive shell TUI toolkit
+           ├── mods ─────── AI-powered terminal pipeline
+           ├── wish ─────── SSH-based Bubble Tea host framework
+           ├── soft-serve ─ Self-hostable Git server TUI
+           └── vhs ──────── Terminal recording and playback
 ```
 
-**The IR is the product.** Skills, commands, and the MCP server are interfaces into the engine. The semantic representation is the core platform — versioned, stable, and interface-agnostic.
+Plus: `charm`, `crush`, `fang`, `harmonica`, `log`, `pop`, `sequin`, `ultraviolet`, `wishlist`, `x`, `skate`, and `colorprofile`.
 
----
+### Cross-Library Semantics
 
-## Architecture Intelligence
-
-Deterministic detection of design flaws specific to terminal interface architecture.
-
-- **Model complexity analysis** — LOC budgeting, switch branch counting, god-model detection
-- **Component binding verification** — viewport, list, textarea field type matching against known Charm components
-- **State ownership mapping** — which model owns which fields, mutation path tracing
-- **Async boundary analysis** — goroutine spawn sites, command orchestration, channel detection
-- **Render tree extraction** — identifies what each View() actually renders, detects recompute anti-patterns
-
-Severity levels: `INFO` · `WARN` · `ERROR` · `CRITICAL`
-
-Categories: `ARCHITECTURE` · `PERFORMANCE` · `CONCURRENCY` · `STATE` · `ROBUSTNESS` · `UX`
-
-### Example: god model detection
-
-```go
-// VIOLATION: 340-line Update, 23 message types, 1 struct owning everything
-type AppModel struct {
-    viewport viewport.Model
-    list     list.Model
-    // ... 15 more fields
-}
-```
+The ontology captures how these libraries **interact architecturally**:
 
 ```
-[CRITICAL] god_model: Update() is 340 lines of switch branches.
-           Model owns too much state. Decompose into child models.
-
-Fix: Extract list management into ListModel, viewport into ViewModel.
-     Parent orchestrates message passing. Each child owns its own Update/View.
+viewport.Model
+    ↕ scroll ownership, content lifecycle
+lipgloss.Style
+    ↕ render composition, layout constraints
+glamour renderer
+    ↕ markdown → styled terminal output
+bubbletea.Cmd
+    ↕ async orchestration, goroutine lifecycle
+tea.Batch / tea.Sequence
+    ↕ command ordering, concurrency semantics
+bubbles/help.Model
+    ↕ key binding discovery, discoverability contract
 ```
 
----
+That is the killer feature. Not "we know these libraries exist" — but "we understand how they compose, conflict, and communicate at runtime."
 
-## Constraint Systems
+### What's Represented
 
-13 architectural lint rules enforced against the IR with severity, category, and deterministic fix patterns.
+For every component across all 23 repositories:
 
-| Rule | Severity | Category |
-|------|----------|----------|
-| `god_model` | CRITICAL | ARCHITECTURE |
-| `giga_switch_update` | CRITICAL | ARCHITECTURE |
-| `viewport_recreation` | CRITICAL | PERFORMANCE |
-| `no_blocking_update` | ERROR | CORRECTNESS |
-| `viewport_churn` | ERROR | PERFORMANCE |
-| `unbounded_cmd_spawning` | ERROR | CONCURRENCY |
-| `sync_io_in_init` | ERROR | CORRECTNESS |
-| `viewport_without_resize_handling` | ERROR | ROBUSTNESS |
-| `style_recomputation_hot_path` | WARN | PERFORMANCE |
-| `string_allocation_pressure` | INFO | PERFORMANCE |
-| `missing_key_bindings_help` | WARN | UX |
-| `missing_alt_screen_cleanup` | WARN | ROBUSTNESS |
-| `tea_batch_misuse` | INFO | CORRECTNESS |
+- **Ownership** — which model owns which state, where mutations happen
+- **Message flow** — emitter → type → handler, traced across files
+- **Component relationships** — bounds, pairings, composition patterns
+- **Async boundaries** — where concurrency starts, ends, and leaks
+- **Render behavior** — what `View()` actually draws, how often it recomputes
+- **State contracts** — lifecycle expectations, initialization requirements
+- **Failure modes** — per-component known anti-patterns with fix patterns
+- **Timing expectations** — perceptual contracts each component must obey
+- **Styling semantics** — Lip Gloss style inheritance and render constraints
+- **Transport/runtime integration** — SSH (wish), recording (vhs), TUI hosting (soft-serve)
 
-Each rule includes: what was matched, why it's a problem, and the exact pattern to apply.
-
----
-
-## Timing Contracts
-
-**SLOs for interaction systems.** Perceptual timing contracts define what "feels alive" in measurable terms.
-
-Most TUI systems think in state and messages. charmed adds the **perceptual dimension** — how the interface *feels* to a human operator.
-
-### smooth_streaming
-Content streams without jitter or blank frames.
-
-| Constraint | Value |
-|---|---|
-| Max render frequency | 30 fps |
-| Command latency warn | 50ms |
-| Command latency error | 150ms |
-| Viewport mutations/frame | 2 max |
-| String allocations/frame | 3 max |
-
-*Traits: progressive disclosure, incremental append, low jitter, immediate feedback*
-
-### snappy_focus
-Focus changes are instant and predictable.
-
-| Constraint | Value |
-|---|---|
-| Focus change latency | 16ms |
-| Key repeat delay | 100ms |
-| Min render frequency | 30 fps |
-
-*Traits: instant response, predictable navigation, no visual delays*
-
-### responsive_input
-Input feels realtime with no perceptible lag.
-
-| Constraint | Value |
-|---|---|
-| Echo latency | 16ms |
-| Validation latency | 50ms |
-| Autocomplete latency | 100ms |
-
-*Traits: character echo, live validation, immediate feedback*
-
-### periodic_refresh
-Dashboard metrics tick in without layout disruption.
-
-| Constraint | Value |
-|---|---|
-| Refresh interval | 500ms |
-| Max frame drops | 1 |
-| Transition duration | 200ms |
-
-*Traits: stable layout, smooth transitions, no layout jitter*
-
-**Additional contracts:** `periodic_refresh_1s` · `ambient_refresh_1s` · `instant_search` · `instant_validation` · `60fps_cap`
-
-Timing contracts are the most original part of charmed — almost nobody formalizes perceptual systems engineering for TUIs. This is where the project has the deepest differentiated potential.
-
----
-
-## Perceptual Runtime Analysis
-
-Architecture analysis filtered through human perception — not just "is the code correct" but "does the interface feel right."
-
-- **Focus behavior** — does the interface acknowledge interactions within one frame?
-- **Scroll stability** — is cursor position preserved during content append?
-- **Pacing** — does the interface feel responsive or does it have perceptible lag?
-- **Render cadence** — are frames consistent or does the interface visibly stutter?
-- **Density profiling** — ambient, balanced, or dense — matched to archetype expectations
-- **Motion philosophy** — static (forms, wizards) vs smooth (streaming, chat)
-
-This is runtime perception engineering, not UX critique.
-
----
-
-## Runtime Semantics
-
-Understanding what your TUI *does*, not just what it *is*.
-
-- **Message flow graph** — emitter → type → handler, traced across files via ATree
-- **Command lifecycle** — spawn sites, ordering (Batch vs Sequence), throttling analysis
-- **Side effect detection** — I/O inside Init/Update, network calls in hot paths
-- **Concurrency surface** — goroutine leaks, unbounded spawning, channel misuse
-- **Render behavior** — viewport churn detection, SetContent frequency analysis, style recompute paths
-
----
-
-## Runtime Trace Engine
-
-`tui-instrument` produces frame-level traces that can be replayed for perceptual analysis:
-
-```
-Frame Budget: 16.6ms (60fps)
-
-Message Timeline:
-  KeyMsg          t=0.0ms
-  Update()        t=0.1ms  [42 LOC, 3 branches evaluated]
-  Cmd Spawn       t=0.5ms  [fetchCmd → async]
-  Render          t=1.2ms  [viewport.View() + lipgloss.Render()]
-  
-  Frame complete: t=2.1ms ✓
-
-Next Frame (47ms later):
-  HTTP Result     t=47.2ms
-  Update()        t=47.3ms [120 LOC, 8 branches]
-  Viewport Set    t=48.1ms [CHURN: SetContent called 3 times]
-  Render          t=49.0ms
-
-  ⚠ smooth_streaming breached: viewport mutations/frame = 3 (budget: 2)
-```
-
-Trace output feeds back into the constraint engine. Timing violations become architectural findings. Runtime behavior becomes structural evidence.
-
----
-
-## Code Graph Reasoning
-
-Powered by [ATree](https://github.com/Unity-Lab-AI/ATree) — a semantic code graph engine for Go.
-
-ATree provides the cross-file understanding that makes deep analysis possible:
-
-- **Call path tracing** — which function calls which, across package boundaries
-- **Type binding resolution** — fully qualified types with import alias expansion
-- **Evidence-based impact analysis** — "if I change this, what breaks?"
-- **Heritage detection** — interface implementation, struct embedding, composition chains
-- **Assignment tracking** — field mutations across function boundaries
-
-Required for full `scan_project` mode. Not required for constraint lookups, archetypes, timing contract evaluation, or knowledge corpus queries.
-
-```bash
-# Install ATree
-git clone https://github.com/Unity-Lab-AI/ATree.git
-cd ATree && go build -o ~/.local/bin/atree .
-
-# Index your project
-export ATREE_DB_PATH=/path/to/your/project/.atree/index.sqlite
-```
+See: [`ontology/knowledge.yaml`](ontology/knowledge.yaml) · [`ontology/ontology-contract.yaml`](ontology/ontology-contract.yaml)
 
 ---
 
@@ -301,32 +159,153 @@ The intermediate representation at the heart of charmed. Versioned, stable, inte
 }
 ```
 
+The IR can be consumed independently — pipe it into custom analysis, visualization, or CI checks. It is the product surface for anything that needs to reason about TUI architecture programmatically.
+
 Schema: [`ir/tui-structural-ir.schema.json`](ir/tui-structural-ir.schema.json)
 
-The IR can be consumed independently of the skills — pipe it into custom analysis, visualization, or CI checks.
+---
+
+## Constraint Engine
+
+13 architectural lint rules enforced against the IR. Deterministic: same input, same findings, no stochastic variation.
+
+| Rule | Severity | Category | What It Catches |
+|------|----------|----------|-----------------|
+| `god_model` | CRITICAL | ARCHITECTURE | 300+ line `Update()`, single struct owning everything |
+| `giga_switch_update` | CRITICAL | ARCHITECTURE | 20+ message-type branches in one `Update()` |
+| `viewport_recreation` | CRITICAL | PERFORMANCE | `viewport.New()` inside `View()` or `Update()` |
+| `no_blocking_update` | ERROR | CORRECTNESS | HTTP/file/DB calls inside `Update()` |
+| `viewport_churn` | ERROR | PERFORMANCE | `SetContent()` called multiple times per frame |
+| `unbounded_cmd_spawning` | ERROR | CONCURRENCY | Goroutine storms from loop-spawned commands |
+| `sync_io_in_init` | ERROR | CORRECTNESS | Blocking I/O delaying first render |
+| `viewport_without_resize_handling` | ERROR | ROBUSTNESS | Viewport that never receives `WindowSizeMsg` |
+| `style_recomputation_hot_path` | WARN | PERFORMANCE | `lipgloss.NewStyle()` inside `View()` |
+| `string_allocation_pressure` | INFO | PERFORMANCE | `fmt.Sprintf` hot path in `View()` |
+| `missing_key_bindings_help` | WARN | UX | No `help.Model` or key binding discovery |
+| `missing_alt_screen_cleanup` | WARN | ROBUSTNESS | Alt screen entered, never exited |
+| `tea_batch_misuse` | INFO | CORRECTNESS | `tea.Batch` where order matters |
+
+### Example: god model detection
+
+```go
+// VIOLATION: 340-line Update, 23 message types, 1 struct owning everything
+type AppModel struct {
+    viewport viewport.Model
+    list     list.Model
+    // ... 15 more fields
+}
+```
+
+```
+[CRITICAL] god_model: Update() is 340 lines of switch branches.
+           Model owns too much state. Decompose into child models.
+
+Fix: Extract list management into ListModel, viewport into ViewModel.
+     Parent orchestrates message passing. Each child owns its own Update/View.
+```
+
+Each rule includes: what was matched, why it's a problem, and the exact architectural pattern to apply.
+
+See: [`constraints/constraints.yaml`](constraints/constraints.yaml)
+
+---
+
+## Timing Contracts
+
+**SLOs for interaction systems.** Perceptual timing contracts define what "feels alive" in measurable terms.
+
+Most TUI systems think in state and messages. charmed adds the **perceptual dimension** — how the interface *feels* to a human operator. This is the most original part of the project. Almost nobody formalizes perceptual systems engineering for TUIs.
+
+| Contract | Target | Key Constraints |
+|----------|--------|----------------|
+| `smooth_streaming` | Progressive content display | 30fps max · 50ms cmd warn · 2 viewport mutations/frame |
+| `snappy_focus` | Pane switching, navigation | 16ms focus change · 100ms key repeat · 30fps min |
+| `responsive_input` | Typing, validation | 16ms echo · 50ms validation · 100ms autocomplete |
+| `periodic_refresh` | Dashboard metrics | 500ms interval · 1 max frame drop · 200ms transitions |
+| `instant_search` | Live filtering | 50ms debounce · 100ms result latency |
+| `instant_validation` | Form feedback | 50ms validation · 0ms error display |
+| `60fps_cap` | Render rate ceiling | 60fps max · 16ms frame budget |
+| `ambient_refresh_1s` | Background status | 1s interval · 0 frame drops · low visual weight |
+
+Every contract includes **perception traits** (e.g., "progressive disclosure", "no visual delays") and **interaction patterns** (e.g., "each typed character appears in <16ms").
+
+See: [`timing/timing-models.yaml`](timing/timing-models.yaml)
 
 ---
 
 ## Archetypes
 
-8 behavioral topology definitions — reference architecture templates for common TUI patterns.
+8 behavioral topology definitions — reference architecture templates for common TUI patterns. Each defines: required components, state topology, update flow, command orchestration, timing expectations, known failure modes, and perceptual benchmarks.
 
-Each archetype defines: required components, state topology, update flow strategy, command orchestration pattern, timing expectations, known failure modes, and perceptual benchmarks.
-
-| Archetype | Layout | Density | Motion | Key Traits |
+| Archetype | Layout | Density | Motion | Timing |
 |---|---|---|---|---|
-| `agent_console` | multi_pane | balanced | smooth | streaming output, async orchestration, cursor stability |
-| `streaming_chat` | single_pane | balanced | smooth | role-based rendering, incremental append, anchored scroll |
-| `ide_workspace` | multi_pane | dense | static | persistent layout, resize propagation, focus management |
-| `monitoring_dashboard` | multi_pane | dense | static | periodic refresh, data-driven, alert surfaces |
-| `cli_wizard` | single_pane | balanced | static | state machine, step navigation, inline validation |
-| `git_client` | multi_pane | dense | smooth | diff rendering, branch navigation, blame overlay |
-| `log_explorer` | single_pane | dense | smooth | live tail, regex filtering, severity highlighting |
-| `status_console` | single_pane | ambient | smooth | low visual weight, background polling, transient toast |
+| `agent_console` | multi_pane | balanced | smooth | streaming + responsive input |
+| `streaming_chat` | single_pane | balanced | smooth | smooth streaming |
+| `ide_workspace` | multi_pane | dense | static | snappy focus |
+| `monitoring_dashboard` | multi_pane | dense | static | periodic refresh |
+| `cli_wizard` | single_pane | balanced | static | instant validation |
+| `git_client` | multi_pane | dense | smooth | streaming + instant search |
+| `log_explorer` | single_pane | dense | smooth | streaming + 60fps cap |
+| `status_console` | single_pane | ambient | smooth | ambient refresh |
 
 Archetypes are used for: intent classification (`tui-scaffold`), perceptual benchmarking (`tui-ux-review`), and architecture pattern enforcement (`tui-audit`).
 
 Over time, archetypes are evolving toward complete reference architecture specifications — state topology diagrams, command orchestration patterns, and scaling constraint definitions.
+
+See: [`archetypes/archetypes.yaml`](archetypes/archetypes.yaml)
+
+---
+
+## Code Graph Reasoning
+
+Powered by [ATree](https://github.com/Unity-Lab-AI/ATree) — a semantic code graph engine for Go.
+
+ATree provides the cross-file understanding that makes deep analysis possible:
+
+- **Call path tracing** — which function calls which, across package boundaries
+- **Type binding resolution** — fully qualified types with import alias expansion
+- **Evidence-based impact analysis** — "if I change this, what breaks?"
+- **Heritage detection** — interface implementation, struct embedding, composition chains
+- **Assignment tracking** — field mutations across function boundaries
+
+Required for full `scan_project` mode. Not required for constraint lookups, archetypes, timing contract evaluation, or knowledge corpus queries.
+
+```bash
+# Install ATree
+git clone https://github.com/Unity-Lab-AI/ATree.git
+cd ATree && go build -o ~/.local/bin/atree .
+
+# Index your project
+export ATREE_DB_PATH=/path/to/your/project/.atree/index.sqlite
+```
+
+---
+
+## Runtime Trace Engine
+
+`tui-instrument` produces frame-level traces that can be replayed for perceptual analysis:
+
+```
+Frame Budget: 16.6ms (60fps)
+
+Message Timeline:
+  KeyMsg          t=0.0ms
+  Update()        t=0.1ms  [42 LOC, 3 branches evaluated]
+  Cmd Spawn       t=0.5ms  [fetchCmd → async]
+  Render          t=1.2ms  [viewport.View() + lipgloss.Render()]
+
+  Frame complete: t=2.1ms ✓
+
+Next Frame (47ms later):
+  HTTP Result     t=47.2ms
+  Update()        t=47.3ms [120 LOC, 8 branches]
+  Viewport Set    t=48.1ms [CHURN: SetContent called 3 times]
+  Render          t=49.0ms
+
+  ⚠ smooth_streaming breached: viewport mutations/frame = 3 (budget: 2)
+```
+
+Trace output feeds back into the constraint engine. Timing violations become architectural findings. Runtime behavior becomes structural evidence.
 
 ---
 
@@ -382,57 +361,53 @@ type AppModel struct {
 
 ---
 
-## Charm Knowledge Corpus
+## Skills, Commands, and MCP
 
-Embedded reference documentation for the Charm ecosystem — no external API calls needed.
+Skills, commands, and the MCP server are **interfaces** into the shared engine. The engine underneath is the same no matter which surface you invoke it through.
 
-- **Component semantics** — viewport, list, textarea, textinput, spinner, progress, help, table, filepicker, key.Binding, lipgloss.Style
-- **Pattern relations** — streaming_console, multi_pane_layout, form_wizard, status_bar_pattern
-- **Dependency graph** — bubbletea → bubbles → lipgloss → glamour → glow → gum → huh → mods → soft-serve → wish
-- **Anti-patterns** — per-component known failure modes with fix patterns
-- **Semantic Reference Corpus** — full DeepWiki documentation for 23 Charm libraries: bubbletea, bubbles, lipgloss, glamour, glow, gum, huh, mods, soft-serve, wish, vhs, and more
+| Interface | What it does |
+|-----------|-------------|
+| **6 skills** | Conversational triggers for the engine |
+| **6 commands** | Slash-command entry points (`/tui-audit`, `/tui-refactor`, etc.) |
+| **charmed-mcp** | Programmatic MCP server for IDE integration |
 
----
+### Skills
 
-## Skills
-
-Six skills provide conversational interfaces into the engine.
-
-| Skill | Trigger | Pillar |
+| Skill | Trigger | Primary Knowledge |
 |---|---|---|
-| **tui-audit** | "audit my TUI", "find anti-patterns", "lint architecture", "detect violations" | Architecture Intelligence · Constraint Systems |
-| **tui-refactor** | "refactor", "split this model", "too complex", "decompose" | Architecture Intelligence · Code Graph Reasoning |
-| **tui-explain** | "what is viewport.Model?", "what constraints apply to", "explain timing contract" | Constraint Systems · Knowledge Corpus |
-| **tui-scaffold** | "create a TUI", "scaffold a terminal app", "I want a streaming log viewer" | Architecture Intelligence · Archetypes |
-| **tui-instrument** | "add tracing", "profile my TUI", "where is the lag" | Runtime Semantics · Runtime Trace Engine |
-| **tui-ux-review** | "review UX", "how does this feel", "validate timing contracts" | Timing Contracts · Perceptual Runtime |
+| **tui-audit** | "audit my TUI", "find anti-patterns", "lint architecture" | Constraints · IR |
+| **tui-refactor** | "refactor", "split this model", "too complex", "decompose" | Constraints · Code Graph |
+| **tui-explain** | "what is viewport.Model?", "explain timing contract" | Knowledge Corpus · Constraints |
+| **tui-scaffold** | "create a TUI", "scaffold a terminal app" | Archetypes · Ontology |
+| **tui-instrument** | "add tracing", "profile my TUI", "where is the lag" | Runtime Traces · Timing |
+| **tui-ux-review** | "review UX", "how does this feel", "validate timing" | Timing Contracts · Archetypes |
 
-Skills are interfaces — not the engine. The engine underneath is shared. You get the same constraint system whether you invoke it via `/tui-audit`, ask in natural language, or call the MCP server directly.
+Skills are delivery mechanisms. The ontology, IR, constraints, and timing models are the persistent platform.
 
 ---
 
 ## The Layered Architecture
 
 ```
-Interface Layer
-  ├── skills         (conversational triggers)
-  ├── commands       (/tui-audit, /tui-refactor, …)
-  └── MCP server     (programmatic access)
+Interface Layer                  (how you talk to the engine)
+  ├── 6 skills                   (conversational triggers)
+  ├── 6 slash commands           (/tui-audit, /tui-refactor, …)
+  └── MCP server                 (charmed-mcp stdio server)
 
-Semantic Layer
-  ├── TUI Structural IR       (models, messages, boundaries, ownership)
-  ├── Charm Ontology          (components, patterns, dependency graph)
-  ├── Archetype Catalog       (8 reference topology definitions)
-  └── Semantic Reference Corpus (23-library DeepWiki knowledge base)
+Semantic Layer                   (what the engine knows)
+  ├── Semantic Ecosystem Model    (23 repos → normalized ontology)
+  ├── TUI Structural IR          (models, messages, boundaries, ownership)
+  ├── Archetype Catalog          (8 reference topology definitions)
+  └── Cross-Library Semantics    (component interactions, conflicts, pairings)
 
-Analysis Layer
-  ├── Constraint Engine       (13 rules, 4 severity levels, 6 categories)
+Analysis Layer                   (what the engine does)
+  ├── Constraint Engine          (13 rules, 4 severity levels, 6 categories)
   ├── Timing Contract Evaluator  (10 perceptual contracts with SLOs)
-  ├── Runtime Trace Engine    (frame timing, message timeline, cadence analysis)
-  └── Suggestion Engine       (decomposition, boundary insertion, caching)
+  ├── Runtime Trace Engine       (frame timing, message timeline, cadence)
+  └── Suggestion Engine          (decomposition, boundary insertion, caching)
 
-Evidence Layer
-  └── ATree Semantic Graph    (call paths, type bindings, impact analysis)
+Evidence Layer                   (how the engine knows)
+  └── ATree Semantic Graph       (call paths, type bindings, impact analysis)
 ```
 
 ---

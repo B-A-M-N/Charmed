@@ -1,5 +1,5 @@
 ---
-name: charm-tui:scaffold
+name: charmed:scaffold
 description: "Intent-to-architecture TUI scaffolding — maps natural language to working Bubble Tea Go code."
 argument-hint: "<intent-description> [--archetype <id>] [--path <output-dir>] [--dry-run]"
 allowed-tools: [Read, Write, Bash, Glob, Grep]

@@ -1,5 +1,5 @@
 ---
-name: charm-tui:explain
+name: charmed:explain
 description: "Graph-driven explanation of Charm ecosystem concepts — components, patterns, message flows, architectural tradeoffs."
 argument-hint: "<concept or question> [--depth quick|deep] [--with-code]"
 allowed-tools: [Read, Grep, Glob, Bash]

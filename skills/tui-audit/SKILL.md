@@ -1,160 +1,327 @@
 ---
 name: tui-audit
-description: "Architecture intelligence — deterministic constraint enforcement against the TUI Structural IR. Detects architectural violations (god model, blocking update, viewport churn, unbounded concurrency) with severity levels and fix patterns. Code-graph enriched via ATree. Trigger when: user says 'audit', 'check my TUI', 'find anti-patterns', 'lint', 'review architecture', 'detect violations', or asks about Bubble Tea model structure quality."
-argument-hint: "[path-to-project] [--strict] [--rules rule1,rule2] [--format text|json]"
-allowed-tools: [Read, Write, Bash, Grep, Glob, Agent]
+description: "Evidence-based architecture linting — checks TUI projects against canonical runtime constraints (bubbletea/bubbles/lipgloss) and empirical constraints derived from ecosystem patterns. Reports violations with confidence scores and shows evidence from similar repos. Trigger when: user says 'audit', 'check my TUI', 'find anti-patterns', 'lint', 'review architecture', or asks about code quality."
+argument-hint: "[path-to-project] [--canonical-only] [--empirical-only] [--min-confidence 0.75] [--format text|json] [--with-evidence]"
+allowed-tools: [Read, Write, Bash, Grep, Glob, ATree, mcp__charmed__scan_project, mcp__charmed__list_constraints, mcp__charmed__list_patterns, mcp__charmed__explain_concept]
 ---
 
-# tui-audit — Charm Architecture Linter
+# tui-audit — Evidence-Based Constraint Enforcement
 
-Deterministic detection of anti-patterns, constraint violations, and architectural hazards in Bubble Tea projects, enriched with ATree graph queries for cross-file impact evidence.
+Architecture linting using **two-tier knowledge system**:
+- **Canonical constraints** (confidence 1.0): Runtime semantics of Bubble Tea core
+- **Empirical constraints** (confidence <1.0): Patterns derived from ecosystem observations
+
+Every finding includes: rule ID, severity, confidence, location, violation description, fix pattern, and optionally evidence from other repos.
+
+## How It Works
+
+### Canonical Mode (default)
+Checks against hand-authored constraints based on runtime semantics:
+- Bubble Tea lifecycle rules
+- Bubble component contracts
+- Lip Gloss rendering constraints
+
+**Confidence: 1.0** - these are runtime facts, not observations.
+
+### Empirical Mode (optional, enabled by default)
+Checks against pattern-derived constraints:
+- Storage must be async (14 repos, 11 fixes)
+- Viewport needs diffing (9 repos, 4 fixes)
+- Tickers need cleanup (17 repos, 5 fixes)
+
+**Confidence: 0.75-0.95** - based on ecosystem evidence.
 
 ## Inputs
 
 | Input | Required | Source |
 |-------|----------|--------|
 | Project path | Yes | User argument (default: current directory) |
-| constraints.yaml | Yes | `constraints/constraints.yaml` from plugin root |
-| ATree DB path | No | Config: `atree.db.path` or auto-detected from `<project>/.atree/index.sqlite` |
-| Strictness | No | `--strict` flag (default: warning threshold, strict: info threshold) |
+| Mode | No | `--canonical-only` or `--empirical-only` (default: both) |
+| Confidence threshold | No | `--min-confidence 0.75` (default: 0.75) |
+| Output format | No | `--format text\|json` (default: text) |
+| Evidence display | No | `--with-evidence` (show supporting repos/fixes) |
 
 ## Execution Pipeline
 
-### Phase 1: Project Discovery
+### Phase 1: Extract Evidence
+Call `evidence_extract` (or equivalent MCP tool) to get architectural signals:
 
-1. Accept project path from argument or use `pwd`.
-2. Verify it's a Go project: look for `go.mod`.
-3. Detect Charm dependencies: grep `go.mod` for `charmbracelet/bubbletea`, `charmbracelet/bubbles`, `charmbracelet/lipgloss`.
-4. If no Charm deps found, warn but continue — the project may have a non-standard module path.
-5. Locate ATree index: `<project>/.atree/index.sqlite`, or `${ATREE_DB_PATH}`.
+```
+mcp__charmed__extract_evidence(
+  project_path: <path>
+)
+→ Returns evidence graph with signals, topologies, primitives
+```
 
-### Phase 2: TUI Structural IR Scan
+### Phase 2: Load Constraints
+Load **both** canonical and empirical constraints:
 
-For each `.go` file in the project (skip `*_test.go`, `vendor/`):
+```
+mcp__charmed__list_constraints(
+  type: "all"  // or "canonical" / "empirical"
+)
+→ Returns constraints with confidence scores and evidence references
+```
 
-1. **Model Detection**: Find all structs implementing Bubble Tea interfaces:
-   - Pattern: types with `Update(...) (Model, tea.Cmd)` method
-   - Pattern: types with `View() string` method
-   - Pattern: types with `Init() tea.Cmd` method
-   - Extract: struct name, file, line, field list with types
+Example constraint:
+```yaml
+id: storage_must_be_async
+type: empirical
+confidence: 0.94
+derived_from_pattern: storage_cmd_boundary
+evidence:
+  observations: 14
+  violations: 12
+  fixes: 11
+```
 
-2. **Message Type Detection**: Find all custom message types:
-   - Pattern: `type XxxMsg struct` or `type XxxMsg interface`
-   - Extract: handlers (which model's Update handles it), emitters (where tea.Cmd sends it)
+### Phase 3: Constraint Evaluation
 
-3. **Update() Analysis**: For each model's Update method:
-   - Count LOC
-   - Count switch branches
-   - Detect blocking patterns: `http.`, `ioutil.ReadFile`, `os.ReadFile`, `time.Sleep`, `sql.`
-   - Detect viewport reconstruction: `viewport.New(` inside Update/View
-   - Detect viewport churn: `SetContent(` call sites
-   - Detect unbounded command spawning in loops
-   - Detect `tea.Batch` inside state-dependent blocks
+For each constraint, check project evidence against constraint requirements.
 
-4. **Init() Analysis**: For each model's Init method:
-   - Detect blocking I/O patterns
-   - Verify it returns a `tea.Cmd` (not nil when work is needed)
+#### Canonical Constraint Example: no_blocking_update
+```python
+for signal in evidence.signals:
+    if signal.primitive == "update_phase":
+        for child_signal in signal.children:
+            if child_signal.primitive == "storage_boundary":
+                report(ERROR, confidence=1.0,
+                       "Storage I/O in Update() blocks event loop",
+                       fix="Wrap in tea.Cmd")
+```
 
-5. **View() Analysis**: For each model's View method:
-   - Count `fmt.Sprintf`, `lipgloss.NewStyle`, `.Width(`, `.Height(` calls
-   - Detect style recomputation in hot path
-   - Detect excessive string concatenation
+#### Empirical Constraint Example: viewport_churn  
+```python
+for signal in evidence.signals:
+    if signal.primitive == "viewport":
+        setcontent_calls = count_setcontent_per_frame(signal)
+        if setcontent_calls > 1:
+            report(ERROR, confidence=0.94,
+                   "SetContent called multiple times per frame",
+                   fix="Add content diffing (observed in 9 repos)",
+                   evidence={
+                       "repos_using_pattern": ["soft-serve", "glow", ...],
+                       "violation_issues": ["issue#12", "issue#34"],
+                       "fix_commits": ["abc123", "def456"]
+                   })
+```
 
-6. **Component Bindings**: Detect which Charm components are used:
-   - `bubbles/viewport.Model` → track SetContent sites, resize handling
-   - `bubbles/list.Model` → track item count, filter usage
-   - `bubbles/textarea.Model` → focus/blur lifecycle
-   - `bubbles/textinput.Model` → validation patterns
-   - `bubbles/help.Model` → key binding completeness
-   - `lipgloss.Style` → cache vs recompute analysis
+#### viewport_recreation
+```python
+for binding in ir.component_bindings:
+    if binding.type == "viewport.Model":
+        for site in binding.construction_sites:
+            if site.context in ("Update", "View"):
+                report(CRITICAL, site.file, site.line,
+                       "viewport.Model 在 Update/View 中被重建，导致滚动位置重置",
+                       "在 Init() 中创建一次，仅调用 SetContent() 更新内容")
+```
 
-### Phase 3: Rule Matching
+#### viewport_churn
+```python
+for boundary in ir.async_boundaries:
+    if boundary.type == "SetContent" and boundary.call_frequency > 1:
+        report(ERROR, boundary.file, boundary.line,
+               f"SetContent 每帧调用 {boundary.call_frequency} 次，内容被重置而非追加",
+               "增量构建内容，仅在内容实际变化时调用 SetContent")
+```
 
-Load `constraints/constraints.yaml`. For each rule:
+#### no_blocking_update
+```python
+for model in ir.models:
+    if has_blocking_io(model.update_body):
+        report(ERROR, model.file, model.line,
+               "Update() 中检测到阻塞 I/O（http.Get、文件读取、time.Sleep）",
+               "包装为 tea.Cmd: return func() tea.Msg { ... }")
+```
 
-1. Match against Phase 2 findings using the rule's `match` pattern.
-2. Record: `rule_id`, `severity`, `file`, `line`, `message`, `fix.suggestion`.
-3. If ATree DB is available, enrich with:
-   - `atree impact <symbol>` — what else is affected by the flagged code?
-   - `atree evidence_path <from> <to>` — trace the call path to the violation.
+#### unbounded_cmd_spawning
+```python
+for boundary in ir.async_boundaries:
+    if boundary.type == "CmdSpawn" and boundary.in_loop and boundary.rate == "every_iteration":
+        report(ERROR, boundary.file, boundary.line,
+               "每次迭代产生命令，创建无界 goroutine",
+               "使用 time.Tick 限流，或合并为单个批处理命令")
+```
 
-Filter findings by severity threshold:
-- Default: report `warning`, `error`, `fatal`
-- `--strict`: report `info` and above
+#### sync_io_in_init
+```python
+for model in ir.models:
+    if has_blocking_io(model.init_body):
+        report(ERROR, model.file, model.line,
+               "Init() 包含阻塞操作，延迟 TUI 启动",
+               "将 I/O 移至 Init() 返回的 tea.Cmd 中")
+```
 
-### Phase 4: Report
+#### viewport_without_resize_handling
+```python
+for binding in ir.component_bindings:
+    if binding.type == "viewport.Model":
+        if not has_handler(model, "WindowSizeMsg"):
+            report(ERROR, model.file, model.line,
+                   "viewport 未处理 WindowSizeMsg，尺寸将为 0",
+                   "在 Update() 中处理 tea.WindowSizeMsg，传播尺寸到 viewport")
+```
 
-Output format:
+#### style_recomputation_hot_path
+```python
+for model in ir.models:
+    if model.view_has("lipgloss.NewStyle") or model.view_has_render_call():
+        report(WARN, model.file, model.line,
+               "View() 中重新计算样式，每帧浪费 CPU",
+               "缓存来自模型状态的样式，仅在输入数据变化时重新计算")
+```
+
+#### string_allocation_pressure
+```python
+for model in ir.models:
+    sprintf_count = count_sprintf(model.view_body)
+    if sprintf_count > 5:
+        report(INFO, model.file, model.line,
+               f"View() 中有 {sprintf_count} 次 fmt.Sprintf，造成 GC 压力",
+               "使用 lipgloss JoinHorizontal/JoinVertical，预计算静态字符串")
+```
+
+#### missing_key_bindings_help
+```python
+if not has_import(ir.files, "charmbracelet/bubbles/help"):
+    report(WARN, "-", "-",
+           "未检测到 key.Binding 导入，用户没有可见的帮助",
+           "添加 bubbles/help，使用 key bindings 显示可用按键")
+```
+
+#### tea_batch_misuse
+```python
+for boundary in ir.async_boundaries:
+    if boundary.type == "Batch" and boundary.has_state_dependency:
+        report(INFO, boundary.file, boundary.line,
+               "tea.Batch 并发运行命令，若顺序重要应改用 tea.Sequence",
+               "状态相关操作使用 tea.Sequence，独立操作使用 tea.Batch")
+```
+
+#### missing_alt_screen_cleanup
+```python
+if has_option(ir.program, "EnterAltScreen") and not has_cleanup(ir.program, "ExitAltScreen"):
+    report(WARN, "-", "-",
+           "使用了 Alt Screen 但未保证清理，崩溃时终端可能损坏",
+           "在 defer 或清理处理程序中调用 ExitAltScreen")
+```
+
+### Phase 4: 报告
+
+文本格式输出：
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║  charm-tui audit — <project-name>                           ║
+║  tui-audit — <project-name>                                 ║
 ╠══════════════════════════════════════════════════════════════╣
-║  Scanned: <N> files, <M> models, <K> message types          ║
-║  Checks: <total> rules · <passed> passed · <failed> failed  ║
+║  扫描: <N> 个文件, <M> 个模型, <K> 个消息类型               ║
+║  检查: <total> 条规则 · <passed> 通过 · <failed> 失败       ║
 ╠══════════════════════════════════════════════════════════════╣
 ║                                                            ║
-║  🔴 FATAL (N)                                              ║
+║  🔴 CRITICAL (N)                                           ║
 ║  ────────────────────────────────────────────────────────  ║
 ║  [viewport_recreation] cmd/app.go:42                       ║
-║    viewport.Model recreated inside Update().               ║
-║    Fix: Create once in Init(), use SetContent() only.      ║
+║    viewport.Model 在 Update() 中被重建                     ║
+║    修复: 在 Init() 中创建，仅使用 SetContent()             ║
 ║                                                            ║
 ║  🛑 ERROR (N)                                              ║
 ║  ────────────────────────────────────────────────────────  ║
 ║  [god_model] cmd/app.go:87                                 ║
-║    Update() is 340 lines. Decompose into child models.     ║
+║    Update() 为 340 行，拥有太多状态和消息类型               ║
+║    修复: 分解为子模型，父模型协调消息传递                   ║
 ║                                                            ║
 ║  ⚠️  WARNING (N)                                           ║
 ║  ────────────────────────────────────────────────────────  ║
 ║  [missing_key_bindings_help]                               ║
-║    No key.Binding import detected. Add bubbles/help.       ║
+║    未检测到 key.Binding 导入                               ║
+║    修复: 添加 bubbles/help，显示可用按键                   ║
 ║                                                            ║
-║  ℹ️  INFO (N) [strict mode only]                           ║
+║  ℹ️  INFO (N) [strict 模式]                                ║
 ║  ────────────────────────────────────────────────────────  ║
 ║  [string_allocation_pressure] cmd/app.go:120               ║
-║    Heavy string formatting inside View().                  ║
+║    View() 中有大量字符串格式化                              ║
+║    修复: 使用 strings.Builder，缓存静态字符串               ║
 ║                                                            ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
-With `--format json`, output the findings as JSON:
+使用 `--format json` 时，输出结构化 JSON：
 ```json
 {
   "project": "my-tui",
   "scanned_at": "2026-05-26T...",
-  "summary": { "total_checks": 14, "passed": 8, "failed": 6, "by_severity": {"fatal":1,"error":2,"warning":2,"info":1} },
-  "findings": [ ... ]
+  "mode": "full",
+  "ir_version": "1",
+  "summary": {
+    "total_rules": 13,
+    "passed": 8,
+    "failed": 5,
+    "by_severity": {"critical": 1, "error": 2, "warning": 1, "info": 1}
+  },
+  "ir": {
+    "models": 3,
+    "messages": 12,
+    "components_bound": 4,
+    "async_boundaries": 5
+  },
+  "findings": [
+    {
+      "rule_id": "viewport_recreation",
+      "severity": "CRITICAL",
+      "file": "cmd/app.go",
+      "line": 42,
+      "message": "viewport.Model recreated inside Update()",
+      "fix": "Create once in Init(), use SetContent() only"
+    }
+  ]
 }
 ```
 
-## Anti-Pattern Cheat Sheet
+## Quick Mode Fallback
 
-| Anti-Pattern | What to Look For | Severity |
-|---|---|---|
-| God model | Update() > 300 LOC, >20 switch branches | error/fatal |
-| Viewport churn | SetContent() called every frame | error |
-| Viewport recreation | viewport.New() in Update() or View() | fatal |
-| Blocking Update | http.Get, time.Sleep, file I/O in Update() | error |
-| Blocking Init | I/O in Init() instead of Cmd | error |
-| Style recomputation | lipgloss.NewStyle() in View() | warning |
-| Missing help | No key.Binding or help.Model import | warning |
-| Unbounded cmds | tea.Cmd spawned in tight loop | error |
-| Missing resize | viewport without WindowSizeMsg handler | error |
-| Batch misuse | tea.Batch where order matters | info |
-| Missing alt screen cleanup | EnterAltScreen without deferred ExitAltScreen | warning |
+当 ATree 不可用时，使用 `--quick` 参数或自动降级。在此模式下，通过 grep 而非 IR 评估规则。
 
-## Charm-Specific Patterns
+快速模式覆盖范围：
+- ✅ god_model（通过 grep `func.*Update` 并计算行数）
+- ✅ giga_switch_update（计算 `case` 语句数量）
+- ✅ viewport_recreation（grep `viewport.New(` 上下文）
+- ✅ no_blocking_update（grep `http\.\|ioutil\.\|time\.Sleep` 在 Update 中）
+- ✅ sync_io_in_init（grep I/O 模式在 Init 中）
+- ✅ viewport_without_resize_handling（grep viewport 使用，无 WindowSizeMsg）
+- ✅ style_recomputation_hot_path（grep `lipgloss.NewStyle\|Render` 在 View 中）
+- ✅ string_allocation_pressure（计算 `fmt.Sprintf` 调用）
+- ❌ unbounded_cmd_spawning（需要 ATree 进行循环检测）
+- ❌ viewport_churn（需要 ATree 进行调用频率分析）
+- ❌ tea_batch_misuse（需要 ATree 进行依赖性分析）
+- ❌ missing_key_bindings_help（可通过 import grep 部分检测）
+- ❌ missing_alt_screen_cleanup（可通过 grep 部分检测）
 
-When scanning Charm ecosystem code, also detect:
+快速模式报告应明确标注：
+```
+⚠️  Quick mode: 8/13 rules evaluated. Run without --quick for full analysis.
+```
 
-- **Bubble routing anti-pattern**: Messages not forwarded to child models
-- **Viewport without key bindings**: Scrollable viewport without ↑↓/PgUp/PgDn bindings
-- **Focus loss in multi-model**: Multiple textarea/textinput without clear focus state
-- **Missing Spinner.Next**: Spinner animation not advanced via SpinnerMsg in Update
+## Constraint Rule Reference
+
+| Rule | Severity | Category | Detectable in Quick Mode |
+|------|----------|----------|--------------------------|
+| `god_model` | CRITICAL | ARCHITECTURE | ✅ |
+| `giga_switch_update` | CRITICAL | ARCHITECTURE | ✅ |
+| `viewport_recreation` | CRITICAL | PERFORMANCE | ✅ |
+| `no_blocking_update` | ERROR | CORRECTNESS | ✅ |
+| `viewport_churn` | ERROR | PERFORMANCE | ❌ Needs ATree |
+| `unbounded_cmd_spawning` | ERROR | CONCURRENCY | ❌ Needs ATree |
+| `sync_io_in_init` | ERROR | CORRECTNESS | ✅ |
+| `viewport_without_resize_handling` | ERROR | ROBUSTNESS | ✅ |
+| `style_recomputation_hot_path` | WARN | PERFORMANCE | ✅ |
+| `string_allocation_pressure` | INFO | PERFORMANCE | ✅ |
+| `missing_key_bindings_help` | WARN | UX | ⚠️ Partial |
+| `missing_alt_screen_cleanup` | WARN | ROBUSTNESS | ⚠️ Partial |
+| `tea_batch_misuse` | INFO | CORRECTNESS | ❌ Needs ATree |
 
 ## Environment
 
 - `ATREE_DB_PATH`: Override auto-detected ATree database path
-- `CHARM_TUI_STRICT`: Set strict mode by default
+- `CHARM_TUI_STRICT`: Enable strict mode by default
 - `CHARM_TUI_FORMAT`: Default output format (text|json)

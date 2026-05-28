@@ -1,8 +1,8 @@
 ---
 name: tui-scaffold
-description: "Architecture intelligence — intent-to-architecture generator. Matches natural language to a TUI archetype, selects components from the Charm ontology, defines message types and model hierarchy, then generates structurally-sound Go source. Uses archetype reference architectures for state topology, command orchestration, and timing expectations. Trigger when: user says 'create a TUI', 'scaffold', 'build a terminal app', 'I want a <description> TUI', or describes a terminal interface goal."
-argument-hint: "<intent-description> [--archetype <id>] [--path <output-dir>] [--dry-run]"
-allowed-tools: [Read, Write, Bash, Glob, Grep]
+description: "Evidence-based architecture generator — matches natural language to TUI archetype, composes primitives based on archetype + observed patterns, generates structurally-sound Go code incorporating both canonical components (bubbletea/bubbles/lipgloss) and empirical patterns (storage async, viewport diffing, ticker cleanup). Trigger when: user says 'create a TUI', 'scaffold', 'build a terminal app', or describes terminal interface goal."
+argument-hint: "<intent-description> [--archetype <id>] [--with-patterns] [--path <output-dir>] [--dry-run]"
+allowed-tools: [Read, Write, Bash, Glob, Grep, ATree, mcp__charmed__get_archetype, mcp__charmed__list_patterns]
 ---
 
 # tui-scaffold — Intent-to-Architecture Generator

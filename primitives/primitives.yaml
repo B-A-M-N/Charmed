@@ -1,0 +1,409 @@
+# Behavioral Primitives Ontology
+# The normalized semantic vocabulary for TUI architecture analysis.
+# Libraries implement these primitives - they do not define them.
+#
+# This is the stable substrate. Libraries come and go.
+# Primitives evolve slowly based on observed runtime patterns.
+
+version: 1
+primitives:
+
+## LIFECYCLE PRIMITIVES
+
+- id: init_phase
+  category: lifecycle
+  description: "One-time initialization before event loop starts"
+  signals:
+    - "Init() method implementation"
+    - "Constructor pattern"
+    - "Setup before Program.Run()"
+  constraints:
+    - no_blocking_io_in_init
+    - no_rendering_in_init
+  implements: [bubbletea.Model.Init]
+
+- id: update_phase
+  category: lifecycle
+  description: "Event handling and state mutation phase"
+  signals:
+    - "Update(tea.Msg) method"
+    - "Message pattern matching"
+    - "State transitions"
+  constraints:
+    - no_blocking_update
+    - no_rendering_in_update
+  implements: [bubbletea.Model.Update]
+
+- id: render_phase
+  category: lifecycle
+  description: "View computation from current state"
+  signals:
+    - "View() method"
+    - "String composition"
+    - "Component rendering"
+  constraints:
+    - no_mutation_in_view
+    - no_io_in_view
+    - cache_computed_styles
+  implements: [bubbletea.Model.View]
+
+- id: resize_phase
+  category: lifecycle
+  description: "Window size change handling"
+  signals:
+    - "tea.WindowSizeMsg handler"
+    - "Layout recalculation"
+    - "Component resize propagation"
+  constraints:
+    - must_handle_resize
+    - propagate_to_children
+  implements: [tea.WindowSizeMsg handling]
+
+- id: shutdown_phase
+  category: lifecycle
+  description: "Cleanup and graceful termination"
+  signals:
+    - "tea.Quit"
+    - "Cleanup handlers"
+    - "Resource release"
+  constraints:
+    - cleanup_async_resources
+    - cleanup_tickers
+    - cleanup_alt_screen
+  implements: [tea.Quit, Program.Kill]
+
+## ASYNC PRIMITIVES
+
+- id: tick_source
+  category: async
+  description: "Periodic event generator for animations or polling"
+  signals:
+    - "tea.Tick usage"
+    - "time.NewTicker"
+    - "Animation frame generation"
+  constraints:
+    - must_cleanup_on_quit
+    - must_throttle_rate
+  implements: [tea.Tick, harmonica.Spring, bubbles/spinner.Tick]
+
+- id: async_cmd
+  category: async
+  description: "Asynchronous operation wrapped as Bubble Tea command"
+  signals:
+    - "tea.Cmd return"
+    - "Goroutine spawn"
+    - "Callback message emission"
+  constraints:
+    - no_blocking_in_update
+    - emit_result_message
+  implements: [tea.Cmd, tea.Batch, tea.Sequence]
+
+- id: background_worker
+  category: async
+  description: "Long-running goroutine managed by model lifecycle"
+  signals:
+    - "go func() in Init() or Update()"
+    - "Channel-based communication"
+    - "Worker cancellation logic"
+  constraints:
+    - must_cancel_on_quit
+    - channel_ownership_clear
+  implements: [goroutine patterns in mods, soft-serve]
+
+- id: cancellation_boundary
+  category: async
+  description: "Point where async work is terminated"
+  signals:
+    - "context.Cancel call"
+    - "Channel close"
+    - "Ticker.Stop()"
+  constraints:
+    - must_exist_for_background_worker
+    - must_trigger_on_quit
+  implements: [context.Context, ticker cleanup]
+
+- id: stream_consumer
+  category: async
+  description: "Progressive consumption of streaming data"
+  signals:
+    - "Scanner.Scan() loop"
+    - "Stream.Recv() loop"
+    - "Token-by-token processing"
+  constraints:
+    - batch_updates_for_render
+    - debounce_high_frequency
+  implements: [AI streaming in mods, SSH stream in wish]
+
+## RENDERING PRIMITIVES
+
+- id: viewport
+  category: rendering
+  description: "Scrollable content window with offset tracking"
+  signals:
+    - "bubbles/viewport.Model field"
+    - "SetContent() calls"
+    - "Scroll offset management"
+  constraints:
+    - viewport_recreation
+    - viewport_churn
+    - viewport_without_resize_handling
+  implements: [bubbles/viewport.Model]
+
+- id: diffed_content
+  category: rendering
+  description: "Content update strategy with change detection"
+  signals:
+    - "Hash comparison before SetContent"
+    - "Incremental append logic"
+    - "Content equality check"
+  constraints:
+    - must_diff_before_set
+  implements: [observed in 9+ repos]
+
+- id: adaptive_style
+  category: rendering
+  description: "Style selection based on terminal capabilities"
+  signals:
+    - "colorprofile check"
+    - "TERM environment inspection"
+    - "Capability-based rendering"
+  constraints:
+    - detect_once_in_init
+    - cache_style_variants
+  implements: [colorprofile, lipgloss adaptive rendering]
+
+- id: animated_transition
+  category: rendering
+  description: "Smooth state interpolation over time"
+  signals:
+    - "harmonica.Spring usage"
+    - "Interpolation between states"
+    - "Frame-based updates"
+  constraints:
+    - respect_60fps_cap
+    - no_computation_in_view
+  implements: [harmonica, smooth scrolling patterns]
+
+- id: layout_composition
+  category: rendering
+  description: "Multi-component spatial arrangement"
+  signals:
+    - "lipgloss.JoinHorizontal/Vertical"
+    - "Width/Height calculations"
+    - "Border/Margin/Padding"
+  constraints:
+    - cache_layout_styles
+    - avoid_recomputation_in_view
+  implements: [lipgloss.Style, layout patterns]
+
+- id: modal_overlay
+  category: rendering
+  description: "Temporary UI layer that blocks background interaction"
+  signals:
+    - "Modal stack management"
+    - "Input routing override"
+    - "Z-order rendering"
+  constraints:
+    - must_restore_focus
+    - must_cleanup_on_dismiss
+  implements: [huh.Form modal patterns]
+
+## STATE PRIMITIVES
+
+- id: persisted_state
+  category: state
+  description: "Data that survives across sessions"
+  signals:
+    - "charm.Save/Load"
+    - "skate.Get/Set"
+    - "File I/O for config"
+  constraints:
+    - load_in_cmd
+    - save_in_cmd
+    - no_blocking_io
+  implements: [charm, skate, config files]
+
+- id: derived_state
+  category: state
+  description: "Computed values from primary state"
+  signals:
+    - "Computed fields"
+    - "Filter results"
+    - "Aggregations"
+  constraints:
+    - cache_expensive_derivations
+    - recompute_on_dependency_change
+  implements: [list filtering, search results]
+
+- id: ephemeral_state
+  category: state
+  description: "Transient runtime state, not persisted"
+  signals:
+    - "UI state (focus, selection)"
+    - "Animation state"
+    - "Temporary buffers"
+  constraints:
+    - clear_ownership
+  implements: [focus state, cursor position]
+
+- id: shared_state
+  category: state
+  description: "Data accessed by multiple models"
+  signals:
+    - "Pointer fields"
+    - "Channel passing"
+    - "Shared struct embedding"
+  constraints:
+    - document_ownership
+    - avoid_mutation_races
+  implements: [parent-child model coordination]
+
+## COORDINATION PRIMITIVES
+
+- id: message_router
+  category: coordination
+  description: "Message distribution to child models"
+  signals:
+    - "Switch on msg type"
+    - "Message forwarding to children"
+    - "Selective routing logic"
+  constraints:
+    - avoid_giga_switch
+    - avoid_god_model
+  implements: [parent model Update() patterns]
+
+- id: component_tree
+  category: coordination
+  description: "Hierarchical model composition"
+  signals:
+    - "Child model fields"
+    - "Recursive Update/View calls"
+    - "State delegation"
+  constraints:
+    - clear_ownership_boundaries
+    - propagate_resize
+  implements: [model composition patterns]
+
+- id: focus_management
+  category: coordination
+  description: "Input routing to active component"
+  signals:
+    - "Focused field tracking"
+    - "Tab navigation"
+    - "Focus indicators"
+  constraints:
+    - must_update_on_focus_change
+    - timing_snappy_focus
+  implements: [bubbles/textarea.Focus, form navigation]
+
+- id: modal_stack
+  category: coordination
+  description: "Layered UI with input capture"
+  signals:
+    - "Stack push/pop"
+    - "Modal state tracking"
+    - "Input interception"
+  constraints:
+    - restore_previous_state
+    - cleanup_on_pop
+  implements: [huh forms, dialog patterns]
+
+## INFRASTRUCTURE PRIMITIVES
+
+- id: storage_boundary
+  category: infrastructure
+  description: "Persistence layer interaction point"
+  signals:
+    - "charm/skate calls"
+    - "File I/O"
+    - "Database queries"
+  constraints:
+    - must_be_in_cmd
+    - never_in_update_or_view
+  implements: [charm, skate, file operations]
+
+- id: terminal_capability
+  category: infrastructure
+  description: "Terminal feature detection"
+  signals:
+    - "colorprofile.Detect"
+    - "TERM parsing"
+    - "Feature flags"
+  constraints:
+    - detect_once
+    - cache_result
+  implements: [colorprofile, x/term]
+
+- id: ssh_session
+  category: infrastructure
+  description: "Remote terminal session management"
+  signals:
+    - "wish.Server"
+    - "SSH connection handling"
+    - "Session lifecycle"
+  constraints:
+    - cleanup_on_disconnect
+    - alt_screen_required
+  implements: [wish, soft-serve, wishlist]
+
+- id: background_logger
+  category: infrastructure
+  description: "Asynchronous logging that doesn't block rendering"
+  signals:
+    - "log.Logger usage"
+    - "File/stderr output"
+    - "Never stdout"
+  constraints:
+    - never_in_view
+    - async_if_expensive
+  implements: [charm/log, standard logging patterns]
+
+- id: git_integration
+  category: infrastructure
+  description: "Repository interaction patterns"
+  signals:
+    - "git command execution"
+    - "Repository state tracking"
+    - "Commit/branch operations"
+  constraints:
+    - all_operations_in_cmd
+    - handle_errors_gracefully
+  implements: [soft-serve patterns]
+
+- id: email_notification
+  category: infrastructure
+  description: "Background message delivery"
+  signals:
+    - "pop.Send usage"
+    - "SMTP operations"
+    - "Async delivery"
+  constraints:
+    - must_be_async
+    - handle_failures
+  implements: [pop patterns]
+
+## TESTING PRIMITIVES
+
+- id: recording_harness
+  category: testing
+  description: "Automated TUI interaction capture"
+  signals:
+    - "vhs.Tape usage"
+    - "Input scripting"
+    - "Output verification"
+  constraints:
+    - deterministic_timing
+    - reproducible_state
+  implements: [vhs patterns]
+
+- id: assertion_boundary
+  category: testing
+  description: "Points where TUI state can be verified"
+  signals:
+    - "View() output inspection"
+    - "Model state checks"
+    - "Message sequence validation"
+  constraints:
+    - test_against_view_output
+    - mock_async_boundaries
+  implements: [testing patterns across repos]

@@ -1,0 +1,314 @@
+# Evidence Graph Schema
+# Structural extraction format for architecture analysis.
+# This is DETERMINISTIC - no AI inference at this stage.
+#
+# Evidence is extracted from code via AST/grep/ATree and normalized
+# into this format. Patterns are then induced from evidence clusters.
+
+version: 1
+schema_type: evidence_extraction
+
+# An evidence entry represents architectural signals observed in a specific location
+evidence_entry:
+  repo: string             # Repository identifier
+  file: string             # File path relative to repo root
+  line: int                # Line number where evidence starts
+  context: string          # Function/method/scope context
+
+  # Extracted signals (deterministic)
+  signals:
+    type: list[signal]
+    description: "Observable structural patterns"
+
+  # Topology (how signals relate)
+  topology:
+    type: graph
+    description: "Relationships between signals in this evidence"
+
+  # Metadata
+  confidence: float        # Extraction confidence (0.0-1.0, based on AST vs grep)
+  extraction_method: enum  # [ast, grep, atree, manual]
+  extracted_at: timestamp
+
+# Signal definition - atomic observable pattern
+signal:
+  id: string              # Unique signal identifier
+  primitive: string       # Maps to primitives.yaml primitive id
+  pattern: string         # Code pattern that triggered this signal
+
+  # Context
+  scope: enum            # [file, function, method, block]
+  owner: string          # Which model/struct owns this
+
+  # Relationships to other signals
+  precedes: list[string]  # Signal IDs that follow this one
+  requires: list[string]  # Signal IDs that must exist for this to be valid
+  conflicts: list[string] # Signal IDs that indicate anti-pattern
+
+# Topology - how signals compose into structures
+topology:
+  structure_type: enum   # [sequence, tree, graph, pipeline]
+  nodes: list[signal_id]
+  edges: list[edge]
+
+  # Lifecycle properties
+  lifecycle_phase: enum  # [init, update, view, shutdown]
+  async_boundary: bool   # True if crosses goroutine boundary
+  io_boundary: bool      # True if interacts with I/O
+
+edge:
+  from: string          # Signal ID
+  to: string            # Signal ID
+  relationship: enum    # [calls, emits, depends_on, invalidates]
+  confidence: float
+
+# Example evidence entries below
+---
+
+# Example 1: Viewport with diffing pattern
+repo: example-tui-app
+file: app/dashboard.go
+line: 42
+context: DashboardModel.Update
+
+signals:
+  - id: sig_viewport_field
+    primitive: viewport
+    pattern: "viewport viewport.Model"
+    scope: method
+    owner: DashboardModel
+
+  - id: sig_content_hash
+    primitive: diffed_content
+    pattern: "if hashContent(newContent) != m.contentHash"
+    scope: method
+    owner: DashboardModel
+    precedes: [sig_setcontent_call]
+
+  - id: sig_setcontent_call
+    primitive: viewport
+    pattern: "m.viewport.SetContent(newContent)"
+    scope: method
+    owner: DashboardModel
+    requires: [sig_content_hash]
+
+topology:
+  structure_type: sequence
+  nodes: [sig_content_hash, sig_setcontent_call]
+  edges:
+    - from: sig_content_hash
+      to: sig_setcontent_call
+      relationship: depends_on
+      confidence: 1.0
+  lifecycle_phase: update
+  async_boundary: false
+  io_boundary: false
+
+confidence: 0.95
+extraction_method: ast
+extracted_at: 2026-05-28T10:00:00Z
+
+---
+
+# Example 2: Storage wrapped in Cmd
+repo: example-tui-app
+file: app/settings.go
+line: 78
+context: SettingsModel.Update
+
+signals:
+  - id: sig_storage_call
+    primitive: storage_boundary
+    pattern: "skate.Get(key)"
+    scope: method
+    owner: loadSettingsCmd
+
+  - id: sig_cmd_wrapper
+    primitive: async_cmd
+    pattern: "return func() tea.Msg"
+    scope: method
+    owner: loadSettingsCmd
+
+  - id: sig_result_message
+    primitive: async_cmd
+    pattern: "return settingsLoadedMsg{data}"
+    scope: method
+    owner: loadSettingsCmd
+    precedes: [sig_message_handler]
+
+  - id: sig_message_handler
+    primitive: update_phase
+    pattern: "case settingsLoadedMsg"
+    scope: method
+    owner: SettingsModel
+    requires: [sig_result_message]
+
+topology:
+  structure_type: pipeline
+  nodes: [sig_cmd_wrapper, sig_storage_call, sig_result_message, sig_message_handler]
+  edges:
+    - from: sig_cmd_wrapper
+      to: sig_storage_call
+      relationship: calls
+      confidence: 1.0
+    - from: sig_storage_call
+      to: sig_result_message
+      relationship: emits
+      confidence: 1.0
+    - from: sig_result_message
+      to: sig_message_handler
+      relationship: emits
+      confidence: 1.0
+  lifecycle_phase: update
+  async_boundary: true
+  io_boundary: true
+
+confidence: 0.98
+extraction_method: atree
+extracted_at: 2026-05-28T10:05:00Z
+
+---
+
+# Example 3: Ticker with cleanup
+repo: example-animated-ui
+file: app/spinner.go
+line: 34
+context: SpinnerModel.Init
+
+signals:
+  - id: sig_ticker_create
+    primitive: tick_source
+    pattern: "tea.Tick(time.Second/60, spinnerTickMsg)"
+    scope: method
+    owner: SpinnerModel
+
+  - id: sig_quit_handler
+    primitive: shutdown_phase
+    pattern: "case tea.KeyMsg: if msg.String() == \"q\""
+    scope: method
+    owner: SpinnerModel
+
+  - id: sig_ticker_cancel
+    primitive: cancellation_boundary
+    pattern: "return tea.Quit"
+    scope: method
+    owner: SpinnerModel
+    requires: [sig_ticker_create]
+
+topology:
+  structure_type: tree
+  nodes: [sig_ticker_create, sig_quit_handler, sig_ticker_cancel]
+  edges:
+    - from: sig_ticker_create
+      to: sig_ticker_cancel
+      relationship: invalidates
+      confidence: 1.0
+    - from: sig_quit_handler
+      to: sig_ticker_cancel
+      relationship: calls
+      confidence: 1.0
+  lifecycle_phase: shutdown
+  async_boundary: true
+  io_boundary: false
+
+confidence: 0.92
+extraction_method: ast
+extracted_at: 2026-05-28T10:10:00Z
+
+---
+
+# Example 4: Animation loop (harmonica)
+repo: smooth-scroll-example
+file: scroll/animated.go
+line: 56
+context: AnimatedViewModel.Update
+
+signals:
+  - id: sig_spring_field
+    primitive: animated_transition
+    pattern: "spring harmonica.Spring"
+    scope: method
+    owner: AnimatedViewModel
+
+  - id: sig_spring_update
+    primitive: animated_transition
+    pattern: "m.spring.Update()"
+    scope: method
+    owner: AnimatedViewModel
+
+  - id: sig_tick_msg
+    primitive: tick_source
+    pattern: "case tickMsg"
+    scope: method
+    owner: AnimatedViewModel
+    precedes: [sig_spring_update]
+
+  - id: sig_interpolated_read
+    primitive: render_phase
+    pattern: "m.spring.Value()"
+    scope: method
+    owner: AnimatedViewModel
+    requires: [sig_spring_update]
+
+topology:
+  structure_type: graph
+  nodes: [sig_tick_msg, sig_spring_update, sig_interpolated_read]
+  edges:
+    - from: sig_tick_msg
+      to: sig_spring_update
+      relationship: calls
+      confidence: 1.0
+    - from: sig_spring_update
+      to: sig_interpolated_read
+      relationship: depends_on
+      confidence: 0.95
+  lifecycle_phase: update
+  async_boundary: true
+  io_boundary: false
+
+confidence: 0.88
+extraction_method: grep
+extracted_at: 2026-05-28T10:15:00Z
+
+---
+
+# Violation evidence (anti-pattern)
+repo: buggy-tui
+file: app/broken.go
+line: 120
+context: BrokenModel.Update
+
+signals:
+  - id: sig_storage_in_update
+    primitive: storage_boundary
+    pattern: "data := skate.Get(key)"
+    scope: method
+    owner: BrokenModel
+    conflicts: [sig_update_phase]
+
+  - id: sig_update_phase
+    primitive: update_phase
+    pattern: "func (m BrokenModel) Update(msg tea.Msg)"
+    scope: method
+    owner: BrokenModel
+
+topology:
+  structure_type: sequence
+  nodes: [sig_update_phase, sig_storage_in_update]
+  edges:
+    - from: sig_update_phase
+      to: sig_storage_in_update
+      relationship: calls
+      confidence: 1.0
+  lifecycle_phase: update
+  async_boundary: false
+  io_boundary: true  # VIOLATION: I/O in update phase
+
+confidence: 1.0
+extraction_method: ast
+extracted_at: 2026-05-28T10:20:00Z
+
+# Linked to issue resolution
+issue_url: https://github.com/buggy-tui/issues/42
+fix_commit: abc123
+fix_pattern: "Moved storage to Cmd wrapper"
